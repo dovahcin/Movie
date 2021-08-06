@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">Movie</string>
-    <string name="decs">decs</string>
+    <string name="description">decs</string>
 </resources>
