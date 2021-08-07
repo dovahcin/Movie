@@ -11,9 +11,9 @@ import com.movie.android.databinding.ActivityMainBinding
 import com.movie.android.domain.Movie
 import com.movie.android.utils.visible
 import com.movie.android.view.adapter.PopularMovieAdapter
-import com.movie.android.viewmodel.MainUiState
-import com.movie.android.viewmodel.MainUiState.Loading
-import com.movie.android.viewmodel.MainViewModel
+import com.movie.android.utils.MainUiState
+import com.movie.android.utils.MainUiState.Loading
+import com.movie.android.view.viewmodel.MainViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject

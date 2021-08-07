@@ -1,4 +1,4 @@
-package com.movie.android.viewmodel
+package com.movie.android.utils
 
 import com.movie.android.domain.Movie
 

@@ -1,4 +1,4 @@
-package com.movie.android.app
+package com.movie.android
 
 import android.app.Application
 import com.movie.android.di.mainModule
