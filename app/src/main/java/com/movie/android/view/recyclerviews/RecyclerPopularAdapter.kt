@@ -1,20 +1,19 @@
-package com.movie.android.recyclerviews
+package com.movie.android.view.recyclerviews
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.movie.android.databinding.ItemMovieBinding
 import com.movie.android.datamodel.Result
-import com.movie.android.picasso.PicassoService
+import com.movie.android.picasso.loadImage
 
-class RecyclerPopularMoviesAdapter(
-    private var result: List<Result>,
-    private val picassoServices: PicassoService
+class RecyclerPopularAdapter(
+    private var result: List<Result>
 ) :
-    RecyclerView.Adapter<RecyclerPopularMoviesAdapter.PopularMoviesViewHolder>() {
+    RecyclerView.Adapter<RecyclerPopularAdapter.PopularMoviesViewHolder>() {
 
-    private val TAG = "Recycler"
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PopularMoviesViewHolder {
         return PopularMoviesViewHolder(
@@ -24,13 +23,11 @@ class RecyclerPopularMoviesAdapter(
 
     override fun onBindViewHolder(holder: PopularMoviesViewHolder, position: Int) {
 
-        val uri = "https://image.tmdb.org/t/p/w600_and_h900_bestv2${result[position].poster_path}"
-
-        Log.d(TAG, "result : $uri")
-
         holder.bind(result[position])
 
-        picassoServices.initPicasso(uri, holder.imageView)
+        Log.d("ImageView", "${result[position].posterPath}")
+
+        holder.imageView.loadImage(result[position].posterPath)
 
     }
 
@@ -50,7 +47,9 @@ class RecyclerPopularMoviesAdapter(
 
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun reloadData(result: List<Result>) {
         this.result = result
+        notifyDataSetChanged()
     }
 }

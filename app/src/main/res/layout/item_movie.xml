@@ -83,6 +83,7 @@
             android:textAlignment="center"
             android:textColor="@color/yellow1"
             android:textSize="@dimen/xxlTextSize"
+            android:visibility="invisible"
             app:layout_constraintStart_toStartOf="@id/yearTextView"
             app:layout_constraintTop_toBottomOf="@+id/yearTextView"
             tools:text="Adventure" />

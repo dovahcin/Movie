@@ -7,7 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.movie.android.R
 import com.movie.android.databinding.ActivityMainBinding
-import com.movie.android.recyclerviews.RecyclerPopularMoviesAdapter
+import com.movie.android.view.recyclerviews.RecyclerPopularAdapter
 import com.movie.android.viewmodel.MainViewModel
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -15,7 +15,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class MainActivity() : AppCompatActivity() {
 
     private val mainViewModel: MainViewModel by viewModel()
-    private val recyclerAdapter: RecyclerPopularMoviesAdapter by inject()
+    private val recyclerAdapter: RecyclerPopularAdapter by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

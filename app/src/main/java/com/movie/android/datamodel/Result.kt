@@ -15,4 +15,9 @@ data class Result(
     val video: Boolean,
     val vote_average: Double,
     val vote_count: Int
-)
+) {
+
+    val posterPath
+    get() = "https://image.tmdb.org/t/p/w600_and_h900_bestv2$poster_path"
+
+}

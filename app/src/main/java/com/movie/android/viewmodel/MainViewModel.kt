@@ -3,7 +3,6 @@ package com.movie.android.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.movie.android.datamodel.MoviesList
-import com.movie.android.picasso.PicassoService
 import com.movie.android.repository.MainRepository
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
@@ -18,7 +17,7 @@ class MainViewModel(
 
     fun loadDataForRecyclerView() {
         compositeDisposable.add(
-            mainRepository.getData()
+            mainRepository.getResponseFromRetrofit()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
