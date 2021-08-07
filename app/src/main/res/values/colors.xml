@@ -12,4 +12,5 @@
     <color name="gray999ea4">#999ea4</color>
     <color name="yellow1">#ECA500</color>
     <color name="red1">#E92323</color>
+    <color name="titleColor">@color/colorPrimary</color>
 </resources>

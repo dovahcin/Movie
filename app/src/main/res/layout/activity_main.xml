@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
-
-
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -14,12 +12,23 @@
             android:id="@+id/popularMoviesListRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingVertical="@dimen/mPadding"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             tools:listitem="@layout/item_movie"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="-2dp"
+            android:layout_gravity="bottom"
+            android:indeterminate="true"
+            android:theme="@style/DarkProgressBar"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
+
     </FrameLayout>
+
 </layout>
