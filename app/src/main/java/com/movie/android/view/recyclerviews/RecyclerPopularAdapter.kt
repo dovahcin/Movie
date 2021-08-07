@@ -1,6 +1,5 @@
 package com.movie.android.view.recyclerviews
 
-import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -12,7 +11,7 @@ import com.movie.android.picasso.loadImage
 class RecyclerPopularAdapter(
     private var result: List<Result>
 ) :
-    RecyclerView.Adapter<RecyclerPopularAdapter.PopularMoviesViewHolder>() {
+    RecyclerView.Adapter<PopularMoviesViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PopularMoviesViewHolder {
@@ -25,7 +24,7 @@ class RecyclerPopularAdapter(
 
         holder.bind(result[position])
 
-        Log.d("ImageView", "${result[position].posterPath}")
+        Log.d("ImageView", result[position].posterPath)
 
         holder.imageView.loadImage(result[position].posterPath)
 
@@ -33,23 +32,24 @@ class RecyclerPopularAdapter(
 
     override fun getItemCount(): Int = result.size
 
-    inner class PopularMoviesViewHolder(
-        private val binding: ItemMovieBinding
-    ) : RecyclerView.ViewHolder(binding.root) {
 
-        val imageView = binding.imageView
-
-        fun bind(result: Result) {
-
-            binding.result = result
-            binding.executePendingBindings()
-        }
-
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
     fun reloadData(result: List<Result>) {
         this.result = result
-        notifyDataSetChanged()
+        notifyItemChanged(0)
     }
+}
+
+
+class PopularMoviesViewHolder(
+    private val binding: ItemMovieBinding
+) : RecyclerView.ViewHolder(binding.root) {
+
+    val imageView = binding.imageView
+
+    fun bind(result: Result) {
+
+        binding.result = result
+        binding.executePendingBindings()
+    }
+
 }

@@ -51,7 +51,7 @@
             android:layout_marginTop="@dimen/xlMargin"
             android:ellipsize="end"
             android:lines="2"
-            android:text="@{Double.valueOf(result.popularity).toString() + ` Views`}"
+            android:text="@{result.overview}"
             android:textSize="@dimen/xlTextSize"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/titleTextView"
