@@ -97,7 +97,7 @@
             android:gravity="center"
             android:paddingHorizontal="@dimen/sPadding"
             android:singleLine="true"
-            android:text="@{Double.valueOf(result.vote_average).toString()}"
+            android:text="@{result.overview}"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="@dimen/xlTextSize"
