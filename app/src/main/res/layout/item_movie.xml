@@ -4,11 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="result"
-            type="com.movie.android.datamodel.Result" />
-
+            type="com.movie.android.domain.Movie" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,41 +15,41 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="200dp"
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:adjustViewBounds="true"
+            android:layout_marginStart="@dimen/mMargin"
+            android:layout_marginTop="@dimen/mMargin"
             android:scaleType="centerCrop"
-            app:layout_constraintDimensionRatio="w,12:9"
+            app:layout_constraintDimensionRatio="h,9:12"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription"
-            tools:src="@tools:sample/avatars"
-            tools:srcCompat="@android:drawable/ic_menu_camera" />
+            tools:src="@drawable/ic_placeholder" />
 
         <TextView
             android:id="@+id/titleTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="@dimen/mMargin"
             android:ellipsize="end"
             android:singleLine="true"
             android:text="@{result.original_title}"
+            android:textColor="@color/titleColor"
             android:textSize="@dimen/xxlTextSize"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="@+id/imageView"
-            tools:text="@tools:sample/lorem/random" />
+            tools:text="@tools:sample/lorem" />
 
         <TextView
             android:id="@+id/subtitleTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/xlMargin"
+            android:layout_marginTop="@dimen/mMargin"
             android:ellipsize="end"
             android:lines="2"
             android:text="@{result.overview}"
+            android:textColor="@color/titleColor"
             android:textSize="@dimen/xlTextSize"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/titleTextView"
@@ -62,7 +60,7 @@
             android:id="@+id/yearTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/mMargin"
             android:text="@{result.release_date}"
             android:background="@drawable/bg_boarder"
             android:paddingHorizontal="@dimen/sPadding"
@@ -83,7 +81,8 @@
             android:textAlignment="center"
             android:textColor="@color/yellow1"
             android:textSize="@dimen/xxlTextSize"
-            android:visibility="invisible"
+            android:visibility="gone"
+            tools:visibility="visible"
             app:layout_constraintStart_toStartOf="@id/yearTextView"
             app:layout_constraintTop_toBottomOf="@+id/yearTextView"
             tools:text="Adventure" />
@@ -91,22 +90,22 @@
 
         <TextView
             android:id="@+id/rateTextView"
-            android:layout_width="52dp"
-            android:layout_height="52dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginTop="@dimen/mMargin"
-            android:text="@{Double.valueOf(result.vote_average).toString()}"
             android:background="@drawable/bg_rate"
-            android:paddingHorizontal="@dimen/sPadding"
-            android:textAlignment="center"
-            android:textColor="@color/yellow1"
-            android:textSize="@dimen/xxlTextSize"
-            app:layout_constraintVertical_bias="0.8"
-            app:layout_constraintBottom_toBottomOf="@id/imageView"
             android:gravity="center"
+            android:paddingHorizontal="@dimen/sPadding"
             android:singleLine="true"
-            app:layout_constraintTop_toBottomOf="@+id/genreTextView"
+            android:text="@{result.overview}"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/xlTextSize"
+            app:layout_constraintBottom_toBottomOf="@id/imageView"
             app:layout_constraintEnd_toEndOf="@id/imageView"
             app:layout_constraintStart_toEndOf="@id/imageView"
+            app:layout_constraintTop_toTopOf="@+id/imageView"
+            app:layout_constraintVertical_bias="0.9"
             tools:text="8.2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

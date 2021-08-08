@@ -1,6 +1,6 @@
-package com.movie.android.datamodel
+package com.movie.android.domain
 
-data class Result(
+data class Movie(
     val adult: Boolean,
     val backdrop_path: String,
     val genre_ids: List<Int>,

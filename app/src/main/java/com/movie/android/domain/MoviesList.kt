@@ -1,8 +1,8 @@
-package com.movie.android.datamodel
+package com.movie.android.domain
 
 data class MoviesList(
     val page: Int,
-    val results: List<Result>,
+    val results: List<Movie>,
     val total_pages: Int,
     val total_results: Int
 )
