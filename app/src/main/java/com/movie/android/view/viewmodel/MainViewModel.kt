@@ -20,12 +20,12 @@ class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
         _uiState.value = MainUiState.Error(exception)
     }
 
-    fun loadDataForRecyclerView() {
+    fun loadDataForRecyclerView(page: String) {
         viewModelScope.launch(coroutineExceptionHandler) {
-            mainRepository.getPopularMovies()
+            mainRepository.getPopularMovies(page)
                 .onStart { _uiState.value = MainUiState.Loading }
                 .collect {movieResult->
-                    _uiState.value = MainUiState.Success(movieResult.results)
+                    _uiState.value = MainUiState.Success(movieResult.results as MutableList)
                 }
         }
     }

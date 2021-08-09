@@ -4,7 +4,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.movie.android.domain.Movie
 
-class PopularMovieAdapter(private var movie: List<Movie>) : RecyclerView.Adapter<MovieViewHolder>() {
+class PopularMovieAdapter(private var movie: MutableList<Movie>) : RecyclerView.Adapter<MovieViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         MovieViewHolder.create(parent)
@@ -15,9 +15,9 @@ class PopularMovieAdapter(private var movie: List<Movie>) : RecyclerView.Adapter
 
     override fun getItemCount(): Int = movie.size
 
-    fun update(movie: List<Movie>) {
+    fun update(movie: MutableList<Movie>) {
         val oldSize = itemCount
-        this.movie = movie
+        this.movie.addAll(movie)
         notifyItemRangeInserted(oldSize, movie.size)
     }
 
