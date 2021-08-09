@@ -36,5 +36,5 @@ val mainModule = module {
 
 val  viewModule = module {
 
-    single { PopularMovieAdapter(listOf()) }
+    single { PopularMovieAdapter(mutableListOf()) }
 }

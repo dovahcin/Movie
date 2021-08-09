@@ -6,9 +6,9 @@ import kotlinx.coroutines.flow.flowOn
 
 class MainRepository(private val api: ApiServices) {
 
-    private val page = "1"
+//    private val page = "1"
 
-    fun getPopularMovies() = flow {
+    fun getPopularMovies(page: String) = flow {
         emit(api.getPopularMoviesList(page))
     }.flowOn(Dispatchers.IO)
 
