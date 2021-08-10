@@ -1,48 +1,55 @@
-package com.movie.android.view
+package com.movie.android.view.fragment
 
 import android.os.Bundle
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.movie.android.R
 import com.movie.android.databinding.ActivityMainBinding
+import com.movie.android.databinding.FragmentMainBinding
 import com.movie.android.domain.Movie
-import com.movie.android.utils.visible
-import com.movie.android.view.adapter.PopularMovieAdapter
 import com.movie.android.utils.MainUiState
-import com.movie.android.utils.MainUiState.Loading
+import com.movie.android.utils.visible
 import com.movie.android.view.adapter.PopularEndlessScroller
+import com.movie.android.view.adapter.PopularMovieAdapter
 import com.movie.android.view.viewmodel.MainViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainActivity : AppCompatActivity(), PopularEndlessScroller.LoadMore {
 
-    private var _binding: ActivityMainBinding? = null
+class MainFragment : Fragment(), PopularEndlessScroller.LoadMore {
+
+    private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
 
     private val mainViewModel: MainViewModel by viewModel()
     private val movieAdapter: PopularMovieAdapter by inject()
 
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, null, false)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        _binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         binding.popularMoviesListRecyclerView.adapter = movieAdapter
-        val layoutManager = LinearLayoutManager(this)
+        val layoutManager = LinearLayoutManager(context)
         binding.popularMoviesListRecyclerView.layoutManager = layoutManager
 
         val popularEndlessScroller = PopularEndlessScroller(layoutManager, this)
 
         binding.popularMoviesListRecyclerView.addOnScrollListener(popularEndlessScroller)
 
-        mainViewModel.loadDataForRecyclerView("1")
+        mainViewModel.loadDataForGeneralList("1")
 
         lifecycleScope.launch {
             mainViewModel.uiState.collect { uiState ->
@@ -50,10 +57,12 @@ class MainActivity : AppCompatActivity(), PopularEndlessScroller.LoadMore {
                     is MainUiState.Success -> showPopularMovies(uiState.movies)
                     is MainUiState.Error -> showError(uiState.exception)
                 }
-                showLoadingView(uiState is Loading)
+                showLoadingView(uiState is MainUiState.Loading)
             }
         }
 
+
+        return binding.root
     }
 
     private fun showLoadingView(isVisible: Boolean) {
@@ -75,6 +84,7 @@ class MainActivity : AppCompatActivity(), PopularEndlessScroller.LoadMore {
     }
 
     override fun onLoadMore(currentPage: Int) {
-        mainViewModel.loadDataForRecyclerView(currentPage.toString())
+        mainViewModel.loadDataForGeneralList(currentPage.toString())
     }
+
 }

@@ -10,20 +10,28 @@ import com.movie.android.utils.screenWidth
 import kotlin.math.roundToInt
 
 class MovieViewHolder(private val binding: ItemMovieBinding) :
-  RecyclerView.ViewHolder(binding.root) {
+    RecyclerView.ViewHolder(binding.root) {
 
-  companion object{
-    fun create(parent: ViewGroup) : MovieViewHolder =
-      MovieViewHolder(ItemMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false))
-  }
+    companion object {
+        fun create(parent: ViewGroup): MovieViewHolder =
+            MovieViewHolder(
+                ItemMovieBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                )
+            )
+    }
 
-init {
-  binding.imageView.layoutParams.width = (screenWidth() * 0.4).roundToInt()
-}
+    init {
+        binding.imageView.layoutParams.width = (screenWidth() * 0.4).roundToInt()
+    }
 
-  fun bind(movie: Movie) {
-    binding.imageView.loadImage(movie.posterPath)
-    binding.result = movie
-    binding.executePendingBindings()
-  }
+    val imageView = binding.imageView
+
+    fun bind(movie: Movie) {
+        binding.imageView.loadImage(movie.posterPath)
+        binding.result = movie
+        binding.executePendingBindings()
+    }
 }

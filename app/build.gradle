@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id("androidx.navigation.safeargs")
 }
 
 apply plugin:'kotlin-kapt'
@@ -39,9 +40,11 @@ android {
 }
 
 dependencies {
+
     def retrofit_version = "2.9.0"
     def lifecycle_version = "2.4.0-alpha03"
     def koin_version = "3.1.2"
+    def nav_version = "2.3.5"
 
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.1'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1'
@@ -67,6 +70,20 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
 
     testImplementation 'junit:junit:4.13.2'
+
+    // Kotlin
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    // Feature module Support
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
+
+    // Testing Navigation
+    androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
+
+    // Jetpack Compose Integration
+    implementation "androidx.navigation:navigation-compose:2.4.0-alpha06"
+    implementation "android.arch.navigation:navigation-fragment-ktx:1.0.0"
 
 
 }
