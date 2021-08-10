@@ -32,10 +32,6 @@ class PopularEndlessScroller(private val linearLayoutManager: LinearLayoutManage
         if (!loading && (totalItemCount - visibleItemCount - firstVisibleItem <= visibleThreshold)) {
             currentPage++
 
-            Log.d("TAG", "Total : $totalItemCount")
-            Log.d("TAG", "prev : $previousTotal")
-            Log.d("TAG", "Page : $currentPage")
-
             loadMore.onLoadMore(currentPage)
 
             loading = true

@@ -20,7 +20,7 @@ class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
         _uiState.value = MainUiState.Error(exception)
     }
 
-    fun loadDataForRecyclerView(page: String) {
+    fun loadDataForGeneralList(page: String) {
         viewModelScope.launch(coroutineExceptionHandler) {
             mainRepository.getPopularMovies(page)
                 .onStart { _uiState.value = MainUiState.Loading }
