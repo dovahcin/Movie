@@ -1,39 +1,28 @@
 package com.movie.android.view.adapter
 
-import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.movie.android.domain.popular.Movie
-import com.movie.android.view.fragment.MainFragmentDirections
+import com.movie.android.domain.Movie
 
 class PopularMovieAdapter(
-    private var movie: MutableList<Movie>
-) : RecyclerView.Adapter<MovieViewHolder>(), View.OnClickListener {
+    private var items: MutableList<Movie>, private val itemClick : (Int)->Unit
+) : RecyclerView.Adapter<MovieViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         MovieViewHolder.create(parent)
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        holder.bind(movie[position])
-
-        holder.imageView.setOnClickListener(this)
-
-
+        val movie = items[position]
+        holder.bind(movie)
+        holder.itemView.setOnClickListener { itemClick.invoke(movie.id) }
     }
 
-    override fun getItemCount(): Int = movie.size
+    override fun getItemCount() = items.size
 
     fun update(movie: MutableList<Movie>) {
         val oldSize = itemCount
-        this.movie.addAll(movie)
+        this.items.addAll(movie)
         notifyItemRangeInserted(oldSize, movie.size)
     }
 
-    override fun onClick(view: View) {
-        val action =
-            MainFragmentDirections
-                .actionMainFragmentToDetailsFragment("436969")
-        view.findNavController().navigate(action)
-    }
 }

@@ -20,4 +20,6 @@ data class Movie(
     val posterPath
     get() = "https://image.tmdb.org/t/p/w600_and_h900_bestv2$poster_path"
 
+    val vote
+    get() = vote_average.toString()
 }
