@@ -8,13 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.movie.android.R
-import com.movie.android.databinding.ActivityMainBinding
 import com.movie.android.databinding.FragmentMainBinding
-import com.movie.android.domain.Movie
+import com.movie.android.domain.popular.Movie
 import com.movie.android.utils.MainUiState
 import com.movie.android.utils.visible
 import com.movie.android.view.adapter.PopularEndlessScroller
@@ -42,12 +40,7 @@ class MainFragment : Fragment(), PopularEndlessScroller.LoadMore {
 
 
         binding.popularMoviesListRecyclerView.adapter = movieAdapter
-        val layoutManager = LinearLayoutManager(context)
-        binding.popularMoviesListRecyclerView.layoutManager = layoutManager
 
-        val popularEndlessScroller = PopularEndlessScroller(layoutManager, this)
-
-        binding.popularMoviesListRecyclerView.addOnScrollListener(popularEndlessScroller)
 
         mainViewModel.loadDataForGeneralList("1")
 
@@ -63,6 +56,17 @@ class MainFragment : Fragment(), PopularEndlessScroller.LoadMore {
 
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val layoutManager = LinearLayoutManager(context)
+        binding.popularMoviesListRecyclerView.layoutManager = layoutManager
+
+        val popularEndlessScroller = PopularEndlessScroller(layoutManager, this)
+
+        binding.popularMoviesListRecyclerView.addOnScrollListener(popularEndlessScroller)
     }
 
     private fun showLoadingView(isVisible: Boolean) {

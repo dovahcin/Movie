@@ -7,9 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.movie.android.R
 import com.movie.android.databinding.FragmentDetailsBinding
 import com.movie.android.databinding.FragmentMainBinding
+import com.movie.android.utils.screenWidth
+import kotlin.math.roundToInt
 
 class DetailsFragment : Fragment() {
 
@@ -20,11 +23,15 @@ class DetailsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-       _binding = DataBindingUtil.inflate<FragmentDetailsBinding>(
-           inflater, R.layout.fragment_details, container, false
-       )
+        _binding = DataBindingUtil.inflate(
+            inflater, R.layout.fragment_details, container, false
+        )
+
+        binding.minorDetailImageView.layoutParams.width = (screenWidth() * 0.35).roundToInt()
+//        binding.detailRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+
 
 
 

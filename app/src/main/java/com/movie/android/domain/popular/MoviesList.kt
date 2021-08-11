@@ -1,4 +1,4 @@
-package com.movie.android.domain
+package com.movie.android.domain.popular
 
 data class MoviesList(
     val page: Int,
