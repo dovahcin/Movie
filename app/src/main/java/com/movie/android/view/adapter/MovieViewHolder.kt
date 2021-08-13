@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.movie.android.databinding.ItemMovieBinding
 import com.movie.android.domain.popular.Movie
 import com.movie.android.utils.loadImage
+import com.movie.android.utils.reduceWidthBy
 import com.movie.android.utils.screenWidth
 import kotlin.math.roundToInt
 
@@ -13,24 +14,20 @@ class MovieViewHolder(private val binding: ItemMovieBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
     companion object {
-        fun create(parent: ViewGroup): MovieViewHolder =
+        fun create(parent: ViewGroup) =
             MovieViewHolder(
-                ItemMovieBinding.inflate(
-                    LayoutInflater.from(parent.context),
-                    parent,
-                    false
-                )
+                ItemMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             )
     }
 
+    private val imageView = binding.imageView
+
     init {
-        binding.imageView.layoutParams.width = (screenWidth() * 0.4).roundToInt()
+        imageView reduceWidthBy 0.4F
     }
 
-    val imageView = binding.imageView
-
     fun bind(movie: Movie) {
-        binding.imageView.loadImage(movie.posterPath)
+        imageView.loadImage(movie.posterPath)
         binding.result = movie
         binding.executePendingBindings()
     }

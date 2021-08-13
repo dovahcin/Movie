@@ -87,7 +87,6 @@
             app:layout_constraintTop_toBottomOf="@+id/yearTextView"
             tools:text="Adventure" />
 
-
         <TextView
             android:id="@+id/rateTextView"
             android:layout_width="48dp"
@@ -97,7 +96,7 @@
             android:gravity="center"
             android:paddingHorizontal="@dimen/sPadding"
             android:singleLine="true"
-            android:text="@{result.overview}"
+            android:text="@{result.vote}"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="@dimen/xlTextSize"
@@ -109,4 +108,5 @@
             tools:text="8.2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

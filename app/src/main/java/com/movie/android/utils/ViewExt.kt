@@ -3,8 +3,10 @@ package com.movie.android.utils
 import android.content.res.Resources
 import android.view.View
 import android.widget.ImageView
+import androidx.annotation.FloatRange
 import com.movie.android.R
 import com.squareup.picasso.Picasso
+import kotlin.math.roundToInt
 
 fun screenWidth() = Resources.getSystem().displayMetrics.widthPixels
 
@@ -13,6 +15,10 @@ fun ImageView.loadImage(uri: String) {
     .load(uri)
     .placeholder(R.drawable.ic_placeholder)
     .into(this)
+}
+
+infix fun View.reduceWidthBy(@FloatRange(from = 0.0, to = 1.0) width: Float) {
+  layoutParams.width = ((screenWidth() * width).toInt())
 }
 
 fun View.visible(isVisible: Boolean) {

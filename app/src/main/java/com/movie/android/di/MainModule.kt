@@ -3,7 +3,7 @@ package com.movie.android.di
 import com.movie.android.BuildConfig
 import com.movie.android.data.ApiInterceptor
 import com.movie.android.view.adapter.PopularMovieAdapter
-import com.movie.android.data.MainRepository
+import com.movie.android.data.PopularMovieRepository
 import com.movie.android.data.ApiServices
 import com.movie.android.view.viewmodel.MainViewModel
 import okhttp3.OkHttpClient
@@ -30,11 +30,6 @@ val networkModule = module {
 val mainModule = module {
 
     viewModel{ MainViewModel(get()) }
-    single { MainRepository(get()) }
+    single { PopularMovieRepository(get()) }
 
-}
-
-val  viewModule = module {
-
-    single { PopularMovieAdapter(mutableListOf()) }
 }
