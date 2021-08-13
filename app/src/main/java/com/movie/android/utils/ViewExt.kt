@@ -6,7 +6,6 @@ import android.widget.ImageView
 import androidx.annotation.FloatRange
 import com.movie.android.R
 import com.squareup.picasso.Picasso
-import kotlin.math.roundToInt
 
 fun screenWidth() = Resources.getSystem().displayMetrics.widthPixels
 
@@ -24,3 +23,4 @@ infix fun View.reduceWidthBy(@FloatRange(from = 0.0, to = 1.0) width: Float) {
 fun View.visible(isVisible: Boolean) {
   visibility = if (isVisible) View.VISIBLE else View.GONE
 }
+
