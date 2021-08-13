@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.movie.android.databinding.ItemMovieBinding
-import com.movie.android.domain.Movie
+import com.movie.android.domain.popular.Movie
 import com.movie.android.utils.loadImage
 import com.movie.android.utils.screenWidth
 import kotlin.math.roundToInt
