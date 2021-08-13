@@ -66,17 +66,6 @@ class MainFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        val layoutManager = LinearLayoutManager(context)
-        binding.popularMoviesListRecyclerView.layoutManager = layoutManager
-
-        val popularEndlessScroller = PopularEndlessScroller(layoutManager, this)
-
-        binding.popularMoviesListRecyclerView.addOnScrollListener(popularEndlessScroller)
-    }
-
     private fun showLoadingView(isVisible: Boolean) {
         binding.progressBar.visible(isVisible)
     }
