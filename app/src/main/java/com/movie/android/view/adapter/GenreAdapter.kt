@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.movie.android.domain.details.Genre
 
 class GenreAdapter(
-    private val genres: MutableList<Genre>
+    private var genres: MutableList<Genre>
 ) : RecyclerView.Adapter<GenreViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GenreViewHolder =
@@ -16,5 +16,10 @@ class GenreAdapter(
         holder.bind(genres[position])
     }
 
-    override fun getItemCount() = genres.size
+    override fun getItemCount(): Int = genres.size
+
+    fun update(genres: MutableList<Genre>) {
+        this.genres = genres
+        notifyItemRangeInserted(itemCount, genres.size)
+    }
 }

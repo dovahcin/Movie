@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -17,7 +16,6 @@
             android:layout_height="230dp"
             android:layout_weight="1"
             android:adjustViewBounds="true"
-            android:src="@{picture.poster_path}"
             app:shapeAppearanceOverlay="@style/corneredImage"
             android:scaleType="fitXY"
             tools:srcCompat="@drawable/picture"

@@ -3,27 +3,31 @@ package com.movie.android.view.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.movie.android.databinding.ItemHorizontalmoviefeatureBinding
-import com.movie.android.domain.details.Recommendation
+import com.movie.android.databinding.ItemRecommendationBinding
+import com.movie.android.domain.details.recommendation.Result
 import com.movie.android.utils.loadImage
+import com.movie.android.utils.reduceWidthBy
 
 class RecommendedViewHolder(
-    private val binding: ItemHorizontalmoviefeatureBinding
+    private val binding: ItemRecommendationBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
     companion object {
         fun create(parent: ViewGroup) =
             RecommendedViewHolder(
-                ItemHorizontalmoviefeatureBinding.inflate(
+                ItemRecommendationBinding.inflate(
                     LayoutInflater.from(parent.context), parent, false
                 )
             )
     }
-
     val imageView = binding.horizontalImageView
 
-    fun bind(recommendation: Recommendation) {
-        imageView.loadImage(recommendation.poster_path)
+    init {
+        imageView reduceWidthBy 0.4f
+    }
+
+    fun bind(recommendation: Result) {
+        imageView.loadImage(recommendation.posterPath)
         binding.executePendingBindings()
     }
 

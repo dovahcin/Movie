@@ -1,27 +1,25 @@
 package com.movie.android.view.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.movie.android.R
 import com.movie.android.databinding.FragmentMainBinding
 import com.movie.android.domain.popular.Movie
+import com.movie.android.utils.EndlessScroller
 import com.movie.android.utils.MainUiState
 import com.movie.android.utils.visible
-import com.movie.android.utils.EndlessScroller
 import com.movie.android.view.adapter.PopularMovieAdapter
 import com.movie.android.view.viewmodel.MainViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -63,6 +61,7 @@ class MainFragment : Fragment() {
             }
         }
 
+
         return binding.root
     }
 
@@ -71,7 +70,7 @@ class MainFragment : Fragment() {
     }
 
     private fun showError(exception: Throwable) {
-        Snackbar.make(binding.root, exception.localizedMessage!!, Snackbar.LENGTH_SHORT).show()
+        Snackbar.make(binding.root, exception.localizedMessage!!, 10000).show()
     }
 
     private fun showPopularMovies(movies: MutableList<Movie>) {
