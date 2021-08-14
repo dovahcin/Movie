@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="movie"
+            type="com.movie.android.domain.Movie" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/mPadding">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/horizontalImageView"
+            android:layout_width="150dp"
+            app:layout_constraintDimensionRatio="h,9:12"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_placeholder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/corneredImage"/>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/lMargin"
+            android:text="@{movie.original_title}"
+            android:textSize="@dimen/xlTextSize"
+            android:maxLines="2"
+            android:gravity="center"
+            android:ellipsize="end"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="@id/horizontalImageView"
+            app:layout_constraintStart_toStartOf="@id/horizontalImageView"
+            app:layout_constraintTop_toBottomOf="@+id/horizontalImageView"
+            tools:text="OverView" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

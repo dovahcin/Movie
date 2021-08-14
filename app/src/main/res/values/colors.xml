@@ -13,6 +13,6 @@
     <color name="yellow1">#ECA500</color>
     <color name="red1">#E92323</color>
     <color name="titleColor">@color/colorPrimary</color>
-    <color name="detailbackground">#202125</color>
+    <color name="dark_background">#202125</color>
     <color name="lightgray">#9BA0A6</color>
 </resources>

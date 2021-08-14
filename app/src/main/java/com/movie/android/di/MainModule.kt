@@ -1,10 +1,10 @@
 package com.movie.android.di
 
 import com.movie.android.BuildConfig
-import com.movie.android.data.ApiInterceptor
-import com.movie.android.data.ApiServices
-import com.movie.android.data.DetailsRepository
-import com.movie.android.data.PopularMovieRepository
+import com.movie.android.data.MainMovieRepository
+import com.movie.android.data.MovieDetailsRepository
+import com.movie.android.data.network.ApiInterceptor
+import com.movie.android.data.network.ApiServices
 import com.movie.android.view.viewmodel.DetailsViewModel
 import com.movie.android.view.viewmodel.MainViewModel
 import okhttp3.OkHttpClient
@@ -38,8 +38,8 @@ val networkModule = module {
 val mainModule = module {
 
     viewModel{ MainViewModel(get()) }
-    single { PopularMovieRepository(get()) }
+    single { MainMovieRepository(get()) }
     viewModel { DetailsViewModel(get()) }
-    single { DetailsRepository(get()) }
+    single { MovieDetailsRepository(get()) }
 
 }

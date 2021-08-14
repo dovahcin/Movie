@@ -12,11 +12,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.movie.android.R
 import com.movie.android.databinding.FragmentMainBinding
-import com.movie.android.domain.popular.Movie
+import com.movie.android.domain.Movie
 import com.movie.android.utils.EndlessScroller
 import com.movie.android.utils.MainUiState
 import com.movie.android.utils.visible
-import com.movie.android.view.adapter.PopularMovieAdapter
+import com.movie.android.view.adapter.VerticalMovieAdapter
 import com.movie.android.view.viewmodel.MainViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -36,14 +36,13 @@ class MainFragment : Fragment() {
         )
     }
 
-    private val movieAdapter = PopularMovieAdapter(mutableListOf(), movieClick)
+    private val movieAdapter = VerticalMovieAdapter(mutableListOf(), movieClick)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, null, false)
-
 
         binding.popularMovieRecyclerView.apply {
             adapter = movieAdapter
@@ -60,7 +59,6 @@ class MainFragment : Fragment() {
                 showLoadingView(uiState is MainUiState.Loading)
             }
         }
-
 
         return binding.root
     }

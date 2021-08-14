@@ -2,17 +2,17 @@ package com.movie.android.view.adapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.movie.android.domain.popular.Movie
+import com.movie.android.domain.Movie
 
-class PopularMovieAdapter(
-    private var items: MutableList<Movie>,
+class VerticalMovieAdapter(
+    private var items: MutableList<Movie> = mutableListOf(),
     private val itemClick : (Int)->Unit)
-    : RecyclerView.Adapter<MovieViewHolder>() {
+    : RecyclerView.Adapter<VerticalMovieHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        MovieViewHolder.create(parent)
+        VerticalMovieHolder.create(parent)
 
-    override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: VerticalMovieHolder, position: Int) {
         val movie = items[position]
         holder.bind(movie)
         holder.itemView.setOnClickListener { itemClick.invoke(movie.id) }

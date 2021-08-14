@@ -1,4 +1,4 @@
-package com.movie.android.domain.details
+package com.movie.android.domain
 
 data class SpokenLanguage(
     val english_name: String,

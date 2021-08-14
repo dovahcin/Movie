@@ -1,16 +1,15 @@
 package com.movie.android.utils
 
-import com.movie.android.domain.details.BelongsToCollection
-import com.movie.android.domain.details.Details
-import com.movie.android.domain.details.recommendation.Recommendations
-import com.movie.android.domain.details.similar.Similarities
+import com.movie.android.domain.BelongsToCollection
+import com.movie.android.domain.Details
+import com.movie.android.domain.Movies
 
 data class DetailsDataModel(
-    val similarities: Similarities = Similarities(
+    val similarities: Movies = Movies(
         page = -1,
         total_pages = -1,
         total_results = -1,
-        results = listOf()
+        results = mutableListOf()
     ),
     val details: Details = Details(
         adult = false,
@@ -39,10 +38,10 @@ data class DetailsDataModel(
         vote_average = -1.0,
         vote_count = -1
     ),
-    val recommendations: Recommendations = Recommendations(
+    val recommendations: Movies = Movies(
         page = -1,
         total_pages = -1,
         total_results = -1,
-        results = listOf()
+        results = mutableListOf()
     )
 )
