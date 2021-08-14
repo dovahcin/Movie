@@ -1,6 +1,6 @@
-package com.movie.android.domain.details
+package com.movie.android.domain.details.similar
 
-data class Similarity(
+data class Result(
     val adult: Boolean,
     val backdrop_path: String,
     val genre_ids: List<Int>,
@@ -15,4 +15,10 @@ data class Similarity(
     val video: Boolean,
     val vote_average: Double,
     val vote_count: Int
-)
+) {
+
+    val posterPath
+    get() = "https://image.tmdb.org/t/p/w600_and_h900_bestv2$poster_path"
+
+}
+

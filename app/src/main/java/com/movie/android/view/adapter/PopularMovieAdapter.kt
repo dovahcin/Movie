@@ -5,7 +5,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.movie.android.domain.popular.Movie
 
 class PopularMovieAdapter(
-    private var items: MutableList<Movie>, private val itemClick : (Int)->Unit)
+    private var items: MutableList<Movie>,
+    private val itemClick : (Int)->Unit)
     : RecyclerView.Adapter<MovieViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =

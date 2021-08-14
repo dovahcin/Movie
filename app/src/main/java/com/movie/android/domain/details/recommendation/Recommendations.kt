@@ -1,8 +1,8 @@
-package com.movie.android.domain.details
+package com.movie.android.domain.details.recommendation
 
 data class Recommendations(
     val page: Int,
-    val recommendation: List<Recommendation>,
+    val results: List<Result>,
     val total_pages: Int,
     val total_results: Int
 )

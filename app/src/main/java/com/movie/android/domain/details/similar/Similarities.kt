@@ -1,8 +1,8 @@
-package com.movie.android.domain.details
+package com.movie.android.domain.details.similar
 
 data class Similarities(
     val page: Int,
-    val similarity: List<Similarity>,
+    val results: List<Result>,
     val total_pages: Int,
     val total_results: Int
 )
