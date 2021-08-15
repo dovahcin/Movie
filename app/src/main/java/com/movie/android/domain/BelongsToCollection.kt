@@ -1,4 +1,4 @@
-package com.movie.android.domain.details
+package com.movie.android.domain
 
 data class BelongsToCollection(
     val backdrop_path: String,

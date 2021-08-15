@@ -1,16 +1,19 @@
 package com.movie.android.view.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.movie.android.data.DetailsRepository
+import com.movie.android.data.MovieDetailsRepository
 import com.movie.android.utils.DetailUiState
 import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.buffer
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
 class DetailsViewModel(
-    private val detailsRepository: DetailsRepository
+    private val detailsRepository: MovieDetailsRepository
 ) : ViewModel() {
     private val _uiState = MutableStateFlow<DetailUiState>(
         DetailUiState.Success()
@@ -19,9 +22,7 @@ class DetailsViewModel(
 
     private val coroutineExceptionHandler
     = CoroutineExceptionHandler { _ , exception ->
-
         _uiState.value = DetailUiState.Failure(exception)
-
     }
 
     fun loadDataForDetails(movieId: Int) {
@@ -31,10 +32,8 @@ class DetailsViewModel(
                 .onStart { _uiState.value = DetailUiState.Loading }
                 .buffer()
                 .collect { dataModel ->
-                    Log.d("fetchScope", "in fetch scope dataModel : $dataModel")
                     _uiState.value = DetailUiState.Success(dataModel)
                 }
-
         }
 
     }

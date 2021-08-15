@@ -1,4 +1,4 @@
-package com.movie.android.data
+package com.movie.android.data.network
 
 import com.movie.android.BuildConfig
 import okhttp3.Interceptor

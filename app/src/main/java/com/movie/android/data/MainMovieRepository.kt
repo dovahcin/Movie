@@ -1,10 +1,11 @@
 package com.movie.android.data
 
+import com.movie.android.data.network.ApiServices
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
-class PopularMovieRepository(private val api: ApiServices) {
+class MainMovieRepository(private val api: ApiServices) {
 
 
     fun getMovies(page: Int) = flow {

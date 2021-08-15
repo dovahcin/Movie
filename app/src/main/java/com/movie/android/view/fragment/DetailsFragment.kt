@@ -8,17 +8,17 @@ import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.snackbar.Snackbar
 import com.movie.android.R
 import com.movie.android.databinding.FragmentDetailsBinding
-import com.movie.android.domain.details.Genre
-import com.movie.android.domain.details.similar.Result
+import com.movie.android.domain.Genre
 import com.movie.android.utils.DetailUiState
 import com.movie.android.utils.DetailsDataModel
 import com.movie.android.utils.loadImage
 import com.movie.android.view.adapter.GenreAdapter
-import com.movie.android.view.adapter.RecommendedAdapter
-import com.movie.android.view.adapter.SimilarsAdapter
+import com.movie.android.view.adapter.HorizontalMovieAdapter
 import com.movie.android.view.viewmodel.DetailsViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -29,12 +29,24 @@ class DetailsFragment : Fragment() {
     private var _binding: FragmentDetailsBinding? = null
     private val binding get() = _binding!!
 
-
     private val detailsViewModel: DetailsViewModel by viewModel()
 
-    private val similarsAdapter = SimilarsAdapter(mutableListOf())
-    private val genreAdapter = GenreAdapter(mutableListOf())
-    private val recommendedAdapter = RecommendedAdapter(mutableListOf())
+    private val movieClick : (Int) -> Unit= {
+        findNavController().navigate(
+            DetailsFragmentDirections.actionDetailsFragmentToDetailsFragment(it)
+        )
+    }
+
+    private val showMoreClick : (Int) -> Unit= {
+        /*Navigate to main list with a specific input*/
+    }
+
+    private val horizontalMovieAdapter =
+        HorizontalMovieAdapter(itemClick = movieClick, showMoreClick= showMoreClick)
+    private val recommendedAdapter =
+        HorizontalMovieAdapter(itemClick = movieClick, showMoreClick = showMoreClick)
+
+    private val genreAdapter = GenreAdapter()
 
     private val args: DetailsFragmentArgs by navArgs()
 
@@ -43,39 +55,34 @@ class DetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        _binding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_details, container, false
-        )
+        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_details, container, false)
 
-
-        val movieId = args.movieId
-        detailsViewModel.loadDataForDetails(movieId)
+        detailsViewModel.loadDataForDetails(args.movieId)
 
         binding.genreRecyclerView.apply {
             adapter = genreAdapter
         }
-        binding.similarMovies.apply {
-            adapter = similarsAdapter
+        binding.horizontalList1.apply {
+            adapter = horizontalMovieAdapter
         }
-        binding.recommendationMovies.apply {
+        binding.horizontalList2.apply {
             adapter = recommendedAdapter
         }
 
         launchStates()
 
-
-
+        binding.back.setOnClickListener { requireActivity().onBackPressed() }
         return binding.root
     }
 
     private fun showError(exception: Throwable) {
-
+        Snackbar.make(binding.root, exception.localizedMessage!!, 10000).show()
     }
 
     private fun loadAdapters(dataModel: DetailsDataModel) {
         genreAdapter.update(dataModel.details.genres as MutableList<Genre>)
-        similarsAdapter.update(dataModel.similarities.results as MutableList<Result>)
-        recommendedAdapter.update(dataModel.recommendations.results as MutableList<com.movie.android.domain.details.recommendation.Result>)
+        horizontalMovieAdapter.update(dataModel.similarities.results)
+        recommendedAdapter.update(dataModel.recommendations.results)
     }
 
     private fun showLoadingView(isVisible: Boolean) {
@@ -110,6 +117,7 @@ class DetailsFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
+        _binding = null
     }
 
 }

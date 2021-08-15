@@ -6,7 +6,7 @@
     <data>
         <variable
             name="result"
-            type="com.movie.android.domain.popular.Movie" />
+            type="com.movie.android.domain.Movie" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

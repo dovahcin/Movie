@@ -1,6 +1,6 @@
 package com.movie.android.utils
 
-import com.movie.android.domain.popular.Movie
+import com.movie.android.domain.Movie
 
 sealed class MainUiState {
 

@@ -1,4 +1,4 @@
-package com.movie.android.domain.details
+package com.movie.android.domain
 
 data class ProductionCountry(
     val iso_3166_1: String,

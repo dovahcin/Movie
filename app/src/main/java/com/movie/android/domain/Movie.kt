@@ -1,4 +1,7 @@
-package com.movie.android.domain.popular
+package com.movie.android.domain
+
+import com.movie.android.domain.Movie.MovieViewType.MOVIE
+import com.movie.android.domain.Movie.MovieViewType.SHOW_MORE
 
 data class Movie(
     val adult: Boolean,
@@ -14,7 +17,8 @@ data class Movie(
     val title: String,
     val video: Boolean,
     val vote_average: Double,
-    val vote_count: Int
+    val vote_count: Int,
+    val type: MovieViewType = MOVIE
 ) {
 
     val posterPath
@@ -22,4 +26,11 @@ data class Movie(
 
     val vote
     get() = vote_average.toString()
+
+    companion object{
+        fun createShowMore():Movie{
+            return Movie(false,"", emptyList(),-1,"","","",0.0,"","","",false,0.0,0,SHOW_MORE)
+        }
+    }
+    enum class MovieViewType{MOVIE,SHOW_MORE}
 }

@@ -9,6 +9,7 @@
     <dimen name="mMargin">8dp</dimen>
     <dimen name="lMargin">12dp</dimen>
     <dimen name="xlMargin">16dp</dimen>
+    <dimen name="_xlMargin">-16dp</dimen>
 
 
     <dimen name="sTextSize">4sp</dimen>
