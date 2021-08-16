@@ -7,7 +7,6 @@ import com.movie.android.utils.DetailUiState
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.buffer
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
@@ -30,7 +29,6 @@ class DetailsViewModel(
         viewModelScope.launch(coroutineExceptionHandler) {
             detailsRepository.getDataForDetailedPage(movieId)
                 .onStart { _uiState.value = DetailUiState.Loading }
-                .buffer()
                 .collect { dataModel ->
                     _uiState.value = DetailUiState.Success(dataModel)
                 }
