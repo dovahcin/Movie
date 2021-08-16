@@ -5,6 +5,7 @@
     <color name="colorHelper">#303135</color>
     <color name="colorAccent">#4caf50</color>
 
+    <color name="coloProgressbar">#00ffff</color>
     <color name="colorBackground">@color/white</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
