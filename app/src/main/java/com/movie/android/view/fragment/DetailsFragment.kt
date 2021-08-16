@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -17,6 +16,7 @@ import com.movie.android.domain.Genre
 import com.movie.android.utils.DetailUiState
 import com.movie.android.utils.DetailsDataModel
 import com.movie.android.utils.loadImage
+import com.movie.android.utils.visible
 import com.movie.android.view.adapter.GenreAdapter
 import com.movie.android.view.adapter.HorizontalMovieAdapter
 import com.movie.android.view.viewmodel.DetailsViewModel
@@ -85,10 +85,6 @@ class DetailsFragment : Fragment() {
         recommendedAdapter.update(dataModel.recommendations.results)
     }
 
-    private fun showLoadingView(isVisible: Boolean) {
-        binding.progressBar.isVisible = isVisible
-    }
-
     private fun launchStates() {
         lifecycleScope.launch {
             detailsViewModel.uiState.collect { uiState ->
@@ -101,14 +97,34 @@ class DetailsFragment : Fragment() {
                             uiState.detailsDataModel.details.posterPath
                         )
                         binding.details = uiState.detailsDataModel.details
-
                     }
-
                 }
                 showLoadingView(uiState is DetailUiState.Loading)
             }
         }
     }
+
+    private fun showLoadingView(isVisible: Boolean) {
+        binding.apply {
+            progressBar.visible(isVisible)
+            banner.visible(!isVisible)
+            back.visible(!isVisible)
+            genreRecyclerView.visible(!isVisible)
+            horizontalList1.visible(!isVisible)
+            horizontalList2.visible(!isVisible)
+            horizontalListTitle1.visible(!isVisible)
+            horizontalListTitle2.visible(!isVisible)
+            miniImage.visible(!isVisible)
+            overview.visible(!isVisible)
+            overviewTitle.visible(!isVisible)
+            ratingBar.visible(!isVisible)
+            shadowView.visible(!isVisible)
+            subtitle.visible(!isVisible)
+            title.visible(!isVisible)
+        }
+    }
+
+
 
     private fun loadImages(uriBackDropPath: String, uriPosterPath: String) {
         binding.banner.loadImage(uriBackDropPath)
