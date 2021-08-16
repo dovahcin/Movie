@@ -31,7 +31,7 @@ class DetailsFragment : Fragment() {
 
     private val detailsViewModel: DetailsViewModel by viewModel()
 
-    private val movieClick : (Int) -> Unit= {
+    private val movieClick : (Int) -> Unit = {
         findNavController().navigate(
             DetailsFragmentDirections.actionDetailsFragmentToDetailsFragment(it)
         )
@@ -41,9 +41,9 @@ class DetailsFragment : Fragment() {
         /*Navigate to main list with a specific input*/
     }
 
-    private val horizontalMovieAdapter =
+    private val horizontalMovieAdapter1 =
         HorizontalMovieAdapter(itemClick = movieClick, showMoreClick= showMoreClick)
-    private val recommendedAdapter =
+    private val horizontalMovieAdapter2 =
         HorizontalMovieAdapter(itemClick = movieClick, showMoreClick = showMoreClick)
 
     private val genreAdapter = GenreAdapter()
@@ -63,10 +63,10 @@ class DetailsFragment : Fragment() {
             adapter = genreAdapter
         }
         binding.horizontalList1.apply {
-            adapter = horizontalMovieAdapter
+            adapter = horizontalMovieAdapter1
         }
         binding.horizontalList2.apply {
-            adapter = recommendedAdapter
+            adapter = horizontalMovieAdapter2
         }
 
         launchStates()
@@ -81,8 +81,8 @@ class DetailsFragment : Fragment() {
 
     private fun loadAdapters(dataModel: DetailsDataModel) {
         genreAdapter.update(dataModel.details.genres as MutableList<Genre>)
-        horizontalMovieAdapter.update(dataModel.similarities.results)
-        recommendedAdapter.update(dataModel.recommendations.results)
+        horizontalMovieAdapter1.update(dataModel.similarities.results)
+        horizontalMovieAdapter2.update(dataModel.recommendations.results)
     }
 
     private fun showLoadingView(isVisible: Boolean) {

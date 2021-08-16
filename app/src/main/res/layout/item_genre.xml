@@ -16,7 +16,7 @@
         style="@style/Widget.MaterialComponents.Chip.Action"
         tools:text="@tools:sample/cities"
         android:textSize="@dimen/xlTextSize"
-        app:chipBackgroundColor="#2A2A2A"
+        app:chipBackgroundColor="@color/chipbg"
         android:layout_marginHorizontal="@dimen/sMargin"
         android:text="@{genre.name}"
         android:textColor="@color/white"

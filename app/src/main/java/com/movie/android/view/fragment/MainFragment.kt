@@ -44,6 +44,7 @@ class MainFragment : Fragment() {
     ): View {
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, null, false)
 
+
         binding.popularMovieRecyclerView.apply {
             adapter = movieAdapter
             val layoutManager = layoutManager as LinearLayoutManager
@@ -68,7 +69,7 @@ class MainFragment : Fragment() {
     }
 
     private fun showError(exception: Throwable) {
-        Snackbar.make(binding.root, exception.localizedMessage!!, 10000).show()
+        Snackbar.make(binding.root, exception.localizedMessage!!, Snackbar.LENGTH_SHORT).show()
     }
 
     private fun showPopularMovies(movies: MutableList<Movie>) {
