@@ -206,8 +206,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="800dp"
                 android:layout_gravity="center"
-                android:indeterminate="true"
-                android:indeterminateDrawable="@drawable/bg_progressbar"
                 android:theme="@style/DarkProgressBar"
                 app:layout_constraintEnd_toEndOf="@id/constraintLayout"
                 app:layout_constraintStart_toStartOf="@id/constraintLayout"
