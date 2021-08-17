@@ -1,7 +1,6 @@
 package com.movie.android.domain
 
-import com.movie.android.domain.Movie.MovieViewType.MOVIE
-import com.movie.android.domain.Movie.MovieViewType.SHOW_MORE
+import com.movie.android.domain.Movie.MovieViewType.*
 
 data class Movie(
     val adult: Boolean,
@@ -18,7 +17,7 @@ data class Movie(
     val video: Boolean,
     val vote_average: Double,
     val vote_count: Int,
-    val type: MovieViewType = MOVIE
+    val type: MovieViewType
 ) {
 
     val posterPath
@@ -28,9 +27,60 @@ data class Movie(
     get() = vote_average.toString()
 
     companion object{
-        fun createShowMore():Movie{
+        fun createShowMore(): Movie {
             return Movie(false,"", emptyList(),-1,"","","",0.0,"","","",false,0.0,0,SHOW_MORE)
         }
+         fun createUpcoming(movies: MutableList<Movie>): Movie {
+             lateinit var movie: Movie
+             movies.forEach{
+                 movie = Movie(
+                     it.adult,
+                     it.backdrop_path,
+                     it.genre_ids,
+                     it.id,
+                     it.original_language,
+                     it.original_title,
+                     it.overview,
+                     it.popularity,
+                     it.poster_path,
+                     it.release_date,
+                     it.title,
+                     it.video,
+                     it.vote_average,
+                     it.vote_count,
+                     type = HORIZONTAL_UPCOMING
+                 )
+             }
+             return movie
+        }
+        fun createPopular(movies: MutableList<Movie>): Movie {
+             lateinit var movie: Movie
+             movies.forEach{
+                 movie = Movie(
+                     it.adult,
+                     it.backdrop_path,
+                     it.genre_ids,
+                     it.id,
+                     it.original_language,
+                     it.original_title,
+                     it.overview,
+                     it.popularity,
+                     it.poster_path,
+                     it.release_date,
+                     it.title,
+                     it.video,
+                     it.vote_average,
+                     it.vote_count,
+                     type = HORIZONTAL_POPULAR
+                 )
+             }
+             return movie
+        }
+
+
     }
-    enum class MovieViewType{MOVIE,SHOW_MORE}
+    enum class MovieViewType{
+        HORIZONTAL_DETAIL, SHOW_MORE,
+        HORIZONTAL_UPCOMING, HORIZONTAL_POPULAR, TITLE_POPULAR, TITLE_UPCOMING,VIEWPAGER
+    }
 }

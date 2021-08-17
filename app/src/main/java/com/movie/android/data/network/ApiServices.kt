@@ -2,6 +2,7 @@ package com.movie.android.data.network
 
 import com.movie.android.domain.Details
 import com.movie.android.domain.Movies
+import com.movie.android.domain.Upcomings
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -28,5 +29,7 @@ interface ApiServices {
         @Path("movie_id") movieId: String,
     ): Movies
 
+    @GET("3/movie/upcoming")
+    suspend fun getUpcomingMovies(): Upcomings
 
 }
