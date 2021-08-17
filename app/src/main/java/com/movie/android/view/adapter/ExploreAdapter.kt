@@ -39,6 +39,11 @@ class ExploreAdapter(
         }
 
     }
-
     override fun getItemCount(): Int = items.size
+
+    fun update(movie: MutableList<Movie>) {
+        this.items.clear()
+        this.items.addAll(movie)
+        notifyItemRangeInserted(itemCount, movie.size)
+    }
 }

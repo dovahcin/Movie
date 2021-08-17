@@ -1,5 +1,6 @@
-package com.movie.android.data.network
+package com.movie.android.data
 
+import com.movie.android.data.network.ApiServices
 import com.movie.android.domain.Movie
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
