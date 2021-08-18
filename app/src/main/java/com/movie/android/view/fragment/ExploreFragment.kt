@@ -12,6 +12,8 @@ import com.google.android.material.snackbar.Snackbar
 import com.movie.android.R
 import com.movie.android.databinding.FragmentExploreBinding
 import com.movie.android.utils.ExploreUiState
+import com.movie.android.utils.ExploreUiState.Failure
+import com.movie.android.utils.ExploreUiState.Success
 import com.movie.android.view.adapter.ExploreAdapter
 import com.movie.android.view.viewmodel.ExploreViewModel
 import kotlinx.coroutines.flow.collect
@@ -42,9 +44,9 @@ class ExploreFragment : Fragment() {
         lifecycleScope.launch {
             exploreViewModel.uiState.collect { uiState ->
                 when(uiState) {
-                    is ExploreUiState.Failure -> showError(uiState.exception)
-                    is ExploreUiState.Success -> {
-                        exploreAdapter.update(uiState.movies)
+                    is Failure -> showError(uiState.exception)
+                    is Success -> {
+                        exploreAdapter.update(uiState.explore.items)
                     }
                 }
                 showLoadingView(uiState is ExploreUiState.Loading)

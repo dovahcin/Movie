@@ -29,7 +29,7 @@ interface ApiServices {
         @Path("movie_id") movieId: String,
     ): Movies
 
-    @GET("3/movie/upcoming")
+    @GET("/3/movie/upcoming")
     suspend fun getUpcomingMovies(): Upcomings
 
 }

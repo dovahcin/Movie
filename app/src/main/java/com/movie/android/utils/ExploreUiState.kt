@@ -1,9 +1,9 @@
 package com.movie.android.utils
 
-import com.movie.android.domain.Movie
+import com.movie.android.domain.explore.Explore
 
 sealed class ExploreUiState {
-    data class Success(val movies: MutableList<Movie> = mutableListOf()): ExploreUiState()
+    data class Success(val explore: Explore = Explore()): ExploreUiState()
     data class Failure(val exception: Throwable): ExploreUiState()
     object Loading: ExploreUiState()
 }
