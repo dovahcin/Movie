@@ -7,4 +7,6 @@
     <string name="similar_movies">Similar Movies</string>
     <string name="show_more">Show More</string>
     <string name="recommendation_movies">Recommendation Movies</string>
+    <string name="popular">Popular</string>
+    <string name="upcoming">Upcoming</string>
 </resources>
