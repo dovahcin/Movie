@@ -107,20 +107,7 @@ class DetailsFragment : Fragment() {
     private fun showLoadingView(isVisible: Boolean) {
         binding.apply {
             progressBar.visible(isVisible)
-            banner.visible(!isVisible)
-            back.visible(!isVisible)
-            genreRecyclerView.visible(!isVisible)
-            horizontalList1.visible(!isVisible)
-            horizontalList2.visible(!isVisible)
-            horizontalListTitle1.visible(!isVisible)
-            horizontalListTitle2.visible(!isVisible)
-            miniImage.visible(!isVisible)
-            overview.visible(!isVisible)
-            overviewTitle.visible(!isVisible)
-            ratingBar.visible(!isVisible)
-            shadowView.visible(!isVisible)
-            subtitle.visible(!isVisible)
-            title.visible(!isVisible)
+            scrollContainer.visible(!isVisible)
         }
     }
 
