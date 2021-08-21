@@ -1,5 +1,6 @@
 package com.movie.android.view.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -26,6 +27,8 @@ class PopularImageViewHolder(
 
     fun bind(image: Movie) {
         binding.popularImages.loadImage(image.posterPath)
+        Log.d("TAG", "Pop Poster path : ${image.posterPath}")
+        binding.movie = image
         binding.executePendingBindings()
     }
 

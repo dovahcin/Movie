@@ -8,6 +8,7 @@ import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.movie.android.R
 import com.movie.android.databinding.FragmentExploreBinding
@@ -39,6 +40,7 @@ class ExploreFragment : Fragment() {
 
         binding.exploreRecyclerView.apply {
             adapter = exploreAdapter
+            layoutManager = LinearLayoutManager(context)
         }
 
         lifecycleScope.launch {
