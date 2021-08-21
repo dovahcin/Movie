@@ -13,10 +13,10 @@ class ExploreAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return when (viewType) {
-            Type.HorizontalList.ordinal -> HorizontalListHolder.create(parent)
-            Type.VerticalList.ordinal -> UpcomingImageViewHolder.create(parent)
-            Type.Promotions.ordinal -> UpcomingImageViewHolder.create(parent)
-            Type.Artists.ordinal -> UpcomingImageViewHolder.create(parent)
+            Type.HorizontalList.ordinal -> HorizontalPopularHolder.create(parent)
+            Type.VerticalList.ordinal -> HorizontalUpcomingHolder.create(parent)
+            Type.Promotions.ordinal -> HorizontalUpcomingHolder.create(parent)
+            Type.Artists.ordinal -> HorizontalUpcomingHolder.create(parent)
             else -> EmptyHolder.create(parent)
         }
     }
@@ -24,10 +24,10 @@ class ExploreAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         when(val exploreItem = items[position]){
-            is HorizontalList -> (holder as HorizontalListHolder).bind(exploreItem)
+            is HorizontalList -> (holder as HorizontalPopularHolder).bind(exploreItem)
             is Artists -> TODO()
             is Promotions -> TODO()
-            is VerticalList -> {}
+            is VerticalList -> (holder as HorizontalUpcomingHolder).bind(exploreItem)
         }
 
     }

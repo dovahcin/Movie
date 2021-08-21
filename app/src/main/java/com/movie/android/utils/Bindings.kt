@@ -12,7 +12,7 @@ fun setItems(recyclerView: RecyclerView, movies: List<Movie>) {
   recyclerView.adapter = HorizontalListAdapter(movies)
 }
 
-class HorizontalListAdapter(val items: List<Movie>) : Adapter<HorizontalMovieHolder>() {
+class HorizontalListAdapter(private val items: List<Movie>) : Adapter<HorizontalMovieHolder>() {
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
     HorizontalMovieHolder.create(parent)
 

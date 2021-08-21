@@ -5,7 +5,7 @@
     <data>
         <variable
             name="item"
-            type="com.movie.android.domain.explore.ExploreItem.HorizontalList" />
+            type="com.movie.android.domain.explore.ExploreItem.VerticalList" />
     </data>
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_popular_image" />
+            tools:listitem="@layout/item_upcoming_image" />
 
     </FrameLayout>
 </layout>
