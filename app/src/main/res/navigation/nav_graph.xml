@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="com.movie.android.features.details.DetailsFragment"
+        android:name="com.movie.android.presentation.features.details.DetailsFragment"
         android:label="fragment_details" >
 
         <argument
@@ -28,12 +28,17 @@
     </fragment>
 
     <fragment
-        android:id="@+id/mainFragment"
-        android:name="com.movie.android.features.popular.PopularFragment"
-        android:label="MainFragment" >
+        android:id="@+id/movieListFragment"
+        android:name="com.movie.android.presentation.features.movielist.MovieListFragment"
+        android:label="MovieListFragment" >
+
+        <argument
+            android:name="listId"
+            app:argType="integer"
+            app:nullable="false" />
 
         <action
-            android:id="@+id/action_mainFragment_to_detailsFragment"
+            android:id="@+id/action_movieListFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" >
 
             <argument
@@ -46,19 +51,28 @@
     </fragment>
     <fragment
         android:id="@+id/exploreFragment"
-        android:name="com.movie.android.features.explore.ExploreFragment"
+        android:name="com.movie.android.presentation.features.explore.ExploreFragment"
         android:label="ExploreFragment" >
         <action
-            android:id="@+id/action_exploreFragment_to_mainFragment"
-            app:destination="@id/mainFragment">
+            android:id="@+id/action_exploreFragment_to_movieListFragment"
+            app:destination="@id/movieListFragment">
+
+            <argument
+                android:name="listId"
+                app:argType="integer"
+                app:nullable="false" />
+
         </action>
         <action
-            android:id="@+id/action_exploreFragment_to_upcomingFragment"
-            app:destination="@id/upcomingFragment" />
+            android:id="@+id/action_exploreFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" >
+
+            <argument
+                android:name="movieId"
+                app:argType="integer"
+                app:nullable="false" />
+
+        </action>
     </fragment>
-    <fragment
-        android:id="@+id/upcomingFragment"
-        android:name="com.movie.android.features.upcomings.UpcomingFragment"
-        android:label="UpcomingFragment" />
 
 </navigation>

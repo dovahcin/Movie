@@ -30,7 +30,6 @@ data class Movie(
         fun createShowMore(): Movie {
             return Movie(false,"", emptyList(),-1,"","","",0.0,"","","",false,0.0,0,SHOW_MORE)
         }
-
     }
     enum class MovieViewType{
         SHOW_MORE, MOVIE

@@ -1,9 +1,9 @@
 package com.movie.android.data
 
 import com.movie.android.data.network.ApiServices
-import com.movie.android.features.popular.explore.Explore
-import com.movie.android.features.popular.explore.ExploreItem.HorizontalListPopular
-import com.movie.android.features.popular.explore.ExploreItem.HorizontalListUpcoming
+import com.movie.android.domain.Explore
+import com.movie.android.domain.ExploreItem.VerticalMovieList
+import com.movie.android.domain.ExploreItem.HorizontalMovieList
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
@@ -15,10 +15,10 @@ class ExploreRepository(private val api: ApiServices) {
         val popular = api.getPopularMoviesList(page.toString())
         val upcoming = api.getUpcomingMovies(page.toString())
 
-        result.items += HorizontalListPopular(
+        result.items += VerticalMovieList(
             "Popular", false, popular.results.take(10)
         )
-        result.items += HorizontalListUpcoming(
+        result.items += HorizontalMovieList(
             "Upcoming", false, upcoming.results.take(10)
         )
 

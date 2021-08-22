@@ -2,7 +2,7 @@ package com.movie.android.data
 
 import com.movie.android.data.network.ApiServices
 import com.movie.android.domain.Movie
-import com.movie.android.features.details.DetailsDataModel
+import com.movie.android.domain.DetailsDataModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
