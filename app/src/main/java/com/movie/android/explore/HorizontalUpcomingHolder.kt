@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.movie.android.databinding.ItemListUpcomingBinding
-import com.movie.android.explore.ExploreItem.VerticalList
+import com.movie.android.explore.ExploreItem.HorizontalListUpcoming
 
 class HorizontalUpcomingHolder(
     val binding: ItemListUpcomingBinding
@@ -18,7 +18,7 @@ class HorizontalUpcomingHolder(
             )
     }
 
-    fun bind(it: VerticalList) {
+    fun bind(it: HorizontalListUpcoming) {
         binding.item = it
         binding.executePendingBindings()
     }

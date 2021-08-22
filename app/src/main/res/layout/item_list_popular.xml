@@ -3,14 +3,26 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="item"
-            type="com.movie.android.explore.ExploreItem.HorizontalList" />
+            type="com.movie.android.explore.ExploreItem.HorizontalListPopular" />
     </data>
 
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/lMargin"
+            android:text="@{item.title}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/xxxlTextSize"
+            tools:text="Popular" />
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/horizontalRecyclerView"
@@ -21,5 +33,5 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_popular_image" />
 
-    </FrameLayout>
+    </LinearLayout>
 </layout>

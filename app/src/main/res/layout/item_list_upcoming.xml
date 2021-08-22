@@ -3,14 +3,25 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="item"
-            type="com.movie.android.explore.ExploreItem.VerticalList" />
+            type="com.movie.android.explore.ExploreItem.HorizontalListUpcoming" />
     </data>
 
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/lMargin"
+            android:text="@{item.title}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/xxxlTextSize"
+            tools:text="Upcoming" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/horizontalRecyclerView"
@@ -21,5 +32,5 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_upcoming_image" />
 
-    </FrameLayout>
+    </LinearLayout>
 </layout>

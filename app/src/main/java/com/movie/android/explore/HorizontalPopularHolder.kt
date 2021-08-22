@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.movie.android.databinding.ItemListPopularBinding
-import com.movie.android.explore.ExploreItem.HorizontalList
+import com.movie.android.explore.ExploreItem.HorizontalListPopular
 
 class HorizontalPopularHolder(
     val binding: ItemListPopularBinding
@@ -18,7 +18,7 @@ class HorizontalPopularHolder(
             )
     }
 
-    fun bind(it: HorizontalList) {
+    fun bind(it: HorizontalListPopular) {
         binding.item = it
         binding.executePendingBindings()
     }
