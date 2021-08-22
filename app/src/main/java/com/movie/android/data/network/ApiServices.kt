@@ -30,6 +30,6 @@ interface ApiServices {
     ): Movies
 
     @GET("/3/movie/upcoming")
-    suspend fun getUpcomingMovies(): Upcomings
+    suspend fun getUpcomingMovies(@Query("page") page: String): Upcomings
 
 }

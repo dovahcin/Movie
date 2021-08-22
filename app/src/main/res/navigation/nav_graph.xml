@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="com.movie.android.details.DetailsFragment"
+        android:name="com.movie.android.features.details.DetailsFragment"
         android:label="fragment_details" >
 
         <argument
@@ -29,7 +29,7 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.movie.android.popular.PopularFragment"
+        android:name="com.movie.android.features.popular.PopularFragment"
         android:label="MainFragment" >
 
         <action
@@ -46,7 +46,19 @@
     </fragment>
     <fragment
         android:id="@+id/exploreFragment"
-        android:name="com.movie.android.explore.ExploreFragment"
-        android:label="ExploreFragment" />
+        android:name="com.movie.android.features.explore.ExploreFragment"
+        android:label="ExploreFragment" >
+        <action
+            android:id="@+id/action_exploreFragment_to_mainFragment"
+            app:destination="@id/mainFragment">
+        </action>
+        <action
+            android:id="@+id/action_exploreFragment_to_upcomingFragment"
+            app:destination="@id/upcomingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/upcomingFragment"
+        android:name="com.movie.android.features.upcomings.UpcomingFragment"
+        android:label="UpcomingFragment" />
 
 </navigation>
