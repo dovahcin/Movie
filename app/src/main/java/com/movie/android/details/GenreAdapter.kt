@@ -1,4 +1,4 @@
-package com.movie.android.view.adapter
+package com.movie.android.details
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView

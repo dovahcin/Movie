@@ -1,4 +1,4 @@
-package com.movie.android.view.fragment
+package com.movie.android.details
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,13 +13,8 @@ import com.google.android.material.snackbar.Snackbar
 import com.movie.android.R
 import com.movie.android.databinding.FragmentDetailsBinding
 import com.movie.android.domain.Genre
-import com.movie.android.utils.DetailUiState
-import com.movie.android.utils.DetailsDataModel
 import com.movie.android.utils.loadImage
 import com.movie.android.utils.visible
-import com.movie.android.view.adapter.GenreAdapter
-import com.movie.android.view.adapter.HorizontalMovieAdapter
-import com.movie.android.view.viewmodel.DetailsViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -33,7 +28,9 @@ class DetailsFragment : Fragment() {
 
     private val movieClick : (Int) -> Unit = {
         findNavController().navigate(
-            DetailsFragmentDirections.actionDetailsFragmentToDetailsFragment(it)
+            DetailsFragmentDirections.actionDetailsFragmentToDetailsFragment(
+                it
+            )
         )
     }
 

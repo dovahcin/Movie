@@ -1,4 +1,4 @@
-package com.movie.android.view.fragment
+package com.movie.android.explore
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,11 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.movie.android.R
 import com.movie.android.databinding.FragmentExploreBinding
-import com.movie.android.utils.ExploreUiState
-import com.movie.android.utils.ExploreUiState.Failure
-import com.movie.android.utils.ExploreUiState.Success
-import com.movie.android.view.adapter.ExploreAdapter
-import com.movie.android.view.viewmodel.ExploreViewModel
+import com.movie.android.explore.ExploreUiState.Failure
+import com.movie.android.explore.ExploreUiState.Success
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel

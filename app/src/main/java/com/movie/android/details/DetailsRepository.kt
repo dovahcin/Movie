@@ -1,13 +1,12 @@
-package com.movie.android.data
+package com.movie.android.details
 
 import com.movie.android.data.network.ApiServices
 import com.movie.android.domain.Movie
-import com.movie.android.utils.DetailsDataModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
-class MovieDetailsRepository(private val api: ApiServices) {
+class DetailsRepository(private val api: ApiServices) {
 
     fun getDataForDetailedPage(movieId: Int) = flow {
         val similars = api.getSimilarMovies(movieId.toString())

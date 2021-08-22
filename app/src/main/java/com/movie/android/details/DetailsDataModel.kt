@@ -1,4 +1,4 @@
-package com.movie.android.utils
+package com.movie.android.details
 
 import com.movie.android.domain.BelongsToCollection
 import com.movie.android.domain.Details

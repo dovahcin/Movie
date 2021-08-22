@@ -1,9 +1,7 @@
-package com.movie.android.view.viewmodel
+package com.movie.android.explore
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.movie.android.data.ExploreRepository
-import com.movie.android.utils.ExploreUiState
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

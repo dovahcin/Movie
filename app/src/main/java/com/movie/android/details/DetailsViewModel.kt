@@ -1,9 +1,7 @@
-package com.movie.android.view.viewmodel
+package com.movie.android.details
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.movie.android.data.MovieDetailsRepository
-import com.movie.android.utils.DetailUiState
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -12,7 +10,7 @@ import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
 class DetailsViewModel(
-    private val detailsRepository: MovieDetailsRepository
+    private val detailsRepository: DetailsRepository
 ) : ViewModel() {
     private val _uiState = MutableStateFlow<DetailUiState>(
         DetailUiState.Success()

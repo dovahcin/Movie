@@ -1,9 +1,8 @@
-package com.movie.android.data
+package com.movie.android.explore
 
 import com.movie.android.data.network.ApiServices
-import com.movie.android.domain.explore.Explore
-import com.movie.android.domain.explore.ExploreItem.HorizontalList
-import com.movie.android.domain.explore.ExploreItem.VerticalList
+import com.movie.android.explore.ExploreItem.HorizontalList
+import com.movie.android.explore.ExploreItem.VerticalList
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn

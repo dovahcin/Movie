@@ -1,10 +1,10 @@
-package com.movie.android.view.adapter
+package com.movie.android.explore
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.movie.android.domain.explore.ExploreItem
-import com.movie.android.domain.explore.ExploreItem.*
+import com.movie.android.explore.ExploreItem.*
+import com.movie.android.view.adapter.EmptyHolder
 
 class ExploreAdapter(
     private var items: MutableList<ExploreItem> = mutableListOf()

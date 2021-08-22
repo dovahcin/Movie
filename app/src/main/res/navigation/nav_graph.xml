@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="com.movie.android.view.fragment.DetailsFragment"
+        android:name="com.movie.android.details.DetailsFragment"
         android:label="fragment_details" >
 
         <argument
@@ -29,7 +29,7 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.movie.android.view.fragment.MainFragment"
+        android:name="com.movie.android.popular.PopularFragment"
         android:label="MainFragment" >
 
         <action
@@ -46,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/exploreFragment"
-        android:name="com.movie.android.view.fragment.ExploreFragment"
+        android:name="com.movie.android.explore.ExploreFragment"
         android:label="ExploreFragment" />
 
 </navigation>

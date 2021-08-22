@@ -1,14 +1,14 @@
 package com.movie.android.di
 
 import com.movie.android.BuildConfig
-import com.movie.android.data.ExploreRepository
-import com.movie.android.data.MainMovieRepository
-import com.movie.android.data.MovieDetailsRepository
+import com.movie.android.popular.PopularRepository
+import com.movie.android.details.DetailsRepository
 import com.movie.android.data.network.ApiInterceptor
 import com.movie.android.data.network.ApiServices
-import com.movie.android.view.viewmodel.DetailsViewModel
-import com.movie.android.view.viewmodel.ExploreViewModel
-import com.movie.android.view.viewmodel.MainViewModel
+import com.movie.android.details.DetailsViewModel
+import com.movie.android.explore.ExploreRepository
+import com.movie.android.explore.ExploreViewModel
+import com.movie.android.popular.PopularViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -39,10 +39,10 @@ val networkModule = module {
 
 val mainModule = module {
 
-    viewModel{ MainViewModel(get()) }
-    single { MainMovieRepository(get()) }
+    viewModel{ PopularViewModel(get()) }
+    single { PopularRepository(get()) }
     viewModel { DetailsViewModel(get()) }
-    single { MovieDetailsRepository(get()) }
+    single { DetailsRepository(get()) }
     viewModel { ExploreViewModel(get()) }
     single { ExploreRepository(get()) }
 

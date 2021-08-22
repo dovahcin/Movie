@@ -1,4 +1,4 @@
-package com.movie.android.domain.explore
+package com.movie.android.explore
 
 import com.movie.android.domain.Movie
 

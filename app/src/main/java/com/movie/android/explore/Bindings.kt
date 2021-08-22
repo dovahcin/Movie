@@ -1,11 +1,11 @@
-package com.movie.android.utils
+package com.movie.android.explore
 
 import android.view.ViewGroup
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
+import com.movie.android.details.HorizontalMovieHolder
 import com.movie.android.domain.Movie
-import com.movie.android.view.adapter.HorizontalMovieHolder
 
 @BindingAdapter("setItems")
 fun setItems(recyclerView: RecyclerView, movies: List<Movie>) {

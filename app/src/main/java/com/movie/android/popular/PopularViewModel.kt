@@ -1,9 +1,7 @@
-package com.movie.android.view.viewmodel
+package com.movie.android.popular
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.movie.android.data.MainMovieRepository
-import com.movie.android.utils.MainUiState
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -11,13 +9,13 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
-class MainViewModel(private val repository: MainMovieRepository) : ViewModel() {
+class PopularViewModel(private val repository: PopularRepository) : ViewModel() {
 
-    private val _uiState = MutableStateFlow<MainUiState>(MainUiState.Success())
-    val uiState: StateFlow<MainUiState> = _uiState
+    private val _uiState = MutableStateFlow<PopularUiState>(PopularUiState.Success())
+    val uiState: StateFlow<PopularUiState> = _uiState
 
     private val coroutineExceptionHandler = CoroutineExceptionHandler { _, exception ->
-        _uiState.value = MainUiState.Error(exception)
+        _uiState.value = PopularUiState.Error(exception)
     }
 
     init {
@@ -27,9 +25,9 @@ class MainViewModel(private val repository: MainMovieRepository) : ViewModel() {
     fun getMovies(page: Int) {
         viewModelScope.launch(coroutineExceptionHandler) {
             repository.getMovies(page)
-                .onStart { _uiState.value = MainUiState.Loading }
+                .onStart { _uiState.value = PopularUiState.Loading }
                 .collect {movieResult->
-                    _uiState.value = MainUiState.Success(movieResult.results as MutableList)
+                    _uiState.value = PopularUiState.Success(movieResult.results as MutableList)
                 }
         }
     }

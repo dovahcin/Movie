@@ -1,4 +1,4 @@
-package com.movie.android.view.fragment
+package com.movie.android.popular
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,25 +14,22 @@ import com.movie.android.R
 import com.movie.android.databinding.FragmentMainBinding
 import com.movie.android.domain.Movie
 import com.movie.android.utils.EndlessScroller
-import com.movie.android.utils.MainUiState
 import com.movie.android.utils.visible
-import com.movie.android.view.adapter.VerticalMovieAdapter
-import com.movie.android.view.viewmodel.MainViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class MainFragment : Fragment() {
+class PopularFragment : Fragment() {
 
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
 
-    private val mainViewModel: MainViewModel by viewModel()
+    private val mainViewModel: PopularViewModel by viewModel()
 
     private val movieClick : (Int) -> Unit= {
         findNavController().navigate(
-            MainFragmentDirections.actionMainFragmentToDetailsFragment(it)
+            PopularFragmentDirections.actionMainFragmentToDetailsFragment(it)
         )
     }
 
@@ -54,10 +51,10 @@ class MainFragment : Fragment() {
         lifecycleScope.launch {
             mainViewModel.uiState.collect { uiState ->
                 when (uiState) {
-                    is MainUiState.Success -> showPopularMovies(uiState.movies)
-                    is MainUiState.Error -> showError(uiState.exception)
+                    is PopularUiState.Success -> showPopularMovies(uiState.movies)
+                    is PopularUiState.Error -> showError(uiState.exception)
                 }
-                showLoadingView(uiState is MainUiState.Loading)
+                showLoadingView(uiState is PopularUiState.Loading)
             }
         }
 

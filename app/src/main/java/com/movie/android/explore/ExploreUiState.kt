@@ -1,6 +1,4 @@
-package com.movie.android.utils
-
-import com.movie.android.domain.explore.Explore
+package com.movie.android.explore
 
 sealed class ExploreUiState {
     data class Success(val explore: Explore = Explore()): ExploreUiState()

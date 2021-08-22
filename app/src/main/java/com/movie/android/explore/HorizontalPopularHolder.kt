@@ -1,10 +1,10 @@
-package com.movie.android.view.adapter
+package com.movie.android.explore
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.movie.android.databinding.ItemListPopularBinding
-import com.movie.android.domain.explore.ExploreItem.HorizontalList
+import com.movie.android.explore.ExploreItem.HorizontalList
 
 class HorizontalPopularHolder(
     val binding: ItemListPopularBinding

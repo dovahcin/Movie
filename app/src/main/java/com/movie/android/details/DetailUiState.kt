@@ -1,4 +1,5 @@
-package com.movie.android.utils
+package com.movie.android.details
+
 
 sealed class DetailUiState {
 

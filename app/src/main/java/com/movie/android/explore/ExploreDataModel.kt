@@ -1,4 +1,4 @@
-package com.movie.android.utils
+package com.movie.android.explore
 
 import com.movie.android.domain.Dates
 import com.movie.android.domain.Movies
