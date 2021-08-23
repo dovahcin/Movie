@@ -14,7 +14,6 @@ import com.google.android.material.snackbar.Snackbar
 import com.movie.android.R
 import com.movie.android.databinding.FragmentPopularsBinding
 import com.movie.android.domain.Movie
-import com.movie.android.presentation.features.details.DetailsFragmentArgs
 import com.movie.android.presentation.features.movielist.adapter.VerticalMovieAdapter
 import com.movie.android.presentation.utils.EndlessScroller
 import com.movie.android.presentation.utils.visible
@@ -46,6 +45,7 @@ class MovieListFragment : Fragment() {
     ): View {
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_populars, null, false)
 
+        mainViewModel.getMovies(args.listId, 1)
 
         binding.popularRecyclerView.apply {
             adapter = movieAdapter

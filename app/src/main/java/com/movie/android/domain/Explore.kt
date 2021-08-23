@@ -1,9 +1,6 @@
 package com.movie.android.domain
 
-import com.movie.android.domain.ExploreItem.Type.Artists
-import com.movie.android.domain.ExploreItem.Type.VerticalMovieList
-import com.movie.android.domain.ExploreItem.Type.HorizontalMovieList
-import com.movie.android.domain.ExploreItem.Type.Promotions
+import com.movie.android.domain.ExploreItem.Type.*
 
 data class Explore(val items: MutableList<ExploreItem> = mutableListOf())
 sealed class ExploreItem(val viewType : Type){

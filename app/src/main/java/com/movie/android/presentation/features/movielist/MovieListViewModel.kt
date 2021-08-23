@@ -19,11 +19,11 @@ class MovieListViewModel(private val repository: MovieListRepository) : ViewMode
         _uiState.value = MovieListUiState.Error(exception)
     }
 
-    fun getMovies(listId: Int , page: Int) {
+    fun getMovies(listId: Int, page: Int) {
         viewModelScope.launch(coroutineExceptionHandler) {
             repository.getMovies(listId, page)
                 .onStart { _uiState.value = MovieListUiState.Loading }
-                .collect {movieResult->
+                .collect { movieResult ->
                     _uiState.value = MovieListUiState.Success(movieResult.results)
                 }
         }
