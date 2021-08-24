@@ -21,8 +21,10 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
 class MovieListFragment : Fragment() {
+    companion object {
+        private const val DEFAULT_PAGE = 1
+    }
 
     private var _binding: FragmentPopularsBinding? = null
     private val binding get() = _binding!!
@@ -45,7 +47,7 @@ class MovieListFragment : Fragment() {
     ): View {
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_populars, null, false)
 
-        mainViewModel.getMovies(args.listId, 1)
+        mainViewModel.getMovies(args.listId, DEFAULT_PAGE)
 
         binding.popularRecyclerView.apply {
             adapter = movieAdapter

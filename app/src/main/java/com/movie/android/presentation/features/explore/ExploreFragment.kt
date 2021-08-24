@@ -15,9 +15,9 @@ import com.movie.android.R
 import com.movie.android.databinding.FragmentExploreBinding
 import com.movie.android.domain.ExploreItem.Type
 import com.movie.android.domain.Movie
-import com.movie.android.presentation.features.explore.adapter.ExploreAdapter
 import com.movie.android.presentation.features.explore.ExploreUiState.Failure
 import com.movie.android.presentation.features.explore.ExploreUiState.Success
+import com.movie.android.presentation.features.explore.adapter.ExploreAdapter
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel

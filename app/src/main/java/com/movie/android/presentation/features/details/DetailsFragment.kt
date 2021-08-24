@@ -59,14 +59,16 @@ class DetailsFragment : Fragment() {
 
         detailsViewModel.loadDataForDetails(args.movieId)
 
-        binding.genreRecyclerView.apply {
-            adapter = genreAdapter
-        }
-        binding.horizontalList1.apply {
-            adapter = horizontalMovieAdapter1
-        }
-        binding.horizontalList2.apply {
-            adapter = horizontalMovieAdapter2
+        binding.apply {
+            genreRecyclerView.apply {
+                adapter = genreAdapter
+            }
+            horizontalList1.apply {
+                adapter = horizontalMovieAdapter1
+            }
+            horizontalList2.apply {
+                adapter = horizontalMovieAdapter2
+            }
         }
 
         launchStates()
