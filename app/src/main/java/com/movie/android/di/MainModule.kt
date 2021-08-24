@@ -1,14 +1,15 @@
 package com.movie.android.di
 
+import androidx.lifecycle.SavedStateHandle
 import com.movie.android.BuildConfig
+import com.movie.android.data.DetailsRepository
 import com.movie.android.data.ExploreRepository
-import com.movie.android.data.MainMovieRepository
-import com.movie.android.data.MovieDetailsRepository
+import com.movie.android.data.MovieListRepository
 import com.movie.android.data.network.ApiInterceptor
 import com.movie.android.data.network.ApiServices
-import com.movie.android.view.viewmodel.DetailsViewModel
-import com.movie.android.view.viewmodel.ExploreViewModel
-import com.movie.android.view.viewmodel.MainViewModel
+import com.movie.android.presentation.features.details.DetailsViewModel
+import com.movie.android.presentation.features.explore.ExploreViewModel
+import com.movie.android.presentation.features.movielist.MovieListViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -37,13 +38,17 @@ val networkModule = module {
 
 }
 
+val statesModule = module {
+    single { SavedStateHandle() }
+}
+
 val mainModule = module {
 
-    viewModel{ MainViewModel(get()) }
-    single { MainMovieRepository(get()) }
-    viewModel { DetailsViewModel(get()) }
-    single { MovieDetailsRepository(get()) }
-    viewModel { ExploreViewModel(get()) }
+    viewModel{ MovieListViewModel(get(), get()) }
+    single { MovieListRepository(get()) }
+    viewModel { DetailsViewModel(get(), get()) }
+    single { DetailsRepository(get()) }
+    viewModel { ExploreViewModel(get(), get()) }
     single { ExploreRepository(get()) }
 
 }
