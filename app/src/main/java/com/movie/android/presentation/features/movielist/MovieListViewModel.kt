@@ -29,10 +29,10 @@ class MovieListViewModel(
     }
 
 
-    fun getMovies(listId: Int, page: Int) {
+    fun getMovies(listId: Int, page: Int, movieId: Int) {
         if (state.get<Success>(MOVIELIST_KEY) == null ) {
             viewModelScope.launch(coroutineExceptionHandler) {
-                repository.getMovies(listId, page)
+                repository.getMovies(listId, page, movieId)
                     .onStart { _uiState.value = Loading }
                     .collect { movieResult ->
                         _uiState.value = Success(movieResult.results)

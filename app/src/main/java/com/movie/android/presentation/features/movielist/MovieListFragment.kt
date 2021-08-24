@@ -47,13 +47,13 @@ class MovieListFragment : Fragment() {
     ): View {
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_populars, null, false)
 
-        mainViewModel.getMovies(args.listId, DEFAULT_PAGE)
+        mainViewModel.getMovies(args.listId, DEFAULT_PAGE, args.movieId)
 
         binding.popularRecyclerView.apply {
             adapter = movieAdapter
             val layoutManager = layoutManager as LinearLayoutManager
             addOnScrollListener(EndlessScroller(layoutManager) { page ->
-                mainViewModel.getMovies(args.listId, page)
+                mainViewModel.getMovies(args.listId, page, args.movieId)
             })
         }
 

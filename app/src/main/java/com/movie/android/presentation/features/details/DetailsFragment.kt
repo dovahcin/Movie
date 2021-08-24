@@ -24,31 +24,26 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailsFragment : Fragment() {
 
-    private var _binding: FragmentDetailsBinding? = null
-    private val binding get() = _binding!!
+    companion object {
+        const val SIMILARS = 2
+        const val RECOMMENDS = 3
+    }
 
+    val args: DetailsFragmentArgs by navArgs()
+
+    private var _binding: FragmentDetailsBinding? = null
+
+    private val binding get() = _binding!!
     private val detailsViewModel: DetailsViewModel by viewModel()
 
-    private val movieClick : (Int) -> Unit = {
+    private val movieClick: (Int) -> Unit = {
         findNavController().navigate(
             DetailsFragmentDirections.actionDetailsFragmentToDetailsFragment(
                 it
             )
         )
     }
-
-    private val showMoreClick : (Int) -> Unit= {
-        /*Navigate to main list with a specific input*/
-    }
-
-    private val horizontalMovieAdapter1 =
-        HorizontalMovieAdapter(itemClick = movieClick, showMoreClick= showMoreClick)
-    private val horizontalMovieAdapter2 =
-        HorizontalMovieAdapter(itemClick = movieClick, showMoreClick = showMoreClick)
-
     private val genreAdapter = GenreAdapter()
-
-    private val args: DetailsFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,23 +52,34 @@ class DetailsFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_details, container, false)
 
-        detailsViewModel.loadDataForDetails(args.movieId)
+        val showMoreClick: (Int, Int) -> Unit = { listId, movieId ->
+            findNavController().navigate(
+                DetailsFragmentDirections.actionDetailsFragmentToMovieListFragment(listId, movieId)
+            )
+        }
 
+        val horizontalSimilarAdapter =
+            HorizontalMovieAdapter(movieClick, showMoreClick, SIMILARS, args.movieId)
+        val horizontalRecommendAdapter =
+            HorizontalMovieAdapter(movieClick, showMoreClick, RECOMMENDS, args.movieId)
+
+        detailsViewModel.loadDataForDetails(args.movieId)
         binding.apply {
             genreRecyclerView.apply {
                 adapter = genreAdapter
             }
-            horizontalList1.apply {
-                adapter = horizontalMovieAdapter1
+            horizontalSimilarsList.apply {
+                adapter = horizontalSimilarAdapter
             }
-            horizontalList2.apply {
-                adapter = horizontalMovieAdapter2
+            horizontalRecommendationList.apply {
+                adapter = horizontalRecommendAdapter
             }
         }
 
-        launchStates()
+        launchStates(horizontalSimilarAdapter, horizontalRecommendAdapter)
 
         binding.back.setOnClickListener { requireActivity().onBackPressed() }
+
         return binding.root
     }
 
@@ -81,19 +87,26 @@ class DetailsFragment : Fragment() {
         Snackbar.make(binding.root, exception.localizedMessage!!, 10000).show()
     }
 
-    private fun loadAdapters(dataModel: DetailsDataModel) {
+    private fun loadAdapters(
+        dataModel: DetailsDataModel,
+        horizontalSimilarAdapter: HorizontalMovieAdapter,
+        horizontalRecommendAdapter: HorizontalMovieAdapter
+    ) {
         genreAdapter.update(dataModel.details.genres as MutableList<Genre>)
-        horizontalMovieAdapter1.update(dataModel.similarities.results)
-        horizontalMovieAdapter2.update(dataModel.recommendations.results)
+        horizontalSimilarAdapter.update(dataModel.similarities.results)
+        horizontalRecommendAdapter.update(dataModel.recommendations.results)
     }
 
-    private fun launchStates() {
+    private fun launchStates(
+        horizontalSimilarAdapter: HorizontalMovieAdapter,
+        horizontalRecommendAdapter: HorizontalMovieAdapter
+    ) {
         lifecycleScope.launch {
             detailsViewModel.uiState.collect { uiState ->
                 when (uiState) {
                     is DetailUiState.Failure -> showError(uiState.exception)
                     is DetailUiState.Success -> {
-                        loadAdapters(uiState.detailsDataModel)
+                        loadAdapters(uiState.detailsDataModel, horizontalSimilarAdapter, horizontalRecommendAdapter)
                         loadImages(
                             uiState.detailsDataModel.details.backDropPath,
                             uiState.detailsDataModel.details.posterPath
@@ -112,7 +125,6 @@ class DetailsFragment : Fragment() {
             scrollContainer.visible(!isVisible)
         }
     }
-
 
 
     private fun loadImages(uriBackDropPath: String, uriPosterPath: String) {

@@ -159,7 +159,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/miniImage" />
 
                 <TextView
-                    android:id="@+id/horizontalListTitle1"
+                    android:id="@+id/similarTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/lMargin"
@@ -171,19 +171,19 @@
                     app:layout_constraintTop_toBottomOf="@+id/overview" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/horizontalList1"
+                    android:id="@+id/horizontalSimilarsList"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/lMargin"
                     android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/horizontalListTitle1"
+                    app:layout_constraintTop_toBottomOf="@+id/similarTitle"
                     tools:ignore="SpeakableTextPresentCheck"
                     tools:listitem="@layout/item_movie_horizontal" />
 
                 <TextView
-                    android:id="@+id/horizontalListTitle2"
+                    android:id="@+id/recommendationTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/lMargin"
@@ -192,17 +192,17 @@
                     android:textSize="@dimen/xxlTextSize"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/overview"
-                    app:layout_constraintTop_toBottomOf="@+id/horizontalList1" />
+                    app:layout_constraintTop_toBottomOf="@+id/horizontalSimilarsList" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/horizontalList2"
+                    android:id="@+id/horizontalRecommendationList"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/lMargin"
                     android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/horizontalListTitle2"
+                    app:layout_constraintTop_toBottomOf="@+id/recommendationTitle"
                     tools:listitem="@layout/item_movie_horizontal" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

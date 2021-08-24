@@ -27,9 +27,9 @@ class ExploreFragment : Fragment() {
     private var _binding: FragmentExploreBinding? = null
     private val binding get() = _binding!!
 
-    private val showAllClick: (Type) -> Unit = {
+    private val showAllClick: (Type, Int) -> Unit = { type, movieId ->
         findNavController().navigate(
-            ExploreFragmentDirections.actionExploreFragmentToMovieListFragment(it.ordinal)
+            ExploreFragmentDirections.actionExploreFragmentToMovieListFragment(type.ordinal, movieId)
         )
     }
 

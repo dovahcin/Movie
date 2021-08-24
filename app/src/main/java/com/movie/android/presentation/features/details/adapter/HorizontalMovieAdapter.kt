@@ -7,30 +7,34 @@ import com.movie.android.domain.Movie
 import com.movie.android.domain.Movie.MovieViewType.SHOW_MORE
 
 class HorizontalMovieAdapter(
+    private val itemClick: (Int) -> Unit,
+    private val showMoreClick: (Int, Int) -> Unit,
+    private val listId: Int,
+    private val movieId: Int,
     private var items: MutableList<Movie> = mutableListOf(),
-    private val itemClick : (Int)->Unit,
-    private val showMoreClick : (Int)->Unit,
 ) : RecyclerView.Adapter<ViewHolder>() {
+
 
     private val SHOW_MORE_TYPE = 2
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         if (viewType == SHOW_MORE_TYPE) ShowMoreHolder.create(parent)
-    else HorizontalMovieHolder.create(parent)
+        else HorizontalMovieHolder.create(parent)
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
-        if (holder is HorizontalMovieHolder){
+        if (holder is HorizontalMovieHolder) {
             holder.bind(item)
             holder.itemView.setOnClickListener { itemClick.invoke(item.id) }
-        }else{
-            holder.itemView.setOnClickListener { showMoreClick.invoke(item.id) }
+        } else {
+            holder.itemView.setOnClickListener { showMoreClick.invoke(listId, movieId) }
         }
     }
 
     override fun getItemViewType(position: Int): Int {
         return if (items[position].type == SHOW_MORE) SHOW_MORE_TYPE else 0
     }
+
     override fun getItemCount(): Int = items.size
 
     fun update(images: List<Movie>) {
