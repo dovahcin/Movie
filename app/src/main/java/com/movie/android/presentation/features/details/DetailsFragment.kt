@@ -24,7 +24,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailsFragment : Fragment() {
 
-    val args: DetailsFragmentArgs by navArgs()
+    private val args: DetailsFragmentArgs by navArgs()
 
     private var _binding: FragmentDetailsBinding? = null
 
