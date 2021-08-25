@@ -42,7 +42,7 @@ class MovieListViewModel(
         }
 
     }
-    fun launchScope(listId: Int, page: Int, movieId: Int) {
+    private fun launchScope(listId: Int, page: Int, movieId: Int) {
         viewModelScope.launch(coroutineExceptionHandler) {
             repository.getMovies(listId, page, movieId)
                 .onStart { _uiState.value = Loading }
