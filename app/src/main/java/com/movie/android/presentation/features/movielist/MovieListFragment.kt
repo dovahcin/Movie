@@ -23,7 +23,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MovieListFragment : Fragment() {
     companion object {
-        private const val DEFAULT_PAGE = 1
+        const val DEFAULT_PAGE = 1
     }
 
     private var _binding: FragmentPopularsBinding? = null

@@ -11,7 +11,9 @@ interface ApiServices {
 
 
     @GET("/3/movie/popular")
-    suspend fun getPopularMoviesList(@Query("page") page: String): MovieList
+    suspend fun getPopularMoviesList(
+        @Query("page") page: String
+    ): MovieList
 
     @GET("/3/movie/{movie_id}")
     suspend fun getMovieDetails(
@@ -21,14 +23,18 @@ interface ApiServices {
     @GET("/3/movie/{movie_id}/similar")
     suspend fun getSimilarMovies(
         @Path("movie_id") movieId: String,
+        @Query("page") page: String
     ): MovieList
 
     @GET("/3/movie/{movie_id}/recommendations")
     suspend fun getRecommendationMovies(
         @Path("movie_id") movieId: String,
+        @Query("page") page: String
     ): MovieList
 
     @GET("/3/movie/upcoming")
-    suspend fun getUpcomingMovies(@Query("page") page: String): MovieList
+    suspend fun getUpcomingMovies(
+        @Query("page") page: String
+    ): MovieList
 
 }

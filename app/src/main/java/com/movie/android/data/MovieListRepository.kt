@@ -1,11 +1,7 @@
 package com.movie.android.data
 
 import com.movie.android.data.network.ApiServices
-import com.movie.android.domain.ExploreItem
-import com.movie.android.domain.ExploreItem.Type.HorizontalMovieList
-import com.movie.android.domain.ExploreItem.Type.RecommendedMovieList
-import com.movie.android.domain.ExploreItem.Type.SimilarMovieList
-import com.movie.android.domain.ExploreItem.Type.VerticalMovieList
+import com.movie.android.domain.ExploreItem.Type.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
@@ -17,8 +13,8 @@ class MovieListRepository(private val api: ApiServices) {
         when (listId) {
             HorizontalMovieList.ordinal -> emit(api.getUpcomingMovies(page.toString()))
             VerticalMovieList.ordinal -> emit(api.getPopularMoviesList(page.toString()))
-            SimilarMovieList.ordinal -> emit(api.getSimilarMovies(movieId.toString()))
-            RecommendedMovieList.ordinal -> emit(api.getRecommendationMovies(movieId.toString()))
+            SimilarMovieList.ordinal -> emit(api.getSimilarMovies(movieId.toString(), page.toString()))
+            RecommendedMovieList.ordinal -> emit(api.getRecommendationMovies(movieId.toString(), page.toString()))
         }
 
     }.flowOn(Dispatchers.IO)
