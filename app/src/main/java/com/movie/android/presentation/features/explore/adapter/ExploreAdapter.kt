@@ -8,7 +8,7 @@ import com.movie.android.domain.ExploreItem.*
 import com.movie.android.domain.Movie
 
 class ExploreAdapter(
-    private val showAllClick: (Type, Int) -> Unit,
+    private val showAllClick: (Type) -> Unit,
     private val movieClick: (Movie) -> Unit,
     private var items: MutableList<ExploreItem> = mutableListOf()
 ) : RecyclerView.Adapter<ViewHolder>() {
@@ -29,13 +29,13 @@ class ExploreAdapter(
             is HorizontalMovieList -> {
                 (holder as HorizontalMovieListHolder).bind(exploreItem)
                 holder.binding.showAll.setOnClickListener {
-                    showAllClick.invoke(exploreItem.viewType, -1)
+                    showAllClick.invoke(exploreItem.viewType)
                 }
             }
             is VerticalMovieList -> {
                 (holder as VerticalMovieListHolder).bind(exploreItem)
                 holder.binding.showAll.setOnClickListener {
-                    showAllClick.invoke(exploreItem.viewType, -1)
+                    showAllClick.invoke(exploreItem.viewType)
                 }
             }
             is Artists -> TODO()

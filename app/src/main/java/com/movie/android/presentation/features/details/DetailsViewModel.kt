@@ -32,13 +32,16 @@ class DetailsViewModel(
     }
 
     fun loadDataForDetails(movieId: Int) {
-
-        viewModelScope.launch(coroutineExceptionHandler) {
-            detailsRepository.getDataForDetailedPage(movieId)
-                .onStart { _uiState.value = Loading }
-                .collect { dataModel ->
-                    _uiState.value = Success(dataModel)
+        if (uiState.value is Success){
+            if ((uiState.value as Success).detailsDataModel.isInitialValue()){
+                viewModelScope.launch(coroutineExceptionHandler) {
+                    detailsRepository.getDataForDetailedPage(movieId)
+                        .onStart { _uiState.value = Loading }
+                        .collect { dataModel ->
+                            _uiState.value = Success(dataModel)
+                        }
                 }
+            }
         }
 
 

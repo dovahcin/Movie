@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
@@ -24,7 +24,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription"
-            tools:src="@drawable/ic_placeholder" />
+            tools:src="@drawable/ic_placeholder"
+            app:shapeAppearanceOverlay="@style/corneredImage"/>
 
         <TextView
             android:id="@+id/titleTextView"

@@ -60,7 +60,7 @@ class MovieListFragment : Fragment() {
         lifecycleScope.launch {
             mainViewModel.uiState.collect { uiState ->
                 when (uiState) {
-                    is MovieListUiState.Success -> showPopularMovies(uiState.movies)
+                    is MovieListUiState.Success -> showPopularMovies(uiState.movies.results)
                     is MovieListUiState.Error -> showError(uiState.exception)
                 }
                 showLoadingView(uiState is MovieListUiState.Loading)
