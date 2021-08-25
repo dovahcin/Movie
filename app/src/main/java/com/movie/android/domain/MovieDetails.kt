@@ -1,11 +1,15 @@
 package com.movie.android.domain
 
+val detailsInitialValue = DetailsDataModel()
 data class DetailsDataModel(
     val details: Details = Details(),
     val similarities: MovieList = MovieList(),
     val recommendations: MovieList = MovieList()
-)
-
+) {
+    fun isInitialValue(): Boolean {
+        return this == detailsInitialValue
+    }
+}
 
 data class Details(
     val adult: Boolean = false,
