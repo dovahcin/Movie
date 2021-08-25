@@ -3,20 +3,21 @@ package com.movie.android.data
 import com.movie.android.data.network.ApiServices
 import com.movie.android.domain.Movie
 import com.movie.android.domain.DetailsDataModel
+import com.movie.android.domain.ExploreItem.Type.RecommendedMovieList
+import com.movie.android.domain.ExploreItem.Type.SimilarMovieList
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
 class DetailsRepository(private val api: ApiServices) {
 
-  companion object {
-    const val SIMILARS = 2
-    const val RECOMMENDS = 3
-  }
-
     fun getDataForDetailedPage(movieId: Int) = flow {
-      val similars = api.getSimilarMovies(movieId.toString()).also { it.id = SIMILARS }
-      val recommendations = api.getRecommendationMovies( movieId.toString()) .also { it.id = RECOMMENDS }
+
+      val similars = api.getSimilarMovies(movieId.toString())
+        .also { it.id = SimilarMovieList.ordinal }
+      val recommendations = api.getRecommendationMovies( movieId.toString())
+        .also { it.id = RecommendedMovieList.ordinal }
+
       val details = api.getMovieDetails(movieId.toString())
 
       similars.results = (similars.results
