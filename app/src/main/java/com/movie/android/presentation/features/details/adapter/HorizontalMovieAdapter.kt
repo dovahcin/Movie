@@ -8,9 +8,8 @@ import com.movie.android.domain.Movie.MovieViewType.SHOW_MORE
 
 class HorizontalMovieAdapter(
     private val itemClick: (Int) -> Unit,
-    private val showMoreClick: (Int, Int) -> Unit,
-    private val listId: Int,
-    private val movieId: Int,
+    private val showMoreClick: (Int) -> Unit,
+    private var listId: Int = -1,
     private var items: MutableList<Movie> = mutableListOf(),
 ) : RecyclerView.Adapter<ViewHolder>() {
 
@@ -27,7 +26,7 @@ class HorizontalMovieAdapter(
             holder.bind(item)
             holder.itemView.setOnClickListener { itemClick.invoke(item.id) }
         } else {
-            holder.itemView.setOnClickListener { showMoreClick.invoke(listId, movieId) }
+            holder.itemView.setOnClickListener { showMoreClick.invoke(listId) }
         }
     }
 
@@ -37,7 +36,8 @@ class HorizontalMovieAdapter(
 
     override fun getItemCount(): Int = items.size
 
-    fun update(images: List<Movie>) {
+    fun update(images: List<Movie>, listId: Int) {
+        this.listId = listId
         this.items.clear()
         this.items.addAll(images)
         notifyItemRangeInserted(itemCount, images.size)

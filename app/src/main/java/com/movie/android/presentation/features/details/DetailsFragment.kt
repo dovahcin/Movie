@@ -24,11 +24,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailsFragment : Fragment() {
 
-    companion object {
-        const val SIMILARS = 2
-        const val RECOMMENDS = 3
-    }
-
     val args: DetailsFragmentArgs by navArgs()
 
     private var _binding: FragmentDetailsBinding? = null
@@ -52,16 +47,14 @@ class DetailsFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_details, container, false)
 
-        val showMoreClick: (Int, Int) -> Unit = { listId, movieId ->
+        val showMoreClick: (Int) -> Unit = { listId ->
             findNavController().navigate(
-                DetailsFragmentDirections.actionDetailsFragmentToMovieListFragment(listId, movieId)
+                DetailsFragmentDirections.actionDetailsFragmentToMovieListFragment(listId, args.movieId)
             )
         }
 
-        val horizontalSimilarAdapter =
-            HorizontalMovieAdapter(movieClick, showMoreClick, SIMILARS, args.movieId)
-        val horizontalRecommendAdapter =
-            HorizontalMovieAdapter(movieClick, showMoreClick, RECOMMENDS, args.movieId)
+        val horizontalSimilarAdapter = HorizontalMovieAdapter(movieClick, showMoreClick)
+        val horizontalRecommendAdapter = HorizontalMovieAdapter(movieClick, showMoreClick)
 
         detailsViewModel.loadDataForDetails(args.movieId)
         binding.apply {
@@ -93,8 +86,13 @@ class DetailsFragment : Fragment() {
         horizontalRecommendAdapter: HorizontalMovieAdapter
     ) {
         genreAdapter.update(dataModel.details.genres as MutableList<Genre>)
-        horizontalSimilarAdapter.update(dataModel.similarities.results)
-        horizontalRecommendAdapter.update(dataModel.recommendations.results)
+        dataModel.similarities.run {
+            horizontalSimilarAdapter.update(results, id)
+        }
+        dataModel.recommendations.run {
+            horizontalRecommendAdapter.update(results, id)
+        }
+
     }
 
     private fun launchStates(

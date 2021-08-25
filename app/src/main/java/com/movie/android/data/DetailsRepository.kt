@@ -9,17 +9,22 @@ import kotlinx.coroutines.flow.flowOn
 
 class DetailsRepository(private val api: ApiServices) {
 
+  companion object {
+    const val SIMILARS = 2
+    const val RECOMMENDS = 3
+  }
+
     fun getDataForDetailedPage(movieId: Int) = flow {
-        val similars = api.getSimilarMovies(movieId.toString())
-        val genres = api.getMovieDetails(movieId.toString())
-        val recommendations = api.getRecommendationMovies( movieId.toString())
+      val similars = api.getSimilarMovies(movieId.toString()).also { it.id = SIMILARS }
+      val recommendations = api.getRecommendationMovies( movieId.toString()) .also { it.id = RECOMMENDS }
+      val details = api.getMovieDetails(movieId.toString())
 
       similars.results = (similars.results
         .take(10) + Movie.createShowMore()).toMutableList()
       recommendations.results = (recommendations.results
         .take(10) + Movie.createShowMore()).toMutableList()
 
-        emit(DetailsDataModel(similars, genres, recommendations))
+        emit(DetailsDataModel(details, similars, recommendations))
     }.flowOn(Dispatchers.IO)
 
 }
