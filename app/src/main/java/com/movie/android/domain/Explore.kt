@@ -16,6 +16,9 @@ sealed class ExploreItem(val viewType : Type){
   data class Artists(val imageUrls: List<String>) : ExploreItem(Artists)
   data class Promotions(val movies: List<Movie>) : ExploreItem(Promotions)
 
-  enum class Type{VerticalMovieList,HorizontalMovieList,Artists,Promotions}
+  enum class Type{
+  /*Explore*/  VerticalMovieList,HorizontalMovieList,Artists,Promotions,
+  /*Details*/  SimilarMovieList,RecommendedMovieList
+  }
 
 }

@@ -19,7 +19,7 @@ class DetailsViewModel(
 
     companion object {
         private const val DETAILS_STATE = "DetailsState"
-        private const val DETAILS_MOVIEID = "DetailMovieId"
+        private const val DETAILS_MOVIE_ID = "DetailMovieId"
     }
 
     private val _uiState = MutableStateFlow<DetailUiState>(
@@ -27,28 +27,25 @@ class DetailsViewModel(
     )
     val uiState: StateFlow<DetailUiState> = _uiState
 
-    private val coroutineExceptionHandler
-    = CoroutineExceptionHandler { _ , exception ->
+    private val coroutineExceptionHandler = CoroutineExceptionHandler { _, exception ->
         _uiState.value = Failure(exception)
     }
 
     fun loadDataForDetails(movieId: Int) {
-        if (isNotFirstTime(movieId)) {
-            _uiState.value = state.get<Success>(DETAILS_STATE)!!
-        } else {
-                 viewModelScope.launch(coroutineExceptionHandler) {
+        if (uiState.value is Success){
+            if ((uiState.value as Success).detailsDataModel.isInitialValue()){
+                viewModelScope.launch(coroutineExceptionHandler) {
                     detailsRepository.getDataForDetailedPage(movieId)
                         .onStart { _uiState.value = Loading }
                         .collect { dataModel ->
                             _uiState.value = Success(dataModel)
-                            state.set(DETAILS_STATE, Success(dataModel))
-                            state.set(DETAILS_MOVIEID, movieId)
                         }
                 }
+            }
         }
+
 
     }
 
-    private fun isNotFirstTime(movieId: Int) =
-        state.get<Success>(DETAILS_STATE) != null && state.get<Int>(DETAILS_MOVIEID) != movieId
+
 }

@@ -29,20 +29,19 @@ class MovieListViewModel(
     }
 
 
-    fun getMovies(listId: Int, page: Int) {
-        if (state.get<Success>(MOVIELIST_KEY) == null ) {
-            viewModelScope.launch(coroutineExceptionHandler) {
-                repository.getMovies(listId, page)
-                    .onStart { _uiState.value = Loading }
-                    .collect { movieResult ->
-                        _uiState.value = Success(movieResult.results)
-                        state.set(MOVIELIST_KEY, Success(movieResult.results))
-                    }
-            }
-        } else {
-            _uiState.value = state.get<Success>(MOVIELIST_KEY)!!
-        }
+    fun getMovies(listId: Int, page: Int, movieId: Int) {
+        if (uiState.value is Success) {
+            if ((uiState.value as Success).movies.isInitialized()) {
+                viewModelScope.launch(coroutineExceptionHandler) {
+                    repository.getMovies(listId, page, movieId)
+                        .onStart { _uiState.value = Loading }
+                        .collect { movieResult ->
+                            _uiState.value = Success(movieResult)
+                        }
 
+                }
+            }
+        }
     }
 
 }

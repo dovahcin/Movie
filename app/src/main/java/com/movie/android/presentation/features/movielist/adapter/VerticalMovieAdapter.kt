@@ -6,7 +6,8 @@ import com.movie.android.domain.Movie
 
 class VerticalMovieAdapter(
     private var items: MutableList<Movie> = mutableListOf(),
-    private val itemClick : (Movie)->Unit)
+    private val itemClick: (Movie) -> Unit
+)
     : RecyclerView.Adapter<VerticalMovieHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
