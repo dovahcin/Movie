@@ -5,7 +5,8 @@ import androidx.recyclerview.widget.RecyclerView
 
 class EndlessScroller(
     private val layoutManager: LinearLayoutManager,
-    private val loadMore: (Int) -> Unit) : RecyclerView.OnScrollListener() {
+    private val loadMore: (Int) -> Unit
+) : RecyclerView.OnScrollListener() {
 
     private var loading = true
     private var previousTotal = 0

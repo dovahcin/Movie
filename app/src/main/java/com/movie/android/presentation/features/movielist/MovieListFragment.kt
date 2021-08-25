@@ -47,7 +47,7 @@ class MovieListFragment : Fragment() {
     ): View {
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_populars, null, false)
 
-        mainViewModel.getMovies(args.listId, DEFAULT_PAGE, args.movieId)
+        mainViewModel.getMovies(args.listId, DEFAULT_PAGE, -1)
 
         binding.popularRecyclerView.apply {
             adapter = movieAdapter
