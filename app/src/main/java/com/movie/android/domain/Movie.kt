@@ -1,6 +1,7 @@
 package com.movie.android.domain
 
 import com.movie.android.domain.Movie.MovieViewType.SHOW_MORE
+import java.math.RoundingMode
 
 data class Movie(
     val adult: Boolean,
@@ -24,7 +25,7 @@ data class Movie(
     get() = "https://image.tmdb.org/t/p/w600_and_h900_bestv2$poster_path"
 
     val vote
-    get() = vote_average.toString()
+    get() = vote_average.toBigDecimal().setScale(1, RoundingMode.HALF_UP).toString()
 
     companion object{
         fun createShowMore(): Movie {
