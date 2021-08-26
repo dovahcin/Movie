@@ -21,7 +21,7 @@ class HorizontalMovieListHolder(
             )
     }
 
-    private val adapter = HorizontalListAdapter(showMovieClick = movieClick);
+    private val adapter = HorizontalListAdapter(showMovieClick = movieClick)
 
     init {
       binding.horizontalRecyclerView.adapter = adapter
