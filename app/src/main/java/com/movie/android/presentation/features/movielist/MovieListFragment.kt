@@ -12,6 +12,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.movie.android.R
+import com.movie.android.data.MovieListRepository.Companion.DEFAULT_PAGE
 import com.movie.android.databinding.FragmentPopularsBinding
 import com.movie.android.domain.Movie
 import com.movie.android.presentation.features.movielist.adapter.VerticalMovieAdapter
@@ -22,9 +23,6 @@ import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MovieListFragment : Fragment() {
-    companion object {
-        const val DEFAULT_PAGE = 1
-    }
 
     private var _binding: FragmentPopularsBinding? = null
     private val binding get() = _binding!!

@@ -7,6 +7,9 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
 class MovieListRepository(private val api: ApiServices) {
+    companion object {
+        const val DEFAULT_PAGE = 1
+    }
 
     fun getMovies(listId: Int, page: Int, movieId: Int) = flow {
 

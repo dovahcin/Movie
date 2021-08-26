@@ -1,11 +1,11 @@
 package com.movie.android.data
 
+import com.movie.android.data.MovieListRepository.Companion.DEFAULT_PAGE
 import com.movie.android.data.network.ApiServices
 import com.movie.android.domain.DetailsDataModel
 import com.movie.android.domain.ExploreItem.Type.RecommendedMovieList
 import com.movie.android.domain.ExploreItem.Type.SimilarMovieList
 import com.movie.android.domain.Movie
-import com.movie.android.presentation.features.movielist.MovieListFragment.Companion.DEFAULT_PAGE
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
