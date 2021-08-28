@@ -1,38 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout>
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/actorsImageView"
-        android:layout_width="120dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="@dimen/mMargin"
-        android:layout_marginTop="@dimen/mMargin"
-        android:layout_marginEnd="@dimen/mMargin"
-        android:adjustViewBounds="true"
-        app:layout_constraintDimensionRatio="h,1:1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/roundimage"
-        tools:srcCompat="@drawable/ic_placeholder" />
+    <data>
 
-    <TextView
-        android:layout_width="0dp"
+        <variable
+            name="actor"
+            type="com.movie.android.domain.Actor" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:textSize="@dimen/xlTextSize"
-        android:textColor="@color/white"
-        android:maxLines="2"
-        android:ellipsize="end"
-        app:layout_constraintEnd_toEndOf="@+id/actorsImageView"
-        app:layout_constraintStart_toStartOf="@+id/actorsImageView"
-        app:layout_constraintTop_toBottomOf="@+id/actorsImageView"
-        tools:text="Veronica" />
+        android:orientation="vertical">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/actorsImageView"
+            android:layout_width="120dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/mMargin"
+            android:layout_marginTop="@dimen/mMargin"
+            android:layout_marginEnd="@dimen/mMargin"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="h,1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/roundimage"
+            tools:srcCompat="@drawable/ic_placeholder" />
+
+        <TextView
+            android:id="@+id/actorName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@{actor.name}"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/xlTextSize"
+            app:layout_constraintEnd_toEndOf="@+id/actorsImageView"
+            app:layout_constraintStart_toStartOf="@+id/actorsImageView"
+            app:layout_constraintTop_toBottomOf="@+id/actorsImageView"
+            tools:text="Veronica" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

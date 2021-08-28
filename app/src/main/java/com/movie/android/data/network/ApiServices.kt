@@ -1,5 +1,6 @@
 package com.movie.android.data.network
 
+import com.movie.android.domain.ActorList
 import com.movie.android.domain.Details
 import com.movie.android.domain.MovieList
 import retrofit2.http.GET
@@ -36,5 +37,10 @@ interface ApiServices {
     suspend fun getUpcomingMovies(
         @Query("page") page: String
     ): MovieList
+
+    @GET("/3/person/popular")
+    suspend fun getArtists(
+        @Query("page") page: String
+    ): ActorList
 
 }

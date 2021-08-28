@@ -13,7 +13,7 @@ sealed class ExploreItem(val viewType : Type){
     val title: String, val hasShowAll: Boolean, val movies: List<Movie>
   ) : ExploreItem(HorizontalMovieList)
 
-  data class Artists(val imageUrls: List<String>) : ExploreItem(Artists)
+  data class Artists(val title: String, val hasShowAll: Boolean, val actors: List<Actor>) : ExploreItem(Artists)
 
   data class Promotions(val movies: List<Movie>) : ExploreItem(Promotions)
 
