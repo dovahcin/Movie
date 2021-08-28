@@ -22,7 +22,7 @@ class ExploreRepository(private val api: ApiServices) {
             "Upcoming", false, upcoming.results.take(10)
         )
         result.items += Artists(
-            "Artists", false, artists.results.take(10)
+            "Artists", false, artists.results.take(15)
         )
 
         emit(result)
