@@ -33,9 +33,9 @@ class ExploreViewModel(
             viewModelScope.launch(coroutineExceptionHandler) {
                 exploreRepository.getDataForExplorePage(page)
                     .onStart { _uiState.value = Loading }
-                    .collect { movies ->
-                        _uiState.value = Success(movies)
-                        state.set(EXPLORE_KEY, Success(movies))
+                    .collect { results ->
+                        _uiState.value = Success(results)
+                        state.set(EXPLORE_KEY, Success(results))
                     }
 
             }

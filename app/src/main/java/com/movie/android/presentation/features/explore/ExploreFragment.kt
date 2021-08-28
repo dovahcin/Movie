@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.movie.android.R
 import com.movie.android.databinding.FragmentExploreBinding
+import com.movie.android.domain.Actor
 import com.movie.android.domain.ExploreItem.Type
 import com.movie.android.domain.Movie
 import com.movie.android.presentation.features.explore.ExploreUiState.Failure
@@ -38,8 +39,11 @@ class ExploreFragment : Fragment() {
             ExploreFragmentDirections.actionExploreFragmentToDetailsFragment(it.id)
         )
     }
+    private val showActorClick: (Actor) -> Unit = {
+        TODO()
+    }
 
-    private val exploreAdapter = ExploreAdapter(showAllClick, showMovieClick)
+    private val exploreAdapter = ExploreAdapter(showAllClick, showActorClick, showMovieClick)
     private val exploreViewModel: ExploreViewModel by viewModel()
 
     override fun onCreateView(

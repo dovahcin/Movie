@@ -9,7 +9,7 @@ import com.movie.android.domain.Movie
 
 class HorizontalMovieListHolder(
     val binding: ItemMovieListHorizontalBinding,
-    movieClick: (Movie) -> Unit
+    movieClick: (Movie) -> Unit,
 ) : RecyclerView.ViewHolder(binding.root) {
 
     companion object {
@@ -21,7 +21,7 @@ class HorizontalMovieListHolder(
             )
     }
 
-    private val adapter = HorizontalListAdapter(showMovieClick = movieClick)
+    private val adapter = HorizontalMovieAdapter(movieClick)
 
     init {
       binding.horizontalRecyclerView.adapter = adapter
