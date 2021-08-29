@@ -11,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
 import com.movie.android.R
-import com.movie.android.databinding.FragmentDetailsBinding
+import com.movie.android.databinding.FragmentMovieDetailsBinding
 import com.movie.android.domain.DetailsDataModel
 import com.movie.android.domain.Genre
 import com.movie.android.presentation.features.details.adapter.GenreAdapter
@@ -26,7 +26,7 @@ class DetailsFragment : Fragment() {
 
     private val args: DetailsFragmentArgs by navArgs()
 
-    private var _binding: FragmentDetailsBinding? = null
+    private var _binding: FragmentMovieDetailsBinding? = null
 
     private val binding get() = _binding!!
     private val detailsViewModel: DetailsViewModel by viewModel()
@@ -45,7 +45,7 @@ class DetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_details, container, false)
+        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_movie_details, container, false)
 
         val showMoreClick: (Int) -> Unit = { listId ->
             findNavController().navigate(

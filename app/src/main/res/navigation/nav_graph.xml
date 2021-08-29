@@ -89,6 +89,23 @@
                 app:nullable="false" />
 
         </action>
+        <action
+            android:id="@+id/action_exploreFragment_to_actorDetailsFragment"
+            app:destination="@id/actorDetailsFragment" >
+            <argument
+                android:name="personId"
+                app:argType="integer"
+                app:nullable="false"/>
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/actorDetailsFragment"
+        android:name="com.movie.android.presentation.features.details.actordetails.ActorDetailsFragment"
+        android:label="ActorDetailsFragment" >
+        <argument
+            android:name="personId"
+            app:argType="integer"
+            app:nullable="false"/>
     </fragment>
 
 </navigation>
