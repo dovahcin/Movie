@@ -1,10 +1,10 @@
-package com.movie.android.presentation.features.details
+package com.movie.android.presentation.features.details.moviedetails
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.movie.android.data.DetailsRepository
-import com.movie.android.presentation.features.details.DetailUiState.*
+import com.movie.android.data.MovieDetailsRepository
+import com.movie.android.presentation.features.details.moviedetails.MovieDetailUiState.*
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -12,8 +12,8 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
-class DetailsViewModel(
-    private val detailsRepository: DetailsRepository,
+class MovieDetailsViewModel(
+    private val detailsRepository: MovieDetailsRepository,
     private val state: SavedStateHandle
 ) : ViewModel() {
 
@@ -22,10 +22,10 @@ class DetailsViewModel(
         private const val DETAILS_MOVIE_ID = "DetailMovieId"
     }
 
-    private val _uiState = MutableStateFlow<DetailUiState>(
+    private val _uiState = MutableStateFlow<MovieDetailUiState>(
         Success()
     )
-    val uiState: StateFlow<DetailUiState> = _uiState
+    val uiState: StateFlow<MovieDetailUiState> = _uiState
 
     private val coroutineExceptionHandler = CoroutineExceptionHandler { _, exception ->
         _uiState.value = Failure(exception)

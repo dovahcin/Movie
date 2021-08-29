@@ -10,7 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
-class DetailsRepository(private val api: ApiServices) {
+class MovieDetailsRepository(private val api: ApiServices) {
 
     fun getDataForDetailedPage(movieId: Int) = flow {
 

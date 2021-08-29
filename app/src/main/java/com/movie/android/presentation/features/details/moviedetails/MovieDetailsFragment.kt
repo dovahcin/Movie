@@ -1,4 +1,4 @@
-package com.movie.android.presentation.features.details
+package com.movie.android.presentation.features.details.moviedetails
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,26 +14,26 @@ import com.movie.android.R
 import com.movie.android.databinding.FragmentMovieDetailsBinding
 import com.movie.android.domain.DetailsDataModel
 import com.movie.android.domain.Genre
-import com.movie.android.presentation.features.details.adapter.GenreAdapter
-import com.movie.android.presentation.features.details.adapter.HorizontalMovieAdapter
+import com.movie.android.presentation.features.details.moviedetails.adapter.GenreAdapter
+import com.movie.android.presentation.features.details.moviedetails.adapter.HorizontalMovieAdapter
 import com.movie.android.presentation.utils.loadImage
 import com.movie.android.presentation.utils.visible
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class DetailsFragment : Fragment() {
+class MovieDetailsFragment : Fragment() {
 
-    private val args: DetailsFragmentArgs by navArgs()
+    private val args: MovieDetailsFragmentArgs by navArgs()
 
     private var _binding: FragmentMovieDetailsBinding? = null
 
     private val binding get() = _binding!!
-    private val detailsViewModel: DetailsViewModel by viewModel()
+    private val detailsViewModel: MovieDetailsViewModel by viewModel()
 
     private val movieClick: (Int) -> Unit = {
         findNavController().navigate(
-            DetailsFragmentDirections.actionDetailsFragmentToDetailsFragment(
+            MovieDetailsFragmentDirections.actionDetailsFragmentToDetailsFragment(
                 it
             )
         )
@@ -49,7 +49,10 @@ class DetailsFragment : Fragment() {
 
         val showMoreClick: (Int) -> Unit = { listId ->
             findNavController().navigate(
-                DetailsFragmentDirections.actionDetailsFragmentToMovieListFragment(listId, args.movieId)
+                MovieDetailsFragmentDirections.actionDetailsFragmentToMovieListFragment(
+                    listId,
+                    args.movieId
+                )
             )
         }
 
@@ -102,8 +105,8 @@ class DetailsFragment : Fragment() {
         lifecycleScope.launch {
             detailsViewModel.uiState.collect { uiState ->
                 when (uiState) {
-                    is DetailUiState.Failure -> showError(uiState.exception)
-                    is DetailUiState.Success -> {
+                    is MovieDetailUiState.Failure -> showError(uiState.exception)
+                    is MovieDetailUiState.Success -> {
                         loadAdapters(uiState.detailsDataModel, horizontalSimilarAdapter, horizontalRecommendAdapter)
                         loadImages(
                             uiState.detailsDataModel.details.backDropPath,
@@ -112,7 +115,7 @@ class DetailsFragment : Fragment() {
                         binding.details = uiState.detailsDataModel.details
                     }
                 }
-                showLoadingView(uiState is DetailUiState.Loading)
+                showLoadingView(uiState is MovieDetailUiState.Loading)
             }
         }
     }
