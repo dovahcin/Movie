@@ -14,7 +14,8 @@ import com.movie.android.R
 import com.movie.android.databinding.FragmentActorDetailsBinding
 import com.movie.android.domain.Actor
 import com.movie.android.domain.ActorDetails
-import com.movie.android.presentation.features.details.adapter.ActorKnownAdapter
+import com.movie.android.domain.Movie
+import com.movie.android.presentation.features.details.actordetails.adapter.ActorKnownAdapter
 import com.movie.android.presentation.utils.loadImage
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -48,9 +49,7 @@ class ActorDetailsFragment : Fragment() {
                 when (uiState) {
                     is ActorDetailUiState.Failure -> showError(uiState.exception)
                     is ActorDetailUiState.Success -> {
-                        uiState.actorsDataModel.actors.forEach { actor ->
-                            showKnownMovies(actor)
-                        }
+                        showKnownMovies(uiState.actorsDataModel.actorMovies)
                         showDetails(uiState.actorsDataModel.actorDetails)
                     }
                 }
@@ -75,7 +74,7 @@ class ActorDetailsFragment : Fragment() {
         binding.actor = actorDetails
     }
 
-    private fun showKnownMovies(actor: Actor) {
-        knownAdapter.update(actor.known_for.toMutableList())
+    private fun showKnownMovies(actorMovies: List<Movie>) {
+        knownAdapter.update(actorMovies.toMutableList())
     }
 }

@@ -1,10 +1,11 @@
-package com.movie.android.presentation.features.details.adapter
+package com.movie.android.presentation.features.details.actordetails.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.movie.android.databinding.ItemKnownforHorizontalBinding
 import com.movie.android.domain.KnownFor
+import com.movie.android.domain.Movie
 import com.movie.android.presentation.utils.loadImage
 import com.movie.android.presentation.utils.reduceWidthBy
 
@@ -27,9 +28,9 @@ class ActorKnownHolder(val binding: ItemKnownforHorizontalBinding) :
         imageView reduceWidthBy 0.4f
     }
 
-    fun bind(it: KnownFor) {
+    fun bind(it: Movie) {
         binding.movie = it
-        imageView.loadImage(it.backdropPath)
+        imageView.loadImage(it.posterPath)
         binding.executePendingBindings()
     }
 

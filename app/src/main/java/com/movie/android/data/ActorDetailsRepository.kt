@@ -11,9 +11,12 @@ class ActorDetailsRepository(private val api: ApiServices) {
     fun getActorDetails(personId: Int, page: Int) = flow {
         val actorDetails = api.getActorDetails(personId.toString())
         val actorList = api.getArtists(page.toString())
+        val actorMovies = api.getActorMovies(personId.toString())
+
         emit(ActorsDataModel(
             actorDetails,
-            actorList.results
+            actorList.results,
+            actorMovies.results
         ))
     }.flowOn(Dispatchers.IO)
 

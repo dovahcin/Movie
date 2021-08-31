@@ -2,7 +2,8 @@ package com.movie.android.domain
 
 data class ActorsDataModel(
     val actorDetails: ActorDetails = ActorDetails(),
-    val actors: List<Actor> = mutableListOf()
+    val actors: List<Actor> = mutableListOf(),
+    val actorMovies: List<Movie> = mutableListOf()
 )
 
 data class ActorDetails(

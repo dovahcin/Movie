@@ -6,7 +6,7 @@
     <data>
         <variable
             name="movie"
-            type="com.movie.android.domain.KnownFor" />
+            type="com.movie.android.domain.Movie" />
 
     </data>
 
