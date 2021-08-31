@@ -15,14 +15,14 @@ class ExploreRepository(private val api: ApiServices) {
         val upcoming = api.getUpcomingMovies(page.toString())
         val artists = api.getArtists(page.toString())
 
-        result.items += VerticalMovieList(
-            "Popular", false, popular.results.take(10)
-        )
         result.items += HorizontalMovieList(
             "Upcoming", false, upcoming.results.take(10)
         )
         result.items += Artists(
             "Artists", false, artists.results.take(15)
+        )
+        result.items += VerticalMovieList(
+            "Popular", false, popular.results.take(10)
         )
 
         emit(result)
