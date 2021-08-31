@@ -9,4 +9,8 @@
     <string name="recommendation_movies">Recommendation Movies</string>
     <string name="popular">Popular</string>
     <string name="upcoming">Upcoming</string>
+    <string name="biography">Biography</string>
+    <string name="birthday">Birthday :</string>
+    <string name="deathday">Deathday :</string>
+    <string name="place_of_birth">Place of birth :</string>
 </resources>

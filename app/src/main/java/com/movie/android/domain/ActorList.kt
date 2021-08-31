@@ -26,4 +26,7 @@ data class KnownFor(
     val video: Boolean,
     val vote_average: Double,
     val vote_count: Int
-)
+) {
+    val backdropPath
+    get() = "https://image.tmdb.org/t/p/w600_and_h900_bestv2$backdrop_path"
+}

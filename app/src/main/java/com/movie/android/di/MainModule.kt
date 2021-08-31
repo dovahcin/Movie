@@ -2,12 +2,14 @@ package com.movie.android.di
 
 import androidx.lifecycle.SavedStateHandle
 import com.movie.android.BuildConfig
-import com.movie.android.data.DetailsRepository
+import com.movie.android.data.ActorDetailsRepository
 import com.movie.android.data.ExploreRepository
+import com.movie.android.data.MovieDetailsRepository
 import com.movie.android.data.MovieListRepository
 import com.movie.android.data.network.ApiInterceptor
 import com.movie.android.data.network.ApiServices
-import com.movie.android.presentation.features.details.DetailsViewModel
+import com.movie.android.presentation.features.details.actordetails.ActorDetailsViewModel
+import com.movie.android.presentation.features.details.moviedetails.MovieDetailsViewModel
 import com.movie.android.presentation.features.explore.ExploreViewModel
 import com.movie.android.presentation.features.movielist.MovieListViewModel
 import okhttp3.OkHttpClient
@@ -46,9 +48,11 @@ val mainModule = module {
 
     viewModel{ MovieListViewModel(get(), get()) }
     single { MovieListRepository(get()) }
-    viewModel { DetailsViewModel(get(), get()) }
-    single { DetailsRepository(get()) }
+    viewModel { MovieDetailsViewModel(get(), get()) }
+    single { MovieDetailsRepository(get()) }
     viewModel { ExploreViewModel(get(), get()) }
     single { ExploreRepository(get()) }
+    viewModel { ActorDetailsViewModel(get()) }
+    single { ActorDetailsRepository(get()) }
 
 }

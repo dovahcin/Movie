@@ -40,7 +40,9 @@ class ExploreFragment : Fragment() {
         )
     }
     private val showActorClick: (Actor) -> Unit = {
-        TODO()
+        findNavController().navigate(
+            ExploreFragmentDirections.actionExploreFragmentToActorDetailsFragment(it.id)
+        )
     }
 
     private val exploreAdapter = ExploreAdapter(showAllClick, showActorClick, showMovieClick)

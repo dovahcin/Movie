@@ -1,4 +1,4 @@
-package com.movie.android.presentation.features.details.adapter
+package com.movie.android.presentation.features.details.moviedetails.adapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView

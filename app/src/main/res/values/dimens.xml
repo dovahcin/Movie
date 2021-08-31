@@ -18,5 +18,7 @@
     <dimen name="xlTextSize">16sp</dimen>
     <dimen name="xxlTextSize">20sp</dimen>
     <dimen name="xxxlTextSize">32sp</dimen>
+    <dimen name="xxxlmargin">32dp</dimen>
+    <dimen name="xxxxlmargin">64dp</dimen>
 
 </resources>
