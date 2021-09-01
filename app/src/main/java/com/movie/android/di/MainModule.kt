@@ -46,9 +46,9 @@ val statesModule = module {
 
 val mainModule = module {
 
-    viewModel{ MovieListViewModel(get(), get()) }
+    viewModel{ MovieListViewModel(get()) }
     single { MovieListRepository(get()) }
-    viewModel { MovieDetailsViewModel(get(), get()) }
+    viewModel { MovieDetailsViewModel(get()) }
     single { MovieDetailsRepository(get()) }
     viewModel { ExploreViewModel(get(), get()) }
     single { ExploreRepository(get()) }

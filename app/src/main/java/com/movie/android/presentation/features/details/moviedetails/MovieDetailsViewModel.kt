@@ -14,13 +14,7 @@ import kotlinx.coroutines.launch
 
 class MovieDetailsViewModel(
     private val detailsRepository: MovieDetailsRepository,
-    private val state: SavedStateHandle
 ) : ViewModel() {
-
-    companion object {
-        private const val DETAILS_STATE = "DetailsState"
-        private const val DETAILS_MOVIE_ID = "DetailMovieId"
-    }
 
     private val _uiState = MutableStateFlow<MovieDetailUiState>(
         Success()

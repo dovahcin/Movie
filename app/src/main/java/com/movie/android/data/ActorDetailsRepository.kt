@@ -1,6 +1,7 @@
 package com.movie.android.data
 
 import android.util.Log
+import com.movie.android.data.MovieListRepository.Companion.DEFAULT_PAGE
 import com.movie.android.data.network.ApiServices
 import com.movie.android.domain.ActorsDataModel
 import com.movie.android.domain.ExploreItem
@@ -14,7 +15,7 @@ class ActorDetailsRepository(private val api: ApiServices) {
     fun getActorDetails(personId: Int, page: Int) = flow {
         val actorDetails = api.getActorDetails(personId.toString())
         val actorList = api.getArtists(page.toString())
-        val actorMovies = api.getActorMovies(personId.toString())
+        val actorMovies = api.getActorMovies(personId.toString(), DEFAULT_PAGE.toString())
             .also {
                 it.id = ExploreItem.Type.ActorMovieList.ordinal
                 Log.d("TAG", "${it.id}")
