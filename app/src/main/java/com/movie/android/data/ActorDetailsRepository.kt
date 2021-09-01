@@ -20,8 +20,9 @@ class ActorDetailsRepository(private val api: ApiServices) {
                 Log.d("TAG", "${it.id}")
             }
 
-
-        actorMovies.results = (actorMovies.results.take(10) + Movie.createShowMore()).toMutableList()
+        if (actorMovies.results.size >= 10) {
+            actorMovies.results =  (actorMovies.results.take(10) + Movie.createShowMore()).toMutableList()
+        }
 
         emit(ActorsDataModel(
             actorDetails,

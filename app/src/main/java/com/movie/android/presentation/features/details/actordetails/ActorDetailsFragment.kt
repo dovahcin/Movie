@@ -22,7 +22,6 @@ import com.movie.android.presentation.utils.visible
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
-
 class ActorDetailsFragment : Fragment() {
 
     private var _binding: FragmentActorDetailsBinding? = null
@@ -91,14 +90,44 @@ class ActorDetailsFragment : Fragment() {
     }
 
     private fun showDetails(actorDetails: ActorDetails) {
-        if (actorDetails.expireDate() == "-") {
-            binding.deathLayout.visible(false)
+        when {
+            actorDetails.expireDate() == "-" -> binding.deathLayout.visible(false)
+            actorDetails.birthday == "" -> binding.birthLayout.visible(false)
+            actorDetails.place_of_birth == "" -> binding.birthPlaceLayout.visible(false)
+            actorDetails.biography == "" -> {
+                binding.textBiography.visible(false)
+                binding.biographyTitle.visible(false)
+            }
         }
         binding.banner.loadImage(actorDetails.profilePath)
         binding.actor = actorDetails
     }
 
     private fun showKnownMovies(actorMovies: MutableList<Movie>, listId: Int) {
+        if (actorMovies.size == 0) {
+            binding.knownForTitle.isVisible = false
+            binding.recyclerKnownFor.isVisible = false
+        }
         movieAdapter.update(actorMovies, listId)
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        if (isAllTextViewsGone()) {
+            binding.biographyTitle.isVisible = true
+            binding.biographyTitle.text = "Not much info about this artist to show."
+        }
+    }
+
+    private fun isAllTextViewsGone() =
+        !binding.deathLayout.isVisible
+                && !binding.birthLayout.isVisible
+                && !binding.birthPlaceLayout.isVisible
+                && !binding.textBiography.isVisible
+                && !binding.biographyTitle.isVisible
+                && !binding.recyclerKnownFor.isVisible
+                && !binding.knownForTitle.isVisible
+
 }
+

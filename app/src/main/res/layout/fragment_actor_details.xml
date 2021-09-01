@@ -79,7 +79,7 @@
                     tools:text="Leonardo Dicaprio" />
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/biographyTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/xlMargin"
@@ -102,11 +102,11 @@
                     android:textSize="@dimen/xlTextSize"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView"
+                    app:layout_constraintTop_toBottomOf="@+id/biographyTitle"
                     tools:text="Follows the personal and professional lives of a group of doctors at Seattle’s Grey Sloan Memorial Hospital." />
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/knownForTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/xlMargin"
@@ -125,8 +125,8 @@
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/textView2"
-                    app:layout_constraintTop_toBottomOf="@+id/textView2"
+                    app:layout_constraintStart_toStartOf="@+id/knownForTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/knownForTitle"
                     tools:listitem="@layout/item_movie_horizontal" />
 
                 <LinearLayout
@@ -138,6 +138,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/banner">
 
                     <LinearLayout
+                        android:id="@+id/birthLayout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/xlMargin"
@@ -196,6 +197,7 @@
 
 
                     <LinearLayout
+                        android:id="@+id/birthPlaceLayout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/xlMargin"
