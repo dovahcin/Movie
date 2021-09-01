@@ -1,6 +1,9 @@
 package com.movie.android.data.network
 
-import com.movie.android.domain.*
+import com.movie.android.domain.ActorDetails
+import com.movie.android.domain.ActorList
+import com.movie.android.domain.Details
+import com.movie.android.domain.MovieList
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -49,6 +52,6 @@ interface ApiServices {
     @GET("/3/discover/movie")
     suspend fun getActorMovies(
         @Query("with_people") personId: String
-    ): ActorMovies
+    ): MovieList
 
 }
