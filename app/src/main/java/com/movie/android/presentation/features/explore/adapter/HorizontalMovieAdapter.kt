@@ -3,7 +3,7 @@ package com.movie.android.presentation.features.explore.adapter
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.movie.android.domain.Movie
-import com.movie.android.presentation.features.details.moviedetails.adapter.HorizontalMovieHolder
+import com.movie.android.presentation.features.details.adapter.HorizontalMovieHolder
 
 class HorizontalMovieAdapter(
     private val showMovieClick: (Movie) -> Unit,

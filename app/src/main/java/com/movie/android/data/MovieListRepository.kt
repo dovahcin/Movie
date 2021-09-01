@@ -18,6 +18,7 @@ class MovieListRepository(private val api: ApiServices) {
             VerticalMovieList.ordinal -> emit(api.getPopularMoviesList(page.toString()))
             SimilarMovieList.ordinal -> emit(api.getSimilarMovies(movieId.toString(), page.toString()))
             RecommendedMovieList.ordinal -> emit(api.getRecommendationMovies(movieId.toString(), page.toString()))
+            ActorMovieList.ordinal -> emit(api.getActorMovies(movieId.toString()))
         }
 
     }.flowOn(Dispatchers.IO)

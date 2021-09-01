@@ -14,8 +14,8 @@ import com.movie.android.R
 import com.movie.android.databinding.FragmentMovieDetailsBinding
 import com.movie.android.domain.DetailsDataModel
 import com.movie.android.domain.Genre
-import com.movie.android.presentation.features.details.moviedetails.adapter.GenreAdapter
-import com.movie.android.presentation.features.details.moviedetails.adapter.HorizontalMovieAdapter
+import com.movie.android.presentation.features.details.adapter.GenreAdapter
+import com.movie.android.presentation.features.details.adapter.HorizontalMovieAdapter
 import com.movie.android.presentation.utils.loadImage
 import com.movie.android.presentation.utils.visible
 import kotlinx.coroutines.flow.collect

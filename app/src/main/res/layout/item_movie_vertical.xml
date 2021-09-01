@@ -11,21 +11,23 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/dark_background">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_marginStart="@dimen/mMargin"
-            android:layout_marginTop="@dimen/mMargin"
             android:scaleType="centerCrop"
+            android:layout_marginBottom="@dimen/lMargin"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="h,9:12"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/corneredImage"
             tools:ignore="ContentDescription"
-            tools:src="@drawable/ic_placeholder"
-            app:shapeAppearanceOverlay="@style/corneredImage"/>
+            tools:src="@drawable/ic_placeholder" />
 
         <TextView
             android:id="@+id/titleTextView"
@@ -35,7 +37,7 @@
             android:ellipsize="end"
             android:singleLine="true"
             android:text="@{result.original_title}"
-            android:textColor="@color/titleColor"
+            android:textColor="@color/white"
             android:textSize="@dimen/xxlTextSize"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView"
@@ -50,7 +52,7 @@
             android:ellipsize="end"
             android:lines="2"
             android:text="@{result.overview}"
-            android:textColor="@color/titleColor"
+            android:textColor="@color/white"
             android:textSize="@dimen/xlTextSize"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/titleTextView"
@@ -90,8 +92,8 @@
 
         <TextView
             android:id="@+id/rateTextView"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginTop="@dimen/mMargin"
             android:background="@drawable/bg_rate"
             android:gravity="center"
