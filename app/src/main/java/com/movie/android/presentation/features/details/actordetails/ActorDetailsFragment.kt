@@ -89,7 +89,6 @@ class ActorDetailsFragment : Fragment() {
 
     private fun showDetails(actorDetails: ActorDetails) {
         checkForEmptyViews(actorDetails)
-        Log.d("tag", "biography:${actorDetails.biography}")
         binding.banner.loadImage(actorDetails.profilePath)
         binding.actor = actorDetails
     }
