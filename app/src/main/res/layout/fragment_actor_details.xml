@@ -78,57 +78,6 @@
                     app:layout_constraintStart_toStartOf="@+id/banner"
                     tools:text="Leonardo Dicaprio" />
 
-                <TextView
-                    android:id="@+id/biographyTitle"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/xlMargin"
-                    android:layout_marginStart="@dimen/lMargin"
-                    android:text="@string/biography"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/xxlTextSize"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-                <TextView
-                    android:id="@+id/textBiography"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/lMargin"
-                    android:layout_marginTop="@dimen/xlMargin"
-                    android:layout_marginEnd="@dimen/lMargin"
-                    android:text="@{actor.biography}"
-                    android:textColor="@color/lightgray"
-                    android:textSize="@dimen/xlTextSize"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/biographyTitle"
-                    tools:text="Follows the personal and professional lives of a group of doctors at Seattle’s Grey Sloan Memorial Hospital." />
-
-                <TextView
-                    android:id="@+id/knownForTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/xlMargin"
-                    android:text="Known for"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/xxlTextSize"
-                    app:layout_constraintStart_toStartOf="@+id/textBiography"
-                    app:layout_constraintTop_toBottomOf="@+id/textBiography" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerKnownFor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/xlMargin"
-                    android:orientation="horizontal"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/knownForTitle"
-                    app:layout_constraintTop_toBottomOf="@+id/knownForTitle"
-                    tools:listitem="@layout/item_movie_horizontal" />
-
                 <LinearLayout
                     android:id="@+id/linearLayout"
                     android:layout_width="wrap_content"
@@ -145,7 +94,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/birthText"
+                            android:id="@+id/birthTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/lMargin"
@@ -154,7 +103,7 @@
                             android:textSize="@dimen/xlTextSize" />
 
                         <TextView
-                            android:id="@+id/birthDate"
+                            android:id="@+id/birthText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/mMargin"
@@ -173,25 +122,22 @@
                         android:orientation="horizontal">
 
                         <TextView
+                            android:id="@+id/deathTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/lMargin"
                             android:text="@string/deathday"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/xlTextSize"
-                            app:layout_constraintStart_toStartOf="@+id/birthText"
-                            app:layout_constraintTop_toBottomOf="@+id/birthText" />
+                            android:textSize="@dimen/xlTextSize" />
 
                         <TextView
+                            android:id="@+id/deathText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/mMargin"
                             android:text="@{actor.expireDate()}"
                             android:textColor="@color/yellow1"
                             android:textSize="@dimen/xlTextSize"
-                            app:layout_constraintBottom_toBottomOf="@+id/deathText"
-                            app:layout_constraintStart_toEndOf="@+id/deathText"
-                            app:layout_constraintTop_toTopOf="@+id/deathText"
                             tools:text="2008-05-10" />
                     </LinearLayout>
 
@@ -204,7 +150,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/placeOfText"
+                            android:id="@+id/placeOfTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/lMargin"
@@ -213,7 +159,7 @@
                             android:textSize="@dimen/xlTextSize" />
 
                         <TextView
-                            android:id="@+id/placeOfBirth"
+                            android:id="@+id/placeOfText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/lMargin"
@@ -223,8 +169,74 @@
                             tools:text="Washington Dc" />
                     </LinearLayout>
 
+                    <LinearLayout
+                        android:id="@+id/biographyLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/xlMargin"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/biographyTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/lMargin"
+                            android:layout_marginTop="@dimen/xlMargin"
+                            android:text="@string/biography"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/xxlTextSize" />
+
+                        <TextView
+                            android:id="@+id/biographyText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/lMargin"
+                            android:layout_marginTop="@dimen/xlMargin"
+                            android:layout_marginEnd="@dimen/lMargin"
+                            android:text="@{actor.biography}"
+                            android:textColor="@color/lightgray"
+                            android:textSize="@dimen/xlTextSize"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            tools:text="Follows the personal and professional lives of a group of doctors at Seattle’s Grey Sloan Memorial Hospital." />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/knownForLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/xlMargin"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/knownForTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/lMargin"
+                            android:layout_marginTop="@dimen/lMargin"
+                            android:text="@string/known_for"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/xxlTextSize" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerKnownFor"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/xlMargin"
+                            android:orientation="horizontal"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:listitem="@layout/item_movie_horizontal" />
+
+                    </LinearLayout>
+
+
                 </LinearLayout>
 
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/group"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:constraint_referenced_ids="linearLayout" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

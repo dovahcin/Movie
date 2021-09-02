@@ -1,6 +1,5 @@
 package com.movie.android.data
 
-import android.util.Log
 import com.movie.android.data.MovieListRepository.Companion.DEFAULT_PAGE
 import com.movie.android.data.network.ApiServices
 import com.movie.android.domain.ActorsDataModel
@@ -18,7 +17,6 @@ class ActorDetailsRepository(private val api: ApiServices) {
         val actorMovies = api.getActorMovies(personId.toString(), DEFAULT_PAGE.toString())
             .also {
                 it.id = ExploreItem.Type.ActorMovieList.ordinal
-                Log.d("TAG", "${it.id}")
             }
 
         if (actorMovies.results.size >= 10) {

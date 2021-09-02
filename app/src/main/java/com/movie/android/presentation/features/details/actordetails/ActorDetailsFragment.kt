@@ -43,7 +43,6 @@ class ActorDetailsFragment : Fragment() {
                 args.personId
             )
         )
-        Log.d("tag", "listId : $listId personId: ${args.personId}")
     }
 
     private val movieAdapter = HorizontalMovieAdapter(showMovieClick, showMoreClick)
@@ -69,7 +68,6 @@ class ActorDetailsFragment : Fragment() {
                             uiState.actorsDataModel.actorMovies.results,
                             uiState.actorsDataModel.actorMovies.id
                         )
-                        Log.d("TAG", "id : $id")
                         showDetails(uiState.actorsDataModel.actorDetails)
                     }
                 }
@@ -90,15 +88,8 @@ class ActorDetailsFragment : Fragment() {
     }
 
     private fun showDetails(actorDetails: ActorDetails) {
-        when {
-            actorDetails.expireDate() == "-" -> binding.deathLayout.visible(false)
-            actorDetails.birthday == "" -> binding.birthLayout.visible(false)
-            actorDetails.place_of_birth == "" -> binding.birthPlaceLayout.visible(false)
-            actorDetails.biography == "" -> {
-                binding.textBiography.visible(false)
-                binding.biographyTitle.visible(false)
-            }
-        }
+        checkForEmptyViews(actorDetails)
+        Log.d("tag", "biography:${actorDetails.biography}")
         binding.banner.loadImage(actorDetails.profilePath)
         binding.actor = actorDetails
     }
@@ -113,7 +104,6 @@ class ActorDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         if (isAllTextViewsGone()) {
             binding.biographyTitle.isVisible = true
             binding.biographyTitle.text = "Not much info about this artist to show."
@@ -121,13 +111,18 @@ class ActorDetailsFragment : Fragment() {
     }
 
     private fun isAllTextViewsGone() =
-        !binding.deathLayout.isVisible
-                && !binding.birthLayout.isVisible
-                && !binding.birthPlaceLayout.isVisible
-                && !binding.textBiography.isVisible
-                && !binding.biographyTitle.isVisible
-                && !binding.recyclerKnownFor.isVisible
-                && !binding.knownForTitle.isVisible
+        !binding.group.isVisible
+
+    private fun checkForEmptyViews(actorDetails: ActorDetails) {
+            if(actorDetails.expireDate() == "-") binding.deathLayout.visible(false)
+            if(actorDetails.birthday == "") binding.birthLayout.visible(false)
+            if(actorDetails.place_of_birth == "") binding.birthPlaceLayout.visible(false)
+            if(actorDetails.biography == "") {
+                binding.biographyText.visible(false)
+                binding.biographyTitle.visible(false)
+            }
+
+    }
 
 }
 
