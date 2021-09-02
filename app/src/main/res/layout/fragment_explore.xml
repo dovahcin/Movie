@@ -1,18 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/dark_background"
+        android:orientation="vertical"
         tools:context=".presentation.features.explore.ExploreFragment">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginStart="@dimen/xlMargin"
+            android:layout_marginTop="@dimen/lMargin"
+            android:layout_marginEnd="@dimen/xlMargin"
+            android:layout_marginBottom="@dimen/lMargin"
+            app:cardBackgroundColor="@color/cardColor"
+            app:cardCornerRadius="8dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/clapperBoard"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="@dimen/lMargin"
+                    android:layout_marginTop="@dimen/lMargin"
+                    android:layout_marginBottom="@dimen/lMargin"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_clapperboard"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/description" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/lightgray"
+                    android:textSize="@dimen/xlTextSize"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="MovieApp" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="@dimen/lMargin"
+                    android:layout_marginEnd="@dimen/lMargin"
+                    android:layout_marginBottom="@dimen/lMargin"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_baseline_search_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/description" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/exploreRecyclerView"
+            android:layout_marginStart="@dimen/lMargin"
+            android:layout_marginEnd="@dimen/lMargin"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem=""/>
-
+            tools:listitem="" />
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -20,7 +82,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:theme="@style/RotatingProgressBar"/>
+            android:theme="@style/RotatingProgressBar" />
 
-    </FrameLayout>
+    </LinearLayout>
 </layout>
