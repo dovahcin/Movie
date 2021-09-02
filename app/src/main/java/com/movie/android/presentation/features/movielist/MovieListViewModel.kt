@@ -1,6 +1,5 @@
 package com.movie.android.presentation.features.movielist
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.movie.android.data.MovieListRepository
@@ -14,12 +13,7 @@ import kotlinx.coroutines.launch
 
 class MovieListViewModel(
     private val repository: MovieListRepository,
-    private val state: SavedStateHandle
 ) : ViewModel() {
-
-    companion object {
-        private const val MOVIELIST_KEY = "MovieList"
-    }
 
     private val _uiState = MutableStateFlow<MovieListUiState>(Success())
     val uiState: StateFlow<MovieListUiState> = _uiState
@@ -27,7 +21,6 @@ class MovieListViewModel(
     private val coroutineExceptionHandler = CoroutineExceptionHandler { _, exception ->
         _uiState.value = Error(exception)
     }
-
 
     fun getMovies(listId: Int, page: Int, movieId: Int) {
         if (uiState.value is Success) {

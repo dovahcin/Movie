@@ -51,7 +51,8 @@ interface ApiServices {
 
     @GET("/3/discover/movie")
     suspend fun getActorMovies(
-        @Query("with_people") personId: String
+        @Query("with_people") personId: String,
+        @Query("page") page: String
     ): MovieList
 
 }
