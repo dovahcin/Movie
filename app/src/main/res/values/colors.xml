@@ -17,4 +17,5 @@
     <color name="dark_background">#202125</color>
     <color name="lightgray">#9BA0A6</color>
     <color name="chipbg">#2A2A2A</color>
+    <color name="cardColor">#303135</color>
 </resources>
