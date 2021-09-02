@@ -9,7 +9,7 @@ data class ActorsDataModel(
 data class ActorDetails(
     val adult: Boolean = false,
     val also_known_as: List<Any> = listOf(),
-    val biography: String = "",
+    var biography: String = "",
     val birthday: String = "",
     val deathday: Any? = "",
     val gender: Int = -1,

@@ -13,4 +13,5 @@
     <string name="birthday">Birthday :</string>
     <string name="deathday">Deathday :</string>
     <string name="place_of_birth">Place of birth :</string>
+    <string name="known_for">Known for</string>
 </resources>
