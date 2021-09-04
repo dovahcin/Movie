@@ -97,6 +97,9 @@
                 app:argType="integer"
                 app:nullable="false"/>
         </action>
+        <action
+            android:id="@+id/action_exploreFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
     </fragment>
     <fragment
         android:id="@+id/actorDetailsFragment"
@@ -127,5 +130,9 @@
                 app:nullable="false"/>
         </action>
     </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.movie.android.presentation.features.SearchFragment"
+        android:label="SearchFragment" />
 
 </navigation>

@@ -2,7 +2,7 @@
 <resources>
 
     <style name="DarkProgressBar">
-        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="colorAccent">@color/coloProgressbar</item>
     </style>
     <style name="RotatingProgressBar">
         <item name="colorAccent">@color/coloProgressbar</item>
