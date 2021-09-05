@@ -11,6 +11,7 @@
         tools:context=".presentation.features.explore.ExploreFragment">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/searchBar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:layout_marginStart="@dimen/xlMargin"
@@ -18,7 +19,8 @@
             android:layout_marginEnd="@dimen/xlMargin"
             android:layout_marginBottom="@dimen/lMargin"
             app:cardBackgroundColor="@color/cardColor"
-            app:cardCornerRadius="8dp">
+            app:cardCornerRadius="8dp"
+            android:transitionName="search_explore">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

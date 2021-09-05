@@ -8,6 +8,8 @@ import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.FragmentNavigator
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
@@ -72,6 +74,13 @@ class ExploreFragment : Fragment() {
                 }
                 showLoadingView(uiState is ExploreUiState.Loading)
             }
+        }
+
+        binding.searchBar.setOnClickListener {
+            val extras = FragmentNavigatorExtras(binding.searchBar to "search_bar")
+            findNavController().navigate(
+                ExploreFragmentDirections.actionExploreFragmentToSearchFragment(), extras
+            )
         }
 
         return binding.root
