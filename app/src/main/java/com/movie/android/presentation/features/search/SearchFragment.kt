@@ -1,6 +1,8 @@
 package com.movie.android.presentation.features.search
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +15,9 @@ import com.google.android.material.snackbar.Snackbar
 import com.movie.android.R
 import com.movie.android.databinding.FragmentSearchBinding
 import com.movie.android.presentation.features.search.adapter.SearchAdapter
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -43,7 +48,33 @@ class SearchFragment : Fragment() {
 
         binding.recyclerSearch.adapter = searchAdapter
 
-        viewModel.loadDataForSearchList("Jungle Cruise")
+        searchBar.addTextChangedListener(object : TextWatcher {
+            private var searchFor = ""
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if (s.toString() == "")
+                    return
+
+                val searchText = s.toString()
+                if (searchText == searchFor)
+                    return
+
+                searchFor = searchText
+                CoroutineScope(Dispatchers.Main).launch {
+                    delay(300)
+                    if (searchFor != searchText)
+                        return@launch
+
+                    viewModel.loadDataForSearchList(searchFor)
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+            }
+        })
 
         launchState()
 

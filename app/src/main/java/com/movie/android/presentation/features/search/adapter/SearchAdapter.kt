@@ -18,8 +18,10 @@ class SearchAdapter(
     override fun getItemCount(): Int = items.size
 
     fun update(items: MutableList<Movie>) {
+        val currentSize = this.items.size
         this.items.clear()
         this.items.addAll(items)
+        notifyItemRangeRemoved(0, currentSize)
         notifyItemRangeInserted(itemCount, items.size)
     }
 }

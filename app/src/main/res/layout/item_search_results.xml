@@ -46,13 +46,14 @@
             android:id="@+id/cross"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginEnd="@dimen/xlMargin"
+            android:layout_marginStart="150dp"
+            android:contentDescription="@string/description"
             android:scaleType="fitEnd"
             android:src="@drawable/ic_baseline_close_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/description"/>
+            app:layout_constraintStart_toEndOf="@+id/textName"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

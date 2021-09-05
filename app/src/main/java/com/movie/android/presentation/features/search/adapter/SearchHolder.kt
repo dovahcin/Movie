@@ -1,6 +1,5 @@
 package com.movie.android.presentation.features.search.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -15,12 +14,6 @@ class SearchHolder(val binding: ItemSearchResultsBinding) : RecyclerView.ViewHol
             SearchHolder(
                 ItemSearchResultsBinding.inflate(LayoutInflater.from(parent.context), null, false)
             )
-    }
-
-    init {
-        itemView.setOnClickListener {
-            Log.d("itemView", "Touched")
-        }
     }
 
     fun bind(queryResult: Movie) {
