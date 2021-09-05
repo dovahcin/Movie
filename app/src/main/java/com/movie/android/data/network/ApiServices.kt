@@ -55,4 +55,9 @@ interface ApiServices {
         @Query("page") page: String
     ): MovieList
 
+    @GET("/3/search/movie")
+    suspend fun getQueryResults(
+        @Query("query") query: String
+    ): MovieList
+
 }

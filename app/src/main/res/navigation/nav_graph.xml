@@ -132,7 +132,7 @@
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.movie.android.presentation.features.SearchFragment"
+        android:name="com.movie.android.presentation.features.search.SearchFragment"
         android:label="SearchFragment" />
 
 </navigation>
