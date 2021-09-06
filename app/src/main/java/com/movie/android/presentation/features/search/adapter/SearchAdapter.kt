@@ -6,12 +6,12 @@ import com.movie.android.domain.Movie
 
 class SearchAdapter(
     private var items: MutableList<Movie> = mutableListOf()
-) : RecyclerView.Adapter<SearchHolder>() {
+) : RecyclerView.Adapter<SearchResultHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchHolder =
-        SearchHolder.create(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchResultHolder =
+        SearchResultHolder.create(parent)
 
-    override fun onBindViewHolder(holder: SearchHolder, position: Int) {
+    override fun onBindViewHolder(holder: SearchResultHolder, position: Int) {
         holder.bind(items[position])
     }
 
