@@ -2,16 +2,14 @@ package com.movie.android.di
 
 import androidx.lifecycle.SavedStateHandle
 import com.movie.android.BuildConfig
-import com.movie.android.data.ActorDetailsRepository
-import com.movie.android.data.ExploreRepository
-import com.movie.android.data.MovieDetailsRepository
-import com.movie.android.data.MovieListRepository
+import com.movie.android.data.*
 import com.movie.android.data.network.ApiInterceptor
 import com.movie.android.data.network.ApiServices
 import com.movie.android.presentation.features.details.actordetails.ActorDetailsViewModel
 import com.movie.android.presentation.features.details.moviedetails.MovieDetailsViewModel
 import com.movie.android.presentation.features.explore.ExploreViewModel
 import com.movie.android.presentation.features.movielist.MovieListViewModel
+import com.movie.android.presentation.features.search.SearchViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -54,5 +52,7 @@ val mainModule = module {
     single { ExploreRepository(get()) }
     viewModel { ActorDetailsViewModel(get()) }
     single { ActorDetailsRepository(get()) }
+    viewModel { SearchViewModel(get()) }
+    single { SearchRepository(get()) }
 
 }

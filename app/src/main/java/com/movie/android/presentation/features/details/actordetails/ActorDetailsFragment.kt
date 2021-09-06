@@ -1,7 +1,6 @@
 package com.movie.android.presentation.features.details.actordetails
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -121,6 +120,11 @@ class ActorDetailsFragment : Fragment() {
                 binding.biographyTitle.visible(false)
             }
 
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
 }
