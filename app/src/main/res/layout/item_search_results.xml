@@ -45,6 +45,23 @@
             tools:text="Jungle Cruise" />
 
         <TextView
+            android:id="@+id/textDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/xlMargin"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="@{queryResult.release_date}"
+            android:textColor="@color/yellow1"
+            android:textSize="@dimen/xxlTextSize"
+            app:layout_constraintBottom_toBottomOf="@+id/posterPath"
+            app:layout_constraintEnd_toEndOf="@+id/textOverview"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/posterPath"
+            app:layout_constraintTop_toBottomOf="@+id/textOverview"
+            tools:text="2021-8-22" />
+
+        <TextView
             android:id="@+id/textOverview"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -52,15 +69,13 @@
             android:layout_marginTop="@dimen/lMargin"
             android:layout_marginEnd="@dimen/xlMargin"
             android:ellipsize="end"
-            android:lines="3"
+            android:lines="2"
             android:text="@{queryResult.overview}"
             android:textColor="@color/white"
             android:textSize="@dimen/xlTextSize"
-            app:layout_constraintBottom_toBottomOf="@+id/posterPath"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/posterPath"
             app:layout_constraintTop_toBottomOf="@+id/textName"
-            app:layout_constraintVertical_bias="0.6"
             tools:text="when The Rock and his friends stuck in" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

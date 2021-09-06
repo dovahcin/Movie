@@ -4,8 +4,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.movie.android.domain.Movie
 
-class SearchAdapter(
-    private var items: MutableList<Movie> = mutableListOf()
+class SearchResultAdapter(
+    private val itemClick: (String, Int) -> Unit,
+    var items: MutableList<Movie> = mutableListOf(),
 ) : RecyclerView.Adapter<SearchResultHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchResultHolder =
@@ -13,6 +14,9 @@ class SearchAdapter(
 
     override fun onBindViewHolder(holder: SearchResultHolder, position: Int) {
         holder.bind(items[position])
+        holder.itemView.setOnClickListener {
+            itemClick.invoke(items[position].original_title, items[position].id)
+        }
     }
 
     override fun getItemCount(): Int = items.size

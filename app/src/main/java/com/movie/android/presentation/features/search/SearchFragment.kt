@@ -7,14 +7,18 @@ import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.movie.android.R
 import com.movie.android.databinding.FragmentSearchBinding
-import com.movie.android.presentation.features.search.adapter.SearchAdapter
+import com.movie.android.domain.History
+import com.movie.android.presentation.features.search.adapter.HistoryAdapter
+import com.movie.android.presentation.features.search.adapter.SearchResultAdapter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -29,7 +33,20 @@ class SearchFragment : Fragment() {
 
     private val viewModel: SearchViewModel by viewModel()
 
-    private val searchAdapter = SearchAdapter()
+    private val resultClick: (String, Int) -> Unit = { title, id ->
+        viewModel.insertTitles(History(title, id))
+        findNavController().navigate(
+            SearchFragmentDirections.actionSearchFragmentToDetailsFragment(id)
+        )
+    }
+
+    private val deleteClick: (Int) -> Unit = {
+        viewModel.deleteTitle(it)
+        viewModel.loadDataForSearchList("0")
+    }
+
+    private val resultAdapter = SearchResultAdapter(resultClick)
+    private val historyAdapter = HistoryAdapter(deleteClick)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,13 +58,51 @@ class SearchFragment : Fragment() {
         val animation = TransitionInflater.from(context)
             .inflateTransition(android.R.transition.move)
 
+        viewModel.loadDataForSearchList("0")
+
         sharedElementEnterTransition = animation
         sharedElementReturnTransition = animation
 
         val searchBar = binding.searchBar
 
-        binding.recyclerSearch.adapter = searchAdapter
+        binding.recyclerSearch.adapter = resultAdapter
+        binding.recyclerHistory.adapter = historyAdapter
 
+        launchStates()
+
+        filterTheList(searchBar)
+
+        binding.back.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
+
+        return binding.root
+    }
+
+    private fun launchStates() {
+        lifecycleScope.launch {
+            viewModel.uiState.collect { uiState ->
+                when (uiState) {
+                    is SearchUiState.Failure -> showError(uiState.exception)
+                    is SearchUiState.Success -> {
+                        resultAdapter.update(uiState.searchDataModel.movies.results)
+                        historyAdapter.update(uiState.searchDataModel.histories)
+                    }
+                }
+                showLoadingView(uiState is SearchUiState.Loading)
+            }
+        }
+    }
+
+    private fun showError(exception: Throwable) {
+        Snackbar.make(binding.root, exception.localizedMessage!!, 10000).show()
+    }
+
+    private fun showLoadingView(isVisible: Boolean) {
+        binding.progressBar.isVisible = isVisible
+    }
+
+    private fun filterTheList(searchBar: EditText) {
         searchBar.addTextChangedListener(object : TextWatcher {
             private var searchFor = ""
 
@@ -55,8 +110,14 @@ class SearchFragment : Fragment() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (s.toString() == "")
+                if (s.toString() == "") {
+                    binding.recyclerHistory.isVisible = true
+                    binding.recyclerSearch.isVisible = false
                     return
+                } else {
+                    binding.recyclerSearch.isVisible = true
+                    binding.recyclerHistory.isVisible = false
+                }
 
                 val searchText = s.toString()
                 if (searchText == searchFor)
@@ -75,33 +136,6 @@ class SearchFragment : Fragment() {
             override fun afterTextChanged(s: Editable?) {
             }
         })
-
-        launchState()
-
-        return binding.root
-    }
-
-    private fun launchState() {
-        lifecycleScope.launch {
-            viewModel.uiState.collect { uiState ->
-                when (uiState) {
-                    is SearchUiState.Failure -> showError(uiState.exception)
-                    is SearchUiState.Success -> {
-                        searchAdapter.update(uiState.movies.results)
-                    }
-                }
-                showLoadingView(uiState is SearchUiState.Loading)
-            }
-        }
-    }
-
-    private fun showError(exception: Throwable) {
-        Snackbar.make(binding.root, exception.localizedMessage!!, 10000).show()
-    }
-
-    private fun showLoadingView(isVisible: Boolean) {
-        binding.progressBar.isVisible = isVisible
-        binding.recyclerSearch.isVisible = !isVisible
     }
 
     override fun onDestroy() {
