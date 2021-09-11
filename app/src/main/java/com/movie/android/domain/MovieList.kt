@@ -1,5 +1,10 @@
 package com.movie.android.domain
 
+data class SearchDataModel(
+    val movies: MovieList = MovieList(),
+    val histories: MutableList<History> = mutableListOf()
+)
+
 val movieListInitialValue = MovieList()
 data class MovieList(
     var id: Int = 0,
@@ -11,3 +16,4 @@ data class MovieList(
     fun isInitialized() =
         this == movieListInitialValue
 }
+

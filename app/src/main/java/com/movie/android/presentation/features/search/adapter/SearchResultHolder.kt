@@ -7,7 +7,9 @@ import com.movie.android.databinding.ItemSearchResultsBinding
 import com.movie.android.domain.Movie
 import com.movie.android.presentation.utils.loadImage
 
-class SearchResultHolder(val binding: ItemSearchResultsBinding) : RecyclerView.ViewHolder(binding.root) {
+class SearchResultHolder(
+    val binding: ItemSearchResultsBinding,
+) : RecyclerView.ViewHolder(binding.root) {
 
     companion object {
         fun create(parent: ViewGroup) =
