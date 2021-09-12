@@ -19,7 +19,6 @@ import com.movie.android.databinding.FragmentSearchBinding
 import com.movie.android.domain.History
 import com.movie.android.presentation.features.search.adapter.HistoryAdapter
 import com.movie.android.presentation.features.search.adapter.SearchResultAdapter
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
@@ -27,26 +26,31 @@ import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchFragment : Fragment() {
-
     private var _binding: FragmentSearchBinding? = null
     val binding get() = _binding!!
 
     private val viewModel: SearchViewModel by viewModel()
 
-    private val resultClick: (String, Int) -> Unit = { title, id ->
-        viewModel.insertTitles(History(title, id))
+    private val resultClick: (String, Int) -> Unit = { title, movieId ->
+        viewModel.insertTitles(History(title))
+        viewModel.navigated()
         findNavController().navigate(
-            SearchFragmentDirections.actionSearchFragmentToDetailsFragment(id)
+            SearchFragmentDirections.actionSearchFragmentToDetailsFragment(movieId)
         )
+    }
+    private val historyClick: (String) -> Unit = {
+        viewModel.loadDataForSearchList(it)
+        binding.recyclerHistory.isVisible = false
+        binding.recyclerSearch.isVisible = true
+        binding.searchBar.setText(it)
     }
 
     private val deleteClick: (Int) -> Unit = {
         viewModel.deleteTitle(it)
-        viewModel.loadDataForSearchList("0")
+        viewModel.loadDataForSearchList("")
     }
 
-    private val resultAdapter = SearchResultAdapter(resultClick)
-    private val historyAdapter = HistoryAdapter(deleteClick)
+    private val historyAdapter = HistoryAdapter(deleteClick, historyClick)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,19 +62,21 @@ class SearchFragment : Fragment() {
         val animation = TransitionInflater.from(context)
             .inflateTransition(android.R.transition.move)
 
-        viewModel.loadDataForSearchList("0")
+        viewModel.loadDataForSearchList("")
 
         sharedElementEnterTransition = animation
         sharedElementReturnTransition = animation
 
         val searchBar = binding.searchBar
 
+        val resultAdapter = SearchResultAdapter(resultClick, "")
+
         binding.recyclerSearch.adapter = resultAdapter
         binding.recyclerHistory.adapter = historyAdapter
 
-        launchStates()
+        launchStates(resultAdapter)
 
-        filterTheList(searchBar)
+        filterTheList(searchBar, resultAdapter)
 
         binding.back.setOnClickListener {
             requireActivity().onBackPressed()
@@ -79,7 +85,7 @@ class SearchFragment : Fragment() {
         return binding.root
     }
 
-    private fun launchStates() {
+    private fun launchStates(resultAdapter: SearchResultAdapter) {
         lifecycleScope.launch {
             viewModel.uiState.collect { uiState ->
                 when (uiState) {
@@ -102,7 +108,7 @@ class SearchFragment : Fragment() {
         binding.progressBar.isVisible = isVisible
     }
 
-    private fun filterTheList(searchBar: EditText) {
+    private fun filterTheList(searchBar: EditText, resultAdapter: SearchResultAdapter) {
         searchBar.addTextChangedListener(object : TextWatcher {
             private var searchFor = ""
 
@@ -110,7 +116,7 @@ class SearchFragment : Fragment() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (s.toString() == "") {
+                if (s.isNullOrEmpty()) {
                     binding.recyclerHistory.isVisible = true
                     binding.recyclerSearch.isVisible = false
                     return
@@ -124,12 +130,13 @@ class SearchFragment : Fragment() {
                     return
 
                 searchFor = searchText
-                CoroutineScope(Dispatchers.Main).launch {
+                lifecycleScope.launch(Dispatchers.IO) {
                     delay(300)
                     if (searchFor != searchText)
                         return@launch
 
                     viewModel.loadDataForSearchList(searchFor)
+                    resultAdapter.updateText(searchFor)
                 }
             }
 

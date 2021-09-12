@@ -6,6 +6,7 @@ import com.movie.android.domain.Movie
 
 class SearchResultAdapter(
     private val itemClick: (String, Int) -> Unit,
+    private var searchQuery: String,
     var items: MutableList<Movie> = mutableListOf(),
 ) : RecyclerView.Adapter<SearchResultHolder>() {
 
@@ -15,7 +16,7 @@ class SearchResultAdapter(
     override fun onBindViewHolder(holder: SearchResultHolder, position: Int) {
         holder.bind(items[position])
         holder.itemView.setOnClickListener {
-            itemClick.invoke(items[position].original_title, items[position].id)
+            itemClick.invoke(searchQuery, items[position].id)
         }
     }
 
@@ -27,5 +28,9 @@ class SearchResultAdapter(
         this.items.addAll(items)
         notifyItemRangeRemoved(0, currentSize)
         notifyItemRangeInserted(itemCount, items.size)
+    }
+
+    fun updateText(searchQuery: String) {
+        this.searchQuery = searchQuery
     }
 }

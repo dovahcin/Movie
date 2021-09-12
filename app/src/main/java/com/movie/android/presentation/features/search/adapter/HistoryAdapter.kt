@@ -6,6 +6,7 @@ import com.movie.android.domain.History
 
 class HistoryAdapter(
     private val crossClick: (Int) -> Unit,
+    private val textClick: (String) -> Unit,
     private var items: MutableList<History> = mutableListOf()
 ) : RecyclerView.Adapter<HistoryHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryHolder =
@@ -15,6 +16,9 @@ class HistoryAdapter(
         holder.bind(items[position])
         holder.binding.cross.setOnClickListener {
             crossClick.invoke(items[position].id!!)
+        }
+        holder.binding.textName.setOnClickListener {
+            textClick.invoke(holder.binding.textName.text.toString())
         }
     }
 

@@ -7,6 +7,6 @@ import com.movie.android.domain.History
 @Database(entities = [History::class], version = 1)
 abstract class HistoryDatabase : RoomDatabase() {
 
-    abstract fun historyDao(): HistoryDao
+    abstract fun searchHistory(): SearchHistory
 
 }

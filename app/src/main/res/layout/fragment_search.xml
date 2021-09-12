@@ -26,6 +26,7 @@
             android:layout_height="?attr/actionBarSize"
             android:layout_marginStart="@dimen/lMargin"
             android:hint="@string/search_movie"
+            android:backgroundTint="@color/lightgray"
             android:textColor="@color/lightgray"
             android:textColorHint="@color/lightgray"
             app:layout_constraintEnd_toEndOf="parent"

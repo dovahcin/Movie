@@ -1,9 +1,14 @@
 package com.movie.android.domain
 
+val searchInitialValue = SearchDataModel()
 data class SearchDataModel(
     val movies: MovieList = MovieList(),
     val histories: MutableList<History> = mutableListOf()
-)
+) {
+    fun isInitialValue() =
+        this == searchInitialValue
+
+}
 
 val movieListInitialValue = MovieList()
 data class MovieList(

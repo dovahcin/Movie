@@ -51,7 +51,7 @@ val databaseModule = module {
         Room.databaseBuilder(
             androidContext(),
             HistoryDatabase::class.java,
-            "History_Database"
+            "movie_db"
         ).build()
     }
 }
@@ -70,7 +70,7 @@ val mainModule = module {
     single { ExploreRepository(get()) }
     viewModel { ActorDetailsViewModel(get()) }
     single { ActorDetailsRepository(get()) }
-    viewModel { SearchViewModel(get(), get()) }
+    viewModel { SearchViewModel(get(), get(), get()) }
     single { SearchRepository(get(), get()) }
 
 }
