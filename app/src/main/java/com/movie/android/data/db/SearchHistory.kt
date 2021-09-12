@@ -8,7 +8,7 @@ import com.movie.android.domain.History
 
 
 @Dao
-interface HistoryDao {
+interface SearchHistory {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(history: History)

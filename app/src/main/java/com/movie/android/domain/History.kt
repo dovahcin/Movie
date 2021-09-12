@@ -6,6 +6,6 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "history_table")
 data class History(
     val movieTitle: String = "",
-    @PrimaryKey(autoGenerate = false)
+    @PrimaryKey(autoGenerate = true)
     val id: Int? = null
 )

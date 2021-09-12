@@ -33,25 +33,27 @@
                        app:layout_constraintTop_toTopOf="parent"
                        android:contentDescription="@string/description"/>
 
-                   <EditText
-                       android:id="@+id/searchBar"
-                       android:layout_width="match_parent"
-                       android:layout_height="match_parent"
-                       android:layout_marginStart="@dimen/lMargin"
-                       android:hint="@string/search_movie"
-                       android:textColor="@color/lightgray"
-                       android:textColorHint="@color/lightgray"
-                       app:layout_constraintEnd_toEndOf="parent"
-                       app:layout_constraintStart_toEndOf="@+id/back"
-                       app:layout_constraintTop_toTopOf="parent"
-                       tools:ignore="Autofill"
-                       android:inputType="text" />
+                         <EditText
+            android:id="@+id/searchBar"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginStart="@dimen/lMargin"
+            android:hint="@string/search_movie"
+            android:backgroundTint="@color/lightgray"
+            android:textColor="@color/lightgray"
+            android:textColorHint="@color/lightgray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/back"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="Autofill"
+            android:inputType="text" />
 
                </LinearLayout>
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 
         </com.google.android.material.appbar.AppBarLayout>
+
 
 
         <androidx.recyclerview.widget.RecyclerView
