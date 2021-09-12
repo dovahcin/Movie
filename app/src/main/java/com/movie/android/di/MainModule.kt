@@ -68,7 +68,7 @@ val mainModule = module {
     single { MovieDetailsRepository(get()) }
     viewModel { ExploreViewModel(get(), get()) }
     single { ExploreRepository(get()) }
-    viewModel { ActorDetailsViewModel(get()) }
+    viewModel { ActorDetailsViewModel(get(), get()) }
     single { ActorDetailsRepository(get()) }
     viewModel { SearchViewModel(get(), get()) }
     single { SearchRepository(get(), get()) }
