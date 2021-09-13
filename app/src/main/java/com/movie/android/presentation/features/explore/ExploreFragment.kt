@@ -8,7 +8,6 @@ import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -77,7 +76,9 @@ class ExploreFragment : Fragment() {
         }
 
         binding.searchBar.setOnClickListener {
-            val extras = FragmentNavigatorExtras(binding.searchBar to "search_bar")
+            val extras = FragmentNavigatorExtras(
+                binding.searchBar to "search_bar"
+            )
             findNavController().navigate(
                 ExploreFragmentDirections.actionExploreFragmentToSearchFragment(), extras
             )

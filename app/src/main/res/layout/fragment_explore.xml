@@ -7,6 +7,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.cardview.widget.CardView
+            android:id="@+id/searchBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginStart="@dimen/xlMargin"
+            android:layout_marginTop="@dimen/lMargin"
+            android:layout_marginEnd="@dimen/xlMargin"
+            android:layout_marginBottom="@dimen/lMargin"
+            android:transitionName="search_explore"
+            app:cardBackgroundColor="@color/cardColor"
+            app:cardCornerRadius="8dp">
 
             <com.google.android.material.appbar.AppBarLayout
                 android:layout_width="match_parent"
@@ -19,87 +30,73 @@
                     app:expandedTitleMarginStart="48dp"
                     app:layout_scrollFlags="scroll|enterAlways">
 
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/searchBar"
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="?attr/actionBarSize"
-                        android:layout_marginStart="@dimen/xlMargin"
-                        android:layout_marginTop="@dimen/lMargin"
-                        android:layout_marginEnd="@dimen/xlMargin"
-                        android:layout_marginBottom="@dimen/lMargin"
-                        android:transitionName="search_explore"
-                        app:cardBackgroundColor="@color/cardColor"
-                        app:cardCornerRadius="8dp"
-                        >
+                        android:layout_height="wrap_content">
 
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/clapperBoard"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="@dimen/lMargin"
+                            android:layout_marginTop="@dimen/lMargin"
+                            android:layout_marginBottom="@dimen/lMargin"
+                            android:contentDescription="@string/description"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/ic_clapperboard"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                            <ImageView
-                                android:id="@+id/clapperBoard"
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:layout_marginStart="@dimen/lMargin"
-                                android:layout_marginTop="@dimen/lMargin"
-                                android:layout_marginBottom="@dimen/lMargin"
-                                android:contentDescription="@string/description"
-                                android:scaleType="fitXY"
-                                android:src="@drawable/ic_clapperboard"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
+                        <TextView
+                            android:id="@+id/textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/lightgray"
+                            android:textSize="@dimen/xlTextSize"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="MovieApp" />
 
-                            <TextView
-                                android:id="@+id/textView"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/lightgray"
-                                android:textSize="@dimen/xlTextSize"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                tools:text="MovieApp" />
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="@dimen/lMargin"
+                            android:layout_marginEnd="@dimen/lMargin"
+                            android:layout_marginBottom="@dimen/lMargin"
+                            android:contentDescription="@string/description"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/ic_baseline_search_24"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                            <ImageView
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:layout_marginTop="@dimen/lMargin"
-                                android:layout_marginEnd="@dimen/lMargin"
-                                android:layout_marginBottom="@dimen/lMargin"
-                                android:contentDescription="@string/description"
-                                android:scaleType="fitXY"
-                                android:src="@drawable/ic_baseline_search_24"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
-                        </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    </androidx.cardview.widget.CardView>
                 </com.google.android.material.appbar.CollapsingToolbarLayout>
-
-
             </com.google.android.material.appbar.AppBarLayout>
+        </androidx.cardview.widget.CardView>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/exploreRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/lMargin"
+            android:layout_marginEnd="@dimen/lMargin"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:listitem="" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/exploreRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/lMargin"
-                android:layout_marginEnd="@dimen/lMargin"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                tools:listitem="" />
-
-            <ProgressBar
-                android:id="@+id/progressBar"
-                style="@style/Widget.AppCompat.ProgressBar"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:theme="@style/RotatingProgressBar" />
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="@style/Widget.AppCompat.ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:theme="@style/RotatingProgressBar" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
