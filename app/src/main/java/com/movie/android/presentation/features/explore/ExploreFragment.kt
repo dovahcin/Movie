@@ -8,7 +8,6 @@ import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,9 +29,14 @@ class ExploreFragment : Fragment() {
     private var _binding: FragmentExploreBinding? = null
     private val binding get() = _binding!!
 
-    private val showAllClick: (Type) -> Unit = { type ->
+    private val showAllMoviesClick: (Type) -> Unit = { type ->
         findNavController().navigate(
             ExploreFragmentDirections.actionExploreFragmentToMovieListFragment(type.ordinal, -1)
+        )
+    }
+    private val showAllActorsClick: () -> Unit = {
+        findNavController().navigate(
+            ExploreFragmentDirections.actionExploreFragmentToActorListFragment()
         )
     }
 
@@ -47,7 +51,7 @@ class ExploreFragment : Fragment() {
         )
     }
 
-    private val exploreAdapter = ExploreAdapter(showAllClick, showActorClick, showMovieClick)
+    private val exploreAdapter = ExploreAdapter(showAllMoviesClick,showAllActorsClick, showActorClick, showMovieClick)
     private val exploreViewModel: ExploreViewModel by viewModel()
 
     override fun onCreateView(

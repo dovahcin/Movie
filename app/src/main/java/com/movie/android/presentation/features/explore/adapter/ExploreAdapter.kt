@@ -9,7 +9,8 @@ import com.movie.android.domain.ExploreItem.*
 import com.movie.android.domain.Movie
 
 class ExploreAdapter(
-    private val showAllClick: (Type) -> Unit,
+    private val showAllMoviesClick: (Type) -> Unit,
+    private val showAllActorsClick: () -> Unit,
     private val actorClick: (Actor) -> Unit,
     private val movieClick: (Movie) -> Unit,
     private var items: MutableList<ExploreItem> = mutableListOf()
@@ -31,19 +32,19 @@ class ExploreAdapter(
             is VerticalMovieList -> {
                 (holder as VerticalMovieListHolder).bind(exploreItem)
                 holder.binding.showAll.setOnClickListener {
-                    showAllClick.invoke(exploreItem.viewType)
+                    showAllMoviesClick.invoke(exploreItem.viewType)
                 }
             }
             is HorizontalMovieList -> {
                 (holder as HorizontalMovieListHolder).bind(exploreItem)
                 holder.binding.showAll.setOnClickListener {
-                    showAllClick.invoke(exploreItem.viewType)
+                    showAllMoviesClick.invoke(exploreItem.viewType)
                 }
             }
             is Artists -> {
                 (holder as HorizontalActorListHolder).bind(exploreItem)
                 holder.binding.showAll.setOnClickListener {
-                    showAllClick.invoke(exploreItem.viewType)
+                    showAllActorsClick.invoke()
                 }
             }
             is Promotions -> TODO()

@@ -100,6 +100,9 @@
         <action
             android:id="@+id/action_exploreFragment_to_searchFragment"
             app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_exploreFragment_to_actorListFragment"
+            app:destination="@id/actorListFragment" />
     </fragment>
     <fragment
         android:id="@+id/actorDetailsFragment"
@@ -142,6 +145,14 @@
                 app:argType="integer"
                 app:nullable="false"/>
         </action>
+    </fragment>
+    <fragment
+        android:id="@+id/actorListFragment"
+        android:name="com.movie.android.presentation.features.actorlist.ActorListFragment"
+        android:label="ActorListFragment" >
+        <action
+            android:id="@+id/action_actorListFragment_to_actorDetailsFragment"
+            app:destination="@id/actorDetailsFragment" />
     </fragment>
 
 </navigation>
