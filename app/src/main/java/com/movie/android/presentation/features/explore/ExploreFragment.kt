@@ -81,7 +81,9 @@ class ExploreFragment : Fragment() {
         }
 
         binding.searchBar.setOnClickListener {
-            val extras = FragmentNavigatorExtras(binding.searchBar to "search_bar")
+            val extras = FragmentNavigatorExtras(
+                binding.searchBar to "search_bar"
+            )
             findNavController().navigate(
                 ExploreFragmentDirections.actionExploreFragmentToSearchFragment(), extras
             )

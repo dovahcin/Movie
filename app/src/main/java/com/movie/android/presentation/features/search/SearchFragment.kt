@@ -16,8 +16,8 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.movie.android.R
 import com.movie.android.databinding.FragmentSearchBinding
-import com.movie.android.domain.History
-import com.movie.android.presentation.features.search.adapter.HistoryAdapter
+import com.movie.android.domain.SearchHistory
+import com.movie.android.presentation.features.search.adapter.SearchHistoryAdapter
 import com.movie.android.presentation.features.search.adapter.SearchResultAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -32,7 +32,7 @@ class SearchFragment : Fragment() {
     private val viewModel: SearchViewModel by viewModel()
 
     private val resultClick: (String, Int) -> Unit = { title, movieId ->
-        viewModel.insertTitles(History(title))
+        viewModel.insertTitles(SearchHistory(title))
         viewModel.navigated()
         findNavController().navigate(
             SearchFragmentDirections.actionSearchFragmentToDetailsFragment(movieId)
@@ -45,12 +45,12 @@ class SearchFragment : Fragment() {
         binding.searchBar.setText(it)
     }
 
-    private val deleteClick: (Int) -> Unit = {
-        viewModel.deleteTitle(it)
+    private val deleteHistoryClick: (Int) -> Unit = {
+        viewModel.deleteSearchHistory(it)
         viewModel.loadDataForSearchList("")
     }
 
-    private val historyAdapter = HistoryAdapter(deleteClick, historyClick)
+    private val historyAdapter = SearchHistoryAdapter(deleteHistoryClick, historyClick)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

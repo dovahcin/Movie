@@ -7,12 +7,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:stateListAnimator="@null"
+            android:layout_height="wrap_content">
 
-            <com.google.android.material.appbar.AppBarLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.appbar.CollapsingToolbarLayout
+            <com.google.android.material.appbar.CollapsingToolbarLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:expandedTitleMarginEnd="64dp"
@@ -29,77 +29,61 @@
                         android:layout_marginBottom="@dimen/lMargin"
                         android:transitionName="search_explore"
                         app:cardBackgroundColor="@color/cardColor"
-                        app:cardCornerRadius="8dp"
-                        >
+                        app:cardCornerRadius="8dp">
 
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                            <ImageView
-                                android:id="@+id/clapperBoard"
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:layout_marginStart="@dimen/lMargin"
-                                android:layout_marginTop="@dimen/lMargin"
-                                android:layout_marginBottom="@dimen/lMargin"
-                                android:contentDescription="@string/description"
-                                android:scaleType="fitXY"
-                                android:src="@drawable/ic_clapperboard"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
+                        <TextView
+                            android:id="@+id/textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/lightgray"
+                            android:textSize="@dimen/xlTextSize"
+                            android:text="@string/search_movie"
+                            app:layout_constraintHorizontal_bias="0.1"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                            <TextView
-                                android:id="@+id/textView"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/lightgray"
-                                android:textSize="@dimen/xlTextSize"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                tools:text="MovieApp" />
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_margin="@dimen/lMargin"
+                            android:contentDescription="@string/description"
+                            android:src="@drawable/ic_round_search_24"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:tint="@color/lightgray" />
 
-                            <ImageView
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:layout_marginTop="@dimen/lMargin"
-                                android:layout_marginEnd="@dimen/lMargin"
-                                android:layout_marginBottom="@dimen/lMargin"
-                                android:contentDescription="@string/description"
-                                android:scaleType="fitXY"
-                                android:src="@drawable/ic_baseline_search_24"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </androidx.cardview.widget.CardView>
+
                 </com.google.android.material.appbar.CollapsingToolbarLayout>
 
 
-            </com.google.android.material.appbar.AppBarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/exploreRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/lMargin"
+            android:layout_marginEnd="@dimen/lMargin"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:listitem="@layout/item_movie_vertical" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/exploreRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/lMargin"
-                android:layout_marginEnd="@dimen/lMargin"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                tools:listitem="" />
-
-            <ProgressBar
-                android:id="@+id/progressBar"
-                style="@style/Widget.AppCompat.ProgressBar"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:theme="@style/RotatingProgressBar" />
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="@style/Widget.AppCompat.ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:theme="@style/RotatingProgressBar" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

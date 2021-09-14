@@ -4,12 +4,10 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.movie.android.data.SearchRepository
-import com.movie.android.data.db.HistoryDatabase
-import com.movie.android.domain.History
+import com.movie.android.data.db.MovieDatabase
+import com.movie.android.domain.SearchHistory
 import com.movie.android.domain.SearchDataModel
 import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
@@ -18,7 +16,7 @@ import kotlinx.coroutines.launch
 
 class SearchViewModel(
     private val searchRepository: SearchRepository,
-    private val historyDatabase: HistoryDatabase,
+    private val movieDatabase: MovieDatabase,
     private val state: SavedStateHandle
 ) : ViewModel() {
 
@@ -51,15 +49,15 @@ class SearchViewModel(
         }
     }
 
-    fun insertTitles(history: History) {
-        CoroutineScope(Dispatchers.IO).launch {
-            historyDatabase.searchHistory().insert(history)
+    fun insertTitles(history: SearchHistory) {
+        viewModelScope.launch {
+            movieDatabase.searchHistory().insert(history)
         }
     }
 
-    fun deleteTitle(movieId: Int) {
-        CoroutineScope(Dispatchers.IO).launch {
-            historyDatabase.searchHistory().delete(movieId)
+    fun deleteSearchHistory(historyId: Int) {
+        viewModelScope.launch {
+            movieDatabase.searchHistory().delete(historyId)
         }
     }
 

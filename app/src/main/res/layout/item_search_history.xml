@@ -7,41 +7,47 @@
 
         <variable
             name="movie"
-            type="com.movie.android.domain.History" />
+            type="com.movie.android.domain.SearchHistory" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="50dp">
 
         <TextView
             android:id="@+id/textName"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/xlMargin"
+            android:layout_height="50dp"
+            android:padding="@dimen/xlMargin"
             android:ellipsize="end"
             android:lines="1"
+            app:autoSizeMaxTextSize="18sp"
+            app:autoSizeMinTextSize="14sp"
+            app:autoSizeTextType="uniform"
+            android:background="?selectableItemBackground"
             android:text="@{movie.movieTitle}"
             android:textColor="@color/white"
             android:textSize="@dimen/xlTextSize"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/cross"
+            app:layout_constraintEnd_toStartOf="@+id/clearHistoryImageView"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Jungle Cruise" />
 
         <ImageView
-            android:id="@+id/cross"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginEnd="@dimen/lMargin"
-            android:contentDescription="@string/description"
-            android:scaleType="fitEnd"
-            android:src="@drawable/ic_baseline_close_24"
+            android:id="@+id/clearHistoryImageView"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_margin="@dimen/lMargin"
+            android:background="?selectableItemBackgroundBorderless"
+            android:padding="@dimen/sPadding"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_baseline_close_24"
+            tools:ignore="ContentDescription" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

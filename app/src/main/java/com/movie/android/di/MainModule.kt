@@ -4,7 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.room.Room
 import com.movie.android.BuildConfig
 import com.movie.android.data.*
-import com.movie.android.data.db.HistoryDatabase
+import com.movie.android.data.db.MovieDatabase
 import com.movie.android.data.network.ApiInterceptor
 import com.movie.android.data.network.ApiServices
 import com.movie.android.presentation.features.details.actordetails.ActorDetailsViewModel
@@ -50,7 +50,7 @@ val databaseModule = module {
     single {
         Room.databaseBuilder(
             androidContext(),
-            HistoryDatabase::class.java,
+            MovieDatabase::class.java,
             "movie_db"
         ).build()
     }
