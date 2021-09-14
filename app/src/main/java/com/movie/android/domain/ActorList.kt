@@ -1,11 +1,15 @@
 package com.movie.android.domain
 
+val actorsInitialValue = ActorList()
 data class ActorList(
-    val page: Int,
-    var results: List<Actor>,
-    val total_pages: Int,
-    val total_results: Int
-)
+    val page: Int = -1,
+    var results: MutableList<Actor> = mutableListOf(),
+    val total_pages: Int = -1,
+    val total_results: Int = -1
+) {
+    fun isInitialValue() =
+        this == actorsInitialValue
+}
 
 data class KnownFor(
     val adult: Boolean,

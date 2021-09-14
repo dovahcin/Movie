@@ -72,5 +72,5 @@ val mainModule = module {
     single { ActorDetailsRepository(get()) }
     viewModel { SearchViewModel(get(), get(), get()) }
     single { SearchRepository(get(), get()) }
-
+    single { ActorListRepository(get()) }
 }
