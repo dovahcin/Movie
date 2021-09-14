@@ -4,20 +4,20 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.movie.android.databinding.ItemSearchHistoryBinding
-import com.movie.android.domain.History
+import com.movie.android.domain.SearchHistory
 
-class HistoryHolder(val binding: ItemSearchHistoryBinding) : RecyclerView.ViewHolder(binding.root) {
+class SearchHistoryHolder(val binding: ItemSearchHistoryBinding) : RecyclerView.ViewHolder(binding.root) {
 
     companion object {
         fun create(parent: ViewGroup) =
-            HistoryHolder(
+            SearchHistoryHolder(
                 ItemSearchHistoryBinding.inflate(
                     LayoutInflater.from(parent.context), parent, false
                 )
             )
     }
 
-    fun bind(history: History) {
+    fun bind(history: SearchHistory) {
         binding.movie = history
         binding.executePendingBindings()
     }

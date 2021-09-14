@@ -7,47 +7,33 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/searchBar"
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:layout_marginStart="@dimen/xlMargin"
-            android:layout_marginTop="@dimen/lMargin"
-            android:layout_marginEnd="@dimen/xlMargin"
-            android:layout_marginBottom="@dimen/lMargin"
-            android:transitionName="search_explore"
-            app:cardBackgroundColor="@color/cardColor"
-            app:cardCornerRadius="8dp">
+            android:stateListAnimator="@null"
+            android:layout_height="wrap_content">
 
-            <com.google.android.material.appbar.AppBarLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.appbar.CollapsingToolbarLayout
+            <com.google.android.material.appbar.CollapsingToolbarLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:expandedTitleMarginEnd="64dp"
                     app:expandedTitleMarginStart="48dp"
                     app:layout_scrollFlags="scroll|enterAlways">
 
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/searchBar"
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"
+                        android:layout_marginStart="@dimen/xlMargin"
+                        android:layout_marginTop="@dimen/lMargin"
+                        android:layout_marginEnd="@dimen/xlMargin"
+                        android:layout_marginBottom="@dimen/lMargin"
+                        android:transitionName="search_explore"
+                        app:cardBackgroundColor="@color/cardColor"
+                        app:cardCornerRadius="8dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
-
-                        <ImageView
-                            android:id="@+id/clapperBoard"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_marginStart="@dimen/lMargin"
-                            android:layout_marginTop="@dimen/lMargin"
-                            android:layout_marginBottom="@dimen/lMargin"
-                            android:contentDescription="@string/description"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/ic_clapperboard"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
                             android:id="@+id/textView"
@@ -55,31 +41,32 @@
                             android:layout_height="wrap_content"
                             android:textColor="@color/lightgray"
                             android:textSize="@dimen/xlTextSize"
+                            android:text="@string/search_movie"
+                            app:layout_constraintHorizontal_bias="0.1"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            tools:text="MovieApp" />
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_marginTop="@dimen/lMargin"
-                            android:layout_marginEnd="@dimen/lMargin"
-                            android:layout_marginBottom="@dimen/lMargin"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_margin="@dimen/lMargin"
                             android:contentDescription="@string/description"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/ic_baseline_search_24"
+                            android:src="@drawable/ic_round_search_24"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:tint="@color/lightgray" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
+                    </androidx.cardview.widget.CardView>
 
                 </com.google.android.material.appbar.CollapsingToolbarLayout>
-            </com.google.android.material.appbar.AppBarLayout>
-        </androidx.cardview.widget.CardView>
+
+
+        </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/exploreRecyclerView"
@@ -88,7 +75,7 @@
             android:layout_marginStart="@dimen/lMargin"
             android:layout_marginEnd="@dimen/lMargin"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            tools:listitem="" />
+            tools:listitem="@layout/item_movie_vertical" />
 
         <ProgressBar
             android:id="@+id/progressBar"

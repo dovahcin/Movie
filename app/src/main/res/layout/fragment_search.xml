@@ -12,7 +12,7 @@
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize">
+            android:layout_height="60dp">
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:layout_width="match_parent"
@@ -33,12 +33,13 @@
                             android:id="@+id/back"
                             android:layout_width="32dp"
                             android:layout_height="32dp"
-                            android:layout_marginStart="@dimen/lMargin"
-                            android:layout_marginTop="@dimen/lMargin"
-                            android:contentDescription="@string/description"
-                            android:src="@drawable/ic_back"
+                            android:layout_margin="@dimen/lMargin"
+                            android:background="?selectableItemBackgroundBorderless"
+                            android:padding="@dimen/sPadding"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/ic_back"
+                            tools:ignore="ContentDescription" />
 
                         <EditText
                             android:id="@+id/searchBar"
@@ -48,6 +49,8 @@
                             android:backgroundTint="@color/lightgray"
                             android:hint="@string/search_movie"
                             android:inputType="text"
+                            android:textSize="@dimen/xlTextSize"
+                            android:background="#00ffffff"
                             android:textColor="@color/lightgray"
                             android:textColorHint="@color/lightgray"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -94,7 +97,7 @@
             android:id="@+id/progressBar"
             style="@style/Widget.AppCompat.ProgressBar"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:theme="@style/DarkProgressBar"
             app:layout_constraintBottom_toBottomOf="parent"
