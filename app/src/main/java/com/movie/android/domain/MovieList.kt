@@ -1,13 +1,18 @@
 package com.movie.android.domain
 
+import kotlinx.parcelize.RawValue
+
 val searchInitialValue = SearchDataModel()
 data class SearchDataModel(
     val movies: MovieList = MovieList(),
     val histories: MutableList<SearchHistory> = mutableListOf()
 ) {
-    fun isInitialValue() =
-        this == searchInitialValue
 
+    fun reduce(it: MutableList<SearchHistory>): @RawValue SearchDataModel {
+        histories.clear()
+        histories.addAll(it)
+        return this
+    }
 }
 
 val movieListInitialValue = MovieList()

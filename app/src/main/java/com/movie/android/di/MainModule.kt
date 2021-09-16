@@ -7,6 +7,7 @@ import com.movie.android.data.*
 import com.movie.android.data.db.MovieDatabase
 import com.movie.android.data.network.ApiInterceptor
 import com.movie.android.data.network.ApiServices
+import com.movie.android.presentation.features.actorlist.ActorListViewModel
 import com.movie.android.presentation.features.details.actordetails.ActorDetailsViewModel
 import com.movie.android.presentation.features.details.moviedetails.MovieDetailsViewModel
 import com.movie.android.presentation.features.explore.ExploreViewModel
@@ -52,7 +53,7 @@ val databaseModule = module {
             androidContext(),
             MovieDatabase::class.java,
             "movie_db"
-        ).build()
+        ).build().searchHistory()
     }
 }
 
@@ -70,7 +71,8 @@ val mainModule = module {
     single { ExploreRepository(get()) }
     viewModel { ActorDetailsViewModel(get(), get()) }
     single { ActorDetailsRepository(get()) }
-    viewModel { SearchViewModel(get(), get(), get()) }
+    viewModel { SearchViewModel(get(), get()) }
     single { SearchRepository(get(), get()) }
     single { ActorListRepository(get()) }
+    viewModel { ActorListViewModel(get()) }
 }

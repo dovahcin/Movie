@@ -32,8 +32,8 @@ class SearchFragment : Fragment() {
     private val viewModel: SearchViewModel by viewModel()
 
     private val resultClick: (String, Int) -> Unit = { title, movieId ->
-        viewModel.insertTitles(SearchHistory(title))
-        viewModel.navigated()
+        viewModel.saveSearchHistory(SearchHistory(title))
+        viewModel.saveInstanceState()
         findNavController().navigate(
             SearchFragmentDirections.actionSearchFragmentToDetailsFragment(movieId)
         )
@@ -47,7 +47,6 @@ class SearchFragment : Fragment() {
 
     private val deleteHistoryClick: (Int) -> Unit = {
         viewModel.deleteSearchHistory(it)
-        viewModel.loadDataForSearchList("")
     }
 
     private val historyAdapter = SearchHistoryAdapter(deleteHistoryClick, historyClick)

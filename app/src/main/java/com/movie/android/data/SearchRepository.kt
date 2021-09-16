@@ -1,19 +1,19 @@
 package com.movie.android.data
 
-import com.movie.android.data.db.MovieDatabase
+import com.movie.android.data.db.SearchHistoryDao
 import com.movie.android.data.network.ApiServices
 import com.movie.android.domain.MovieList
 import com.movie.android.domain.SearchDataModel
+import com.movie.android.domain.SearchHistory
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
-class SearchRepository(private val api: ApiServices, private val movieDatabase: MovieDatabase) {
+class SearchRepository(private val api: ApiServices, private val movieDatabase: SearchHistoryDao) {
 
     fun getDataForLists(query: String) = flow {
 
-
-        val histories = movieDatabase.searchHistory().getAll()
+        val histories = movieDatabase.getAll()
 
         val queryResult = if (query.isEmpty()) {
             MovieList()
@@ -25,4 +25,15 @@ class SearchRepository(private val api: ApiServices, private val movieDatabase: 
             histories
         ))
     }.flowOn(Dispatchers.IO)
+
+    fun addSearchHistory(history: SearchHistory) = flow {
+        movieDatabase.insert(history)
+        emit(movieDatabase.getAll())
+    }.flowOn(Dispatchers.IO)
+
+    fun removeSearchHistory(historyId: Int) = flow {
+        movieDatabase.delete(historyId)
+        emit(movieDatabase.getAll())
+    }.flowOn(Dispatchers.IO)
+
 }

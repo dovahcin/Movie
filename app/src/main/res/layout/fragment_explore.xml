@@ -72,8 +72,6 @@
             android:id="@+id/exploreRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/lMargin"
-            android:layout_marginEnd="@dimen/lMargin"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             tools:listitem="@layout/item_movie_vertical" />
 
@@ -81,7 +79,7 @@
             android:id="@+id/progressBar"
             style="@style/Widget.AppCompat.ProgressBar"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:theme="@style/RotatingProgressBar" />
 

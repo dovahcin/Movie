@@ -16,7 +16,6 @@ import kotlinx.coroutines.launch
 
 class SearchViewModel(
     private val searchRepository: SearchRepository,
-    private val movieDatabase: MovieDatabase,
     private val state: SavedStateHandle
 ) : ViewModel() {
 
@@ -40,8 +39,8 @@ class SearchViewModel(
                 searchRepository.getDataForLists(query)
                     .onStart { _uiState.value = SearchUiState.Loading }
                     .collect { dataModel ->
-                        _uiState.value = SearchUiState.Success(dataModel)
                         searchDataModel = dataModel
+                        _uiState.value = SearchUiState.Success(searchDataModel)
                     }
             }
         } else {
@@ -49,19 +48,25 @@ class SearchViewModel(
         }
     }
 
-    fun insertTitles(history: SearchHistory) {
+    fun saveSearchHistory(history: SearchHistory) {
         viewModelScope.launch {
-            movieDatabase.searchHistory().insert(history)
+            searchRepository.addSearchHistory(history)
+                .collect {
+                    _uiState.value = SearchUiState.Success(searchDataModel.reduce(it))
+                }
         }
     }
 
     fun deleteSearchHistory(historyId: Int) {
         viewModelScope.launch {
-            movieDatabase.searchHistory().delete(historyId)
+            searchRepository.removeSearchHistory(historyId)
+                .collect {
+                    _uiState.value = SearchUiState.Success(searchDataModel.reduce(it))
+                }
         }
     }
 
-    fun navigated() {
+    fun saveInstanceState() {
         state.set(SEARCH_KEY, SearchUiState.Success(searchDataModel))
     }
 }
