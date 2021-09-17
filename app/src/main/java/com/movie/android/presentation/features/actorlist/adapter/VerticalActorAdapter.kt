@@ -7,7 +7,7 @@ import com.movie.android.domain.Actor
 
 class VerticalActorAdapter(
     private val actorClick: (Int) -> Unit,
-    private var items: MutableList<Actor> = mutableListOf()
+    private var items: MutableList<com.movie.android.domain.Actor> = mutableListOf()
 ) :
     RecyclerView.Adapter<VerticalActorHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VerticalActorHolder =
@@ -24,7 +24,7 @@ class VerticalActorAdapter(
 
     override fun getItemCount(): Int = items.size
 
-    fun update(actors: MutableList<Actor>) {
+    fun update(actors: MutableList<com.movie.android.domain.Actor>) {
         this.items.addAll(actors)
         notifyItemRangeInserted(itemCount, items.size)
     }

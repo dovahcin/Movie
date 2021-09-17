@@ -24,7 +24,7 @@ class VerticalActorHolder(private val binding: ItemActorVerticalBinding) :
         binding.imageView reduceWidthBy 0.3f
     }
 
-    fun bind(actor: Actor) {
+    fun bind(actor: com.movie.android.domain.Actor) {
         binding.actor = actor
         binding.imageView.loadImage(actor.profilePath)
         binding.executePendingBindings()

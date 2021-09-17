@@ -1,6 +1,6 @@
 package com.movie.android.data.network
 
-import com.movie.android.BuildConfig
+import com.movie.android.data.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.Response
 

@@ -1,5 +1,6 @@
 package com.movie.android.domain
 
+import com.movie.android.domain.Movie.MovieViewType.MOVIE
 import com.movie.android.domain.Movie.MovieViewType.SHOW_MORE
 import java.math.RoundingMode
 
@@ -18,7 +19,7 @@ data class Movie(
     val video: Boolean,
     val vote_average: Double,
     val vote_count: Int,
-    val type: MovieViewType = MovieViewType.MOVIE
+    val type: MovieViewType = MOVIE
 ) {
 
     val posterPath
