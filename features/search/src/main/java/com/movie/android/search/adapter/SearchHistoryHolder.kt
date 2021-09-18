@@ -1,10 +1,10 @@
-package com.movie.android.presentation.features.search.adapter
+package com.movie.android.search.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.movie.android.databinding.ItemSearchHistoryBinding
 import com.movie.android.domain.SearchHistory
+import com.movie.android.search.databinding.ItemSearchHistoryBinding
 
 class SearchHistoryHolder(val binding: ItemSearchHistoryBinding) : RecyclerView.ViewHolder(binding.root) {
 

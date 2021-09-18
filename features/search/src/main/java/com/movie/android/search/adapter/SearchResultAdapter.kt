@@ -1,4 +1,4 @@
-package com.movie.android.presentation.features.search.adapter
+package com.movie.android.search.adapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView

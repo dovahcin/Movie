@@ -10,3 +10,4 @@ rootProject.name = "Movie"
 include ':app'
 include ':domain'
 include ':data'
+include ':features:search'

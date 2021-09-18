@@ -1,4 +1,4 @@
-package com.movie.android.presentation.features.search
+package com.movie.android.search
 
 import android.os.Bundle
 import android.text.Editable
@@ -14,11 +14,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
-import com.movie.android.R
-import com.movie.android.databinding.FragmentSearchBinding
 import com.movie.android.domain.SearchHistory
-import com.movie.android.presentation.features.search.adapter.SearchHistoryAdapter
-import com.movie.android.presentation.features.search.adapter.SearchResultAdapter
+import com.movie.android.search.adapter.SearchHistoryAdapter
+import com.movie.android.search.adapter.SearchResultAdapter
+import com.movie.android.search.SearchUiState.Failure
+import com.movie.android.search.SearchUiState.Loading
+import com.movie.android.search.SearchUiState.Success
+import com.movie.android.search.databinding.FragmentSearchBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
@@ -88,13 +90,13 @@ class SearchFragment : Fragment() {
         lifecycleScope.launch {
             viewModel.uiState.collect { uiState ->
                 when (uiState) {
-                    is SearchUiState.Failure -> showError(uiState.exception)
-                    is SearchUiState.Success -> {
+                    is Failure -> showError(uiState.exception)
+                    is Success -> {
                         resultAdapter.update(uiState.searchDataModel.movies.results)
                         historyAdapter.update(uiState.searchDataModel.histories)
                     }
                 }
-                showLoadingView(uiState is SearchUiState.Loading)
+                showLoadingView(uiState is Loading)
             }
         }
     }

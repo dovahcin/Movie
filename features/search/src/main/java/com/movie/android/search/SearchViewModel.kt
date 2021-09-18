@@ -1,12 +1,14 @@
-package com.movie.android.presentation.features.search
+package com.movie.android.search
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.movie.android.data.SearchRepository
-import com.movie.android.data.db.MovieDatabase
 import com.movie.android.domain.SearchHistory
 import com.movie.android.domain.SearchDataModel
+import com.movie.android.search.SearchUiState.Failure
+import com.movie.android.search.SearchUiState.Loading
+import com.movie.android.search.SearchUiState.Success
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -23,24 +25,24 @@ class SearchViewModel(
         private const val SEARCH_KEY = "SearchState"
     }
 
-    private val _uiState = MutableStateFlow<SearchUiState>(SearchUiState.Success())
+    private val _uiState = MutableStateFlow<SearchUiState>(Success())
     val uiState: StateFlow<SearchUiState> = _uiState
 
     private var searchDataModel = SearchDataModel()
 
     private val exceptionHandler = CoroutineExceptionHandler { _, exception ->
-        _uiState.value = SearchUiState.Failure(exception)
+        _uiState.value = Failure(exception)
     }
 
     fun loadDataForSearchList(query: String) {
-        if (state.get<SearchUiState.Success>(SEARCH_KEY) == null) {
+        if (state.get<Success>(SEARCH_KEY) == null) {
 
             viewModelScope.launch(exceptionHandler) {
                 searchRepository.getDataForLists(query)
-                    .onStart { _uiState.value = SearchUiState.Loading }
+                    .onStart { _uiState.value = Loading }
                     .collect { dataModel ->
                         searchDataModel = dataModel
-                        _uiState.value = SearchUiState.Success(searchDataModel)
+                        _uiState.value = Success(searchDataModel)
                     }
             }
         } else {
@@ -52,7 +54,7 @@ class SearchViewModel(
         viewModelScope.launch {
             searchRepository.addSearchHistory(history)
                 .collect {
-                    _uiState.value = SearchUiState.Success(searchDataModel.reduce(it))
+                    _uiState.value = Success(searchDataModel.reduce(it))
                 }
         }
     }
@@ -61,12 +63,12 @@ class SearchViewModel(
         viewModelScope.launch {
             searchRepository.removeSearchHistory(historyId)
                 .collect {
-                    _uiState.value = SearchUiState.Success(searchDataModel.reduce(it))
+                    _uiState.value = Success(searchDataModel.reduce(it))
                 }
         }
     }
 
     fun saveInstanceState() {
-        state.set(SEARCH_KEY, SearchUiState.Success(searchDataModel))
+        state.set(SEARCH_KEY, Success(searchDataModel))
     }
 }

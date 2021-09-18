@@ -1,4 +1,4 @@
-package com.movie.android.presentation.features.search
+package com.movie.android.search
 
 import android.os.Parcelable
 import com.movie.android.domain.SearchDataModel

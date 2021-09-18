@@ -1,4 +1,4 @@
-package com.movie.android.presentation.features.search.adapter
+package com.movie.android.search.adapter
 
 import android.annotation.SuppressLint
 import android.view.ViewGroup

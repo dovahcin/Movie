@@ -1,11 +1,11 @@
-package com.movie.android.presentation.features.search.adapter
+package com.movie.android.search.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.movie.android.databinding.ItemSearchResultsBinding
 import com.movie.android.domain.Movie
-import com.movie.android.presentation.utils.loadImage
+import com.movie.android.search.databinding.ItemSearchResultsBinding
+import com.movie.android.search.loadImage
 
 class SearchResultHolder(
     val binding: ItemSearchResultsBinding,

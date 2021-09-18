@@ -12,7 +12,7 @@ import com.movie.android.presentation.features.details.actordetails.ActorDetails
 import com.movie.android.presentation.features.details.moviedetails.MovieDetailsViewModel
 import com.movie.android.presentation.features.explore.ExploreViewModel
 import com.movie.android.presentation.features.movielist.MovieListViewModel
-import com.movie.android.presentation.features.search.SearchViewModel
+import com.movie.android.search.SearchViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -71,7 +71,7 @@ val mainModule = module {
     single { ExploreRepository(get()) }
     viewModel { ActorDetailsViewModel(get(), get()) }
     single { ActorDetailsRepository(get()) }
-    viewModel { SearchViewModel(get(), get()) }
+    viewModel { com.movie.android.search.SearchViewModel(get(), get()) }
     single { SearchRepository(get(), get()) }
     single { ActorListRepository(get()) }
     viewModel { ActorListViewModel(get()) }
