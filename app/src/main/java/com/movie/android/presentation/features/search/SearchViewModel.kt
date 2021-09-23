@@ -4,9 +4,8 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.movie.android.data.SearchRepository
-import com.movie.android.data.db.MovieDatabase
-import com.movie.android.domain.SearchHistory
 import com.movie.android.domain.SearchDataModel
+import com.movie.android.domain.SearchHistory
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -32,9 +31,8 @@ class SearchViewModel(
         _uiState.value = SearchUiState.Failure(exception)
     }
 
-    fun loadDataForSearchList(query: String) {
+    fun loadDataForSearchList(query: String, isChangeable: Boolean = false) {
         if (state.get<SearchUiState.Success>(SEARCH_KEY) == null) {
-
             viewModelScope.launch(exceptionHandler) {
                 searchRepository.getDataForLists(query)
                     .onStart { _uiState.value = SearchUiState.Loading }
@@ -67,6 +65,15 @@ class SearchViewModel(
     }
 
     fun saveInstanceState() {
-        state.set(SEARCH_KEY, SearchUiState.Success(searchDataModel))
+        state[SEARCH_KEY] = SearchUiState.Success(searchDataModel)
+    }
+
+    fun deleteInstanceState() {
+        state[SEARCH_KEY] = null
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        deleteInstanceState()
     }
 }
