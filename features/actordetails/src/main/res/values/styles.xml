@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="DarkProgressBar">
+        <item name="colorAccent">@color/coloProgressbar</item>
+    </style>
+    <style name="RotatingProgressBar">
+        <item name="colorAccent">@color/coloProgressbar</item>
+    </style>
+
+    <style name="corneredImage" parent="">
+
+        <item name="cornerSize">30dp</item>
+
+    </style>
+
+    <style name="roundimage" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+</resources>
+

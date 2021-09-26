@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/actordetails_flow">
+
+    <fragment
+        android:id="@+id/actorDetailsFragment"
+        android:name="com.ilkinyazar.actordetails.ActorDetailsFragment"
+        android:label="ActorDetailsFragment" >
+        <argument
+            android:name="personId"
+            app:argType="integer"
+            app:nullable="false"/>
+        <action
+            android:id="@+id/action_actorDetailsFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" >
+            <argument
+                android:name="movieId"
+                app:argType="integer"
+                app:nullable="false"/>
+        </action>
+        <action
+            android:id="@+id/action_actorDetailsFragment_to_movieListFragment"
+            app:destination="@id/movieListFragment" >
+            <argument
+                android:name="listId"
+                app:argType="integer"
+                app:nullable="false" />
+            <argument
+                android:name="movieId"
+                app:argType="integer"
+                app:nullable="false"/>
+        </action>
+    </fragment>
+
+</navigation>

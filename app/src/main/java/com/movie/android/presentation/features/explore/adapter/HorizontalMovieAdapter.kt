@@ -3,17 +3,16 @@ package com.movie.android.presentation.features.explore.adapter
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.movie.android.domain.Movie
-import com.movie.android.presentation.features.details.adapter.HorizontalMovieHolder
 
 class HorizontalMovieAdapter(
     private val showMovieClick: (Movie) -> Unit,
     private var items: MutableList<Movie> = mutableListOf()
-) : Adapter<HorizontalMovieHolder>() {
+) : Adapter<com.ilkinyazar.moviedetails.adapter.HorizontalActorMovieHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HorizontalMovieHolder =
-        HorizontalMovieHolder.create(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): com.ilkinyazar.moviedetails.adapter.HorizontalActorMovieHolder =
+        com.ilkinyazar.moviedetails.adapter.HorizontalActorMovieHolder.create(parent)
 
-    override fun onBindViewHolder(holder: HorizontalMovieHolder, position: Int) {
+    override fun onBindViewHolder(holder: com.ilkinyazar.moviedetails.adapter.HorizontalActorMovieHolder, position: Int) {
         holder.bind(items[position])
         holder.itemView.setOnClickListener { showMovieClick.invoke(items[position]) }
     }
