@@ -34,14 +34,17 @@ class ActorDetailsViewModel(
                     .onStart { _uiState.value = ActorDetailUiState.Loading }
                     .collect { actorDataModel ->
                         _uiState.value = ActorDetailUiState.Success(actorDataModel)
-                        saveState.set(ACTOR_DETAILS_KEY, ActorDetailUiState.Success(actorDataModel))
+                        saveState[ACTOR_DETAILS_KEY] = ActorDetailUiState.Success(actorDataModel)
                     }
             }
         } else {
             _uiState.value = saveState.get<ActorDetailUiState>(ACTOR_DETAILS_KEY)!!
         }
+    }
 
-
+    override fun onCleared() {
+        super.onCleared()
+        saveState[ACTOR_DETAILS_KEY] = null
     }
 
 }
