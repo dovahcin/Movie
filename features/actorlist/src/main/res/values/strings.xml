@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Movie</string>
+    <string name="description">decs</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="overview">Overview</string>
+    <string name="similar_movies">Similar Movies</string>
+    <string name="show_more">Show More</string>
+    <string name="recommendation_movies">Recommendation Movies</string>
+    <string name="popular">Popular</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="biography">Biography</string>
+    <string name="birthday">Birthday :</string>
+    <string name="deathday">Deathday :</string>
+    <string name="place_of_birth">Place of birth :</string>
+    <string name="known_for">Known for</string>
+    <string name="search_movie">Search Movie</string>
+</resources>

@@ -54,6 +54,9 @@ dependencies {
     implementation project(":features:search")
     implementation project(":features:actordetails")
     implementation project(":features:moviedetails")
+    implementation project(":features:explore")
+    implementation project(":features:movielist")
+    implementation project(":features:actorlist")
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.1'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1'
 

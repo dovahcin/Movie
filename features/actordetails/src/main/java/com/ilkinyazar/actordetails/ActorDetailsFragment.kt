@@ -11,7 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
-import com.ilkinyazar.actordetails.adapter.HorizontalMovieAdapter
+import com.ilkinyazar.actordetails.adapter.HorizontalActorMovieAdapter
 import com.ilkinyazar.actordetails.databinding.FragmentActorDetailsBinding
 import com.movie.android.domain.ActorDetails
 import com.movie.android.domain.Movie
@@ -41,7 +41,8 @@ class ActorDetailsFragment : Fragment() {
         )
     }
 
-    private val movieAdapter = HorizontalMovieAdapter(showMovieClick, showMoreClick)
+    private val movieAdapter =
+        HorizontalActorMovieAdapter(showMovieClick, showMoreClick)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

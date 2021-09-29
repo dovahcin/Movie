@@ -3,7 +3,6 @@ dependencyResolutionManagement {
   repositories {
     google()
     mavenCentral()
-    jcenter() // Warning: this repository is going to shut down soon
   }
 }
 rootProject.name = "Movie"
@@ -13,3 +12,6 @@ include ':data'
 include ':features:search'
 include ':features:actordetails'
 include ':features:moviedetails'
+include ':features:explore'
+include ':features:movielist'
+include ':features:actorlist'

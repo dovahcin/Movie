@@ -4,17 +4,17 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ilkinyazar.moviedetails.R
-import com.ilkinyazar.moviedetails.databinding.ItemActorMovieHorizontalBinding
+import com.ilkinyazar.moviedetails.databinding.ItemShowMoreHorizontalBinding
 
 class ShowMoreHolder(
-    binding: ItemActorMovieHorizontalBinding
+    binding: ItemShowMoreHorizontalBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
     companion object {
         fun create(parent: ViewGroup) =
 
             ShowMoreHolder(
-                ItemActorMovieHorizontalBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                ItemShowMoreHorizontalBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             )
     }
 

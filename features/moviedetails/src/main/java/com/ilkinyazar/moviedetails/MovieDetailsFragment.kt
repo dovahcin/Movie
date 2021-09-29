@@ -11,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
 import com.ilkinyazar.moviedetails.adapter.GenreAdapter
-import com.ilkinyazar.moviedetails.adapter.HorizontalActorMovieAdapter
+import com.ilkinyazar.moviedetails.adapter.HorizontalMovieAdapter
 import com.ilkinyazar.moviedetails.databinding.FragmentMovieDetailsBinding
 import com.movie.android.domain.DetailsDataModel
 import com.movie.android.domain.Genre
@@ -53,8 +53,16 @@ class MovieDetailsFragment : Fragment() {
             )
         }
 
-        val horizontalSimilarAdapter = HorizontalActorMovieAdapter(movieClick, showMoreClick)
-        val horizontalRecommendAdapter = HorizontalActorMovieAdapter(movieClick, showMoreClick)
+        val horizontalSimilarAdapter =
+            HorizontalMovieAdapter(
+                movieClick,
+                showMoreClick
+            )
+        val horizontalRecommendAdapter =
+            HorizontalMovieAdapter(
+                movieClick,
+                showMoreClick
+            )
 
         detailsViewModel.loadDataForDetails(args.movieId)
         binding.apply {
@@ -82,8 +90,8 @@ class MovieDetailsFragment : Fragment() {
 
     private fun loadAdapters(
         dataModel: DetailsDataModel,
-        horizontalSimilarAdapter: HorizontalActorMovieAdapter,
-        horizontalRecommendAdapter: HorizontalActorMovieAdapter
+        horizontalSimilarAdapter: HorizontalMovieAdapter,
+        horizontalRecommendAdapter: HorizontalMovieAdapter
     ) {
         genreAdapter.update(dataModel.details.genres as MutableList<Genre>)
         dataModel.similarities.run {
@@ -96,8 +104,8 @@ class MovieDetailsFragment : Fragment() {
     }
 
     private fun launchStates(
-        horizontalSimilarAdapter: HorizontalActorMovieAdapter,
-        horizontalRecommendAdapter: HorizontalActorMovieAdapter
+        horizontalSimilarAdapter: HorizontalMovieAdapter,
+        horizontalRecommendAdapter: HorizontalMovieAdapter
     ) {
         lifecycleScope.launch {
             detailsViewModel.uiState.collect { uiState ->

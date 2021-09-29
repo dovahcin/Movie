@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/explore_flow">
+    <fragment
+        android:id="@+id/exploreFragment"
+        android:name="com.ilkinyazar.explore.ExploreFragment"
+        android:label="ExploreFragment" >
+        <action
+            android:id="@+id/action_exploreFragment_to_movieListFragment"
+            app:destination="@id/movieListFragment">
+
+            <argument
+                android:name="listId"
+                app:argType="integer"
+                app:nullable="false" />
+            <argument
+                android:name="movieId"
+                app:argType="integer"
+                app:nullable="false" />
+
+        </action>
+        <action
+            android:id="@+id/action_exploreFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" >
+
+            <argument
+                android:name="movieId"
+                app:argType="integer"
+                app:nullable="false" />
+
+        </action>
+        <action
+            android:id="@+id/action_exploreFragment_to_actorDetailsFragment"
+            app:destination="@id/actorDetailsFragment" >
+            <argument
+                android:name="personId"
+                app:argType="integer"
+                app:nullable="false"/>
+        </action>
+        <action
+            android:id="@+id/action_exploreFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_exploreFragment_to_actorListFragment"
+            app:destination="@id/actorListFragment" />
+    </fragment>
+
+</navigation>
