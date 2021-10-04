@@ -4,7 +4,6 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.movie.android.data.SearchRepository
-import com.movie.android.domain.SearchHistory
 import com.movie.android.domain.SearchDataModel
 import com.movie.android.domain.SearchHistory
 import com.movie.android.search.SearchUiState.Failure
