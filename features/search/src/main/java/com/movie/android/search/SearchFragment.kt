@@ -136,7 +136,8 @@ class SearchFragment : Fragment() {
                     if (searchFor != searchText)
                         return@launch
 
-                    viewModel.loadDataForSearchList(searchFor)
+                    viewModel.loadDataForSearchList(searchFor, true)
+                    viewModel.deleteInstanceState()
                     resultAdapter.updateText(searchFor)
                 }
             }

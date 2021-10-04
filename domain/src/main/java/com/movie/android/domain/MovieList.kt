@@ -8,6 +8,9 @@ data class SearchDataModel(
     val histories: MutableList<SearchHistory> = mutableListOf()
 ) {
 
+    fun isInitialValue() =
+        this == searchInitialValue
+
     fun reduce(it: MutableList<SearchHistory>): @RawValue SearchDataModel {
         histories.clear()
         histories.addAll(it)
