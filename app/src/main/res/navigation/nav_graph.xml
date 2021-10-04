@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="com.movie.android.presentation.features.details.moviedetails.MovieDetailsFragment"
+        android:name="com.ilkinyazar.moviedetails.MovieDetailsFragment"
         android:label="fragment_details" >
 
         <argument
@@ -41,7 +41,7 @@
 
     <fragment
         android:id="@+id/movieListFragment"
-        android:name="com.movie.android.presentation.features.movielist.MovieListFragment"
+        android:name="com.movie.android.movielist.MovieListFragment"
         android:label="MovieListFragment" >
 
         <argument
@@ -67,7 +67,7 @@
     </fragment>
     <fragment
         android:id="@+id/exploreFragment"
-        android:name="com.movie.android.presentation.features.explore.ExploreFragment"
+        android:name="com.ilkinyazar.explore.ExploreFragment"
         android:label="ExploreFragment" >
         <action
             android:id="@+id/action_exploreFragment_to_movieListFragment"
@@ -75,6 +75,10 @@
 
             <argument
                 android:name="listId"
+                app:argType="integer"
+                app:nullable="false" />
+            <argument
+                android:name="movieId"
                 app:argType="integer"
                 app:nullable="false" />
 
@@ -106,7 +110,7 @@
     </fragment>
     <fragment
         android:id="@+id/actorDetailsFragment"
-        android:name="com.movie.android.presentation.features.details.actordetails.ActorDetailsFragment"
+        android:name="com.ilkinyazar.actordetails.ActorDetailsFragment"
         android:label="ActorDetailsFragment" >
         <argument
             android:name="personId"
@@ -135,7 +139,7 @@
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.movie.android.presentation.features.search.SearchFragment"
+        android:name="com.movie.android.search.SearchFragment"
         android:label="SearchFragment" >
         <action
             android:id="@+id/action_searchFragment_to_detailsFragment"
@@ -148,11 +152,16 @@
     </fragment>
     <fragment
         android:id="@+id/actorListFragment"
-        android:name="com.movie.android.presentation.features.actorlist.ActorListFragment"
+        android:name="com.android.movie.actorlist.ActorListFragment"
         android:label="ActorListFragment" >
         <action
             android:id="@+id/action_actorListFragment_to_actorDetailsFragment"
-            app:destination="@id/actorDetailsFragment" />
+            app:destination="@id/actorDetailsFragment" >
+            <argument
+                android:name="personId"
+                app:argType="integer"
+                app:nullable="false"/>
+        </action>
     </fragment>
 
 </navigation>

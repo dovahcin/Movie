@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="movieListFragment" type="id" />
+    <item name="detailsFragment" type="id" />
+    <item name="actorDetailsFragment" type="id" />
+    <item name="searchFragment" type="id" />
+    <item name="actorListFragment" type="id" />
+</resources>

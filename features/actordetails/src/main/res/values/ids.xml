@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="action_actorDetailsFragment_to_detailsFragment" type="id" />
+    <item name="detailsFragment" type="id" />
+    <item name="action_actorDetailsFragment_to_movieListFragment" type="id" />
+    <item name="movieListFragment" type="id" />
+    <item name="actorDetailsFragment" type="id" />
+    <item name="actordetails_flow" type="id" />
+</resources>
