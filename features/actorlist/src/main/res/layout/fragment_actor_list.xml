@@ -23,7 +23,7 @@
                     android:id="@+id/title"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Artists"
+                    android:text="@string/artists"
                     android:textColor="@color/white"
                     android:layout_marginStart="@dimen/lMargin"
                     android:textSize="@dimen/xxlTextSize"
