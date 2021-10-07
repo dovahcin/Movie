@@ -14,18 +14,31 @@ class MovieDetailsRepository(private val api: ApiServices) {
 
     fun getDataForDetailedPage(movieId: Int) = flow {
 
-      val similars = api.getSimilarMovies(movieId.toString(), DEFAULT_PAGE.toString())
-        .also { it.id = SimilarMovieList.ordinal }
-      val recommendations = api.getRecommendationMovies( movieId.toString(), DEFAULT_PAGE.toString())
-        .also { it.id = RecommendedMovieList.ordinal }
+        val similars = api.getSimilarMovies(movieId.toString(), DEFAULT_PAGE.toString())
+            .also { it.id = SimilarMovieList.ordinal }
+        val recommendations =
+            api.getRecommendationMovies(movieId.toString(), DEFAULT_PAGE.toString())
+                .also { it.id = RecommendedMovieList.ordinal }
 
-      val details = api.getMovieDetails(movieId.toString())
+        val details = api.getMovieDetails(movieId.toString())
 
-      similars.results = (similars.results
-        .take(10) + Movie.createShowMore()).toMutableList()
-      recommendations.results = (recommendations.results
-        .take(10) + Movie.createShowMore()).toMutableList()
-
+        when {
+            similars.results.size == 0 -> similars.results = mutableListOf()
+            similars.results.size >= 10 -> {
+                similars.results = (similars.results
+                    .take(10) + Movie.createShowMore()).toMutableList()
+            }
+            else -> similars.results = similars.results
+        }
+        when {
+            recommendations.results.size == 0 -> recommendations.results = mutableListOf()
+            recommendations.results.size >= 10 -> {
+                recommendations
+                    .results = (recommendations.results
+                    .take(10) + Movie.createShowMore()).toMutableList()
+            }
+            else -> recommendations.results = recommendations.results
+        }
         emit(DetailsDataModel(details, similars, recommendations))
     }.flowOn(Dispatchers.IO)
 
