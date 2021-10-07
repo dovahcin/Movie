@@ -4,16 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="details"
             type="com.movie.android.domain.Details" />
-
     </data>
 
-    <FrameLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:padding="@dimen/mPadding">
+
+                <TextView
+                    android:id="@+id/pageTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/movie_details"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="@dimen/lMargin"
+                    android:textSize="@dimen/xxlTextSize"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/back"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/back"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_margin="@dimen/lMargin"
+                    android:contentDescription="@string/description"
+                    android:src="@drawable/ic_back"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
 
         <ScrollView
             android:id="@+id/scrollContainer"
@@ -39,17 +75,6 @@
                     tools:ignore="ContentDescription"
                     tools:srcCompat="@drawable/ic_placeholder" />
 
-                <ImageView
-                    android:id="@+id/back"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_margin="@dimen/lMargin"
-                    android:background="?selectableItemBackgroundBorderless"
-                    android:padding="@dimen/sPadding"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_back"
-                    tools:ignore="ContentDescription" />
 
                 <View
                     android:id="@+id/shadowView"
@@ -180,7 +205,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/similarTitle"
                     tools:ignore="SpeakableTextPresentCheck"
-                    tools:listitem="@layout/item_actor_movie_horizontal" />
+                    tools:listitem="@layout/item_movie_horizontal" />
 
                 <TextView
                     android:id="@+id/recommendationTitle"
@@ -203,7 +228,7 @@
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/recommendationTitle"
-                    tools:listitem="@layout/item_actor_movie_horizontal" />
+                    tools:listitem="@layout/item_movie_horizontal" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -217,6 +242,6 @@
             android:layout_gravity="center"
             android:theme="@style/DarkProgressBar"/>
 
-    </FrameLayout>
+    </LinearLayout>
 
 </layout>

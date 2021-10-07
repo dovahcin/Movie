@@ -15,4 +15,6 @@
     <string name="place_of_birth">Place of birth :</string>
     <string name="known_for">Known for</string>
     <string name="search_movie">Search Movie</string>
+    <string name="artist">Artist</string>
+
 </resources>

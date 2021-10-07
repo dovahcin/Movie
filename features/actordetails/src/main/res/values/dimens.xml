@@ -10,6 +10,8 @@
     <dimen name="lMargin">12dp</dimen>
     <dimen name="xlMargin">16dp</dimen>
     <dimen name="_xlMargin">-16dp</dimen>
+    <dimen name="xxxlmargin">32dp</dimen>
+    <dimen name="xxxxlmargin">64dp</dimen>
 
 
     <dimen name="sTextSize">4sp</dimen>
@@ -17,8 +19,8 @@
     <dimen name="lTextSize">12sp</dimen>
     <dimen name="xlTextSize">16sp</dimen>
     <dimen name="xxlTextSize">20sp</dimen>
-    <dimen name="xxxlTextSize">32sp</dimen>
-    <dimen name="xxxlmargin">32dp</dimen>
-    <dimen name="xxxxlmargin">64dp</dimen>
+    <dimen name="xxxlTextSize">24sp</dimen>
+    <dimen name="xxxxlTextSize">32sp</dimen>
+
 
 </resources>

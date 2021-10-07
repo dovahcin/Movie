@@ -5,15 +5,52 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="actor"
             type="com.movie.android.domain.ActorDetails" />
     </data>
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:padding="@dimen/mPadding">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/artist"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="@dimen/lMargin"
+                    android:textSize="@dimen/xxlTextSize"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/back"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/back"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_margin="@dimen/lMargin"
+                    android:contentDescription="@string/description"
+                    android:src="@drawable/ic_back"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
 
         <ScrollView
             android:id="@+id/scrollView"
@@ -225,7 +262,7 @@
                             android:layout_marginTop="@dimen/xlMargin"
                             android:orientation="horizontal"
                             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                            tools:listitem="@layout/item_movie_horizontal" />
+                            tools:listitem="@layout/item_actor_movie_horizontal" />
 
                     </LinearLayout>
 
@@ -250,6 +287,6 @@
             android:layout_gravity="center"
             android:theme="@style/DarkProgressBar" />
 
-    </FrameLayout>
+    </LinearLayout>
 
 </layout>

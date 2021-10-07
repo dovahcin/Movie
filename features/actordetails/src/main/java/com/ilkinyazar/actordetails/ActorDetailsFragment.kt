@@ -72,6 +72,8 @@ class ActorDetailsFragment : Fragment() {
             }
         }
 
+        binding.back.setOnClickListener { requireActivity().onBackPressed() }
+
         return binding.root
     }
 

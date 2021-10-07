@@ -1,7 +1,6 @@
 package com.android.movie.actorlist
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,7 +28,6 @@ class ActorListFragment : Fragment() {
         findNavController().navigate(
             ActorListFragmentDirections.actionActorListFragmentToActorDetailsFragment(id)
         )
-        Log.d("fragment", "$id")
     }
 
     private val viewModel: ActorListViewModel by viewModel()
@@ -62,7 +60,7 @@ class ActorListFragment : Fragment() {
                 showLoadingView(uiState is ActorListUiState.Loading)
             }
         }
-
+        binding.back.setOnClickListener { requireActivity().onBackPressed() }
         return binding.root
     }
 

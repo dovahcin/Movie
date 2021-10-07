@@ -1,5 +1,6 @@
 package com.movie.android.movielist
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.movie.android.data.MovieListRepository.Companion.DEFAULT_PAGE
+import com.movie.android.domain.ExploreItem
 import com.movie.android.domain.Movie
 import com.movie.android.movielist.adapter.VerticalMovieAdapter
 import com.movie.android.movielist.databinding.FragmentPopularsBinding
@@ -38,6 +40,7 @@ class MovieListFragment : Fragment() {
 
     private val movieAdapter = VerticalMovieAdapter(mutableListOf(), movieClick)
 
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -63,6 +66,16 @@ class MovieListFragment : Fragment() {
                 showLoadingView(uiState is MovieListUiState.Loading)
             }
         }
+
+        when (args.listId) {
+            ExploreItem.Type.HorizontalMovieList.ordinal -> binding.pageTitle.text = "Upcoming Movies"
+            ExploreItem.Type.VerticalMovieList.ordinal -> binding.pageTitle.text = "Popular Movies"
+            ExploreItem.Type.SimilarMovieList.ordinal -> binding.pageTitle.text = "Similar Movies"
+            ExploreItem.Type.RecommendedMovieList.ordinal -> binding.pageTitle.text = "Recommended Movies"
+            ExploreItem.Type.ActorMovieList.ordinal -> binding.pageTitle.text = "Actor Movies"
+        }
+
+        binding.back.setOnClickListener { requireActivity().onBackPressed() }
 
         return binding.root
     }
