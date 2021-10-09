@@ -4,7 +4,7 @@
     android:id="@+id/actorlist_flow">
     <fragment
         android:id="@+id/actorListFragment"
-        android:name="com.android.movie.actorlist.ActorListFragment"
+        android:name="com.movie.android.actorlist.ActorListFragment"
         android:label="ActorListFragment" >
         <action
             android:id="@+id/action_actorListFragment_to_actorDetailsFragment"

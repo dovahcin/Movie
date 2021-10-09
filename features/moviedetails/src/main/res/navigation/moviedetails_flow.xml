@@ -4,7 +4,7 @@
     android:id="@+id/navigation">
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="com.ilkinyazar.moviedetails.MovieDetailsFragment"
+        android:name="com.movie.android.moviedetails.MovieDetailsFragment"
         android:label="fragment_details" >
 
         <argument

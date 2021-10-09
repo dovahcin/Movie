@@ -4,7 +4,7 @@
     android:id="@+id/explore_flow">
     <fragment
         android:id="@+id/exploreFragment"
-        android:name="com.ilkinyazar.explore.ExploreFragment"
+        android:name="com.movie.android.explore.ExploreFragment"
         android:label="ExploreFragment" >
         <action
             android:id="@+id/action_exploreFragment_to_movieListFragment"
