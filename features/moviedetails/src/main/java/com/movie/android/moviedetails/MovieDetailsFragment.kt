@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -15,6 +16,7 @@ import com.movie.android.moviedetails.adapter.HorizontalMovieAdapter
 import com.movie.android.moviedetails.databinding.FragmentMovieDetailsBinding
 import com.movie.android.domain.DetailsDataModel
 import com.movie.android.domain.Genre
+import com.movie.android.domain.Movie
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -42,7 +44,8 @@ class MovieDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_movie_details, container, false)
+        _binding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_movie_details, container, false)
 
         val showMoreClick: (Int) -> Unit = { listId ->
             findNavController().navigate(
@@ -112,7 +115,15 @@ class MovieDetailsFragment : Fragment() {
                 when (uiState) {
                     is MovieDetailUiState.Failure -> showError(uiState.exception)
                     is MovieDetailUiState.Success -> {
-                        loadAdapters(uiState.detailsDataModel, horizontalSimilarAdapter, horizontalRecommendAdapter)
+                        showTitles(
+                            uiState.detailsDataModel.recommendations.results,
+                            uiState.detailsDataModel.similarities.results
+                        )
+                        loadAdapters(
+                            uiState.detailsDataModel,
+                            horizontalSimilarAdapter,
+                            horizontalRecommendAdapter
+                        )
                         loadImages(
                             uiState.detailsDataModel.details.backDropPath,
                             uiState.detailsDataModel.details.posterPath
@@ -132,6 +143,15 @@ class MovieDetailsFragment : Fragment() {
         }
     }
 
+    private fun showTitles(
+        recommendedMovies: MutableList<Movie>,
+        similarMovies: MutableList<Movie>
+    ) {
+        if (recommendedMovies.size == 0)
+            binding.recommendationTitle.isVisible = false
+        if (similarMovies.size == 0)
+            binding.similarTitle.isVisible = false
+    }
 
     private fun loadImages(uriBackDropPath: String, uriPosterPath: String) {
         binding.banner.loadImage(uriBackDropPath)
