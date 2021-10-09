@@ -3,11 +3,19 @@ package com.movie.android.di
 import androidx.lifecycle.SavedStateHandle
 import androidx.room.Room
 import com.movie.android.BuildConfig
-import com.movie.android.data.*
+import com.movie.android.actordetails.ActorDetailsViewModel
+import com.movie.android.actorlist.ActorListViewModel
 import com.movie.android.data.db.MovieDatabase
 import com.movie.android.data.network.ApiInterceptor
 import com.movie.android.data.network.ApiServices
-import com.android.movie.actorlist.ActorListViewModel
+import com.movie.android.explore.ExploreViewModel
+import com.movie.android.data.ActorDetailsRepository
+import com.movie.android.data.ActorListRepository
+import com.movie.android.data.ExploreRepository
+import com.movie.android.data.MovieDetailsRepository
+import com.movie.android.data.MovieListRepository
+import com.movie.android.data.SearchRepository
+import com.movie.android.moviedetails.MovieDetailsViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -60,14 +68,14 @@ val mainModule = module {
 
     viewModel { com.movie.android.movielist.MovieListViewModel(get()) }
     single { MovieListRepository(get()) }
-    viewModel { com.ilkinyazar.moviedetails.MovieDetailsViewModel(get()) }
+    viewModel { MovieDetailsViewModel(get()) }
     single { MovieDetailsRepository(get()) }
-    viewModel { com.ilkinyazar.explore.ExploreViewModel(get(), get()) }
+    viewModel { ExploreViewModel(get(), get()) }
     single { ExploreRepository(get()) }
-    viewModel { com.ilkinyazar.actordetails.ActorDetailsViewModel(get(), get()) }
+    viewModel { ActorDetailsViewModel(get(), get()) }
     single { ActorDetailsRepository(get()) }
     viewModel { com.movie.android.search.SearchViewModel(get(), get()) }
     single { SearchRepository(get(), get()) }
     single { ActorListRepository(get()) }
-    viewModel { com.android.movie.actorlist.ActorListViewModel(get()) }
+    viewModel { ActorListViewModel(get()) }
 }

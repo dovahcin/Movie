@@ -45,7 +45,6 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     def retrofit_version = "2.9.0"
     def lifecycle_version = "2.4.0-alpha03"
-    def koin_version = "3.1.2"
     def nav_version = "2.3.5"
     def room_version = "2.3.0"
 
@@ -77,8 +76,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version"
 
 
-    // Koin main features for Android (Scope,ViewModel ...)
-    implementation "io.insert-koin:koin-android:$koin_version"
+    implementation "io.insert-koin:koin-android:3.1.2"
 
     //Picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
