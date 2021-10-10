@@ -15,11 +15,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.movie.android.domain.SearchHistory
+import com.movie.android.search.SearchUiState.*
 import com.movie.android.search.adapter.SearchHistoryAdapter
 import com.movie.android.search.adapter.SearchResultAdapter
-import com.movie.android.search.SearchUiState.Failure
-import com.movie.android.search.SearchUiState.Loading
-import com.movie.android.search.SearchUiState.Success
 import com.movie.android.search.databinding.FragmentSearchBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -49,8 +47,10 @@ class SearchFragment : Fragment() {
 
     private val deleteHistoryClick: (Int) -> Unit = {
         viewModel.deleteSearchHistory(it)
+        launchStates(resultAdapter)
     }
 
+    private val resultAdapter = SearchResultAdapter(resultClick, "")
     private val historyAdapter = SearchHistoryAdapter(deleteHistoryClick, historyClick)
 
     override fun onCreateView(
@@ -70,7 +70,7 @@ class SearchFragment : Fragment() {
 
         val searchBar = binding.searchBar
 
-        val resultAdapter = SearchResultAdapter(resultClick, "")
+
 
         binding.recyclerSearch.adapter = resultAdapter
         binding.recyclerHistory.adapter = historyAdapter
@@ -136,7 +136,7 @@ class SearchFragment : Fragment() {
                     if (searchFor != searchText)
                         return@launch
 
-                    viewModel.loadDataForSearchList(searchFor, true)
+                    viewModel.loadDataForSearchList(searchFor)
                     viewModel.deleteInstanceState()
                     resultAdapter.updateText(searchFor)
                 }
