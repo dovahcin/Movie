@@ -1,9 +1,11 @@
-package com.movie.android.data
+package com.movie.android.data.di
 
 import androidx.room.Room
+import com.movie.android.data.BuildConfig
 import com.movie.android.data.db.MovieDatabase
 import com.movie.android.data.network.ApiInterceptor
 import com.movie.android.data.network.ApiServices
+import com.movie.android.data.utils.TestInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -36,12 +38,9 @@ val testModule = module {
         }
 
     single {
-        Room.databaseBuilder(
+        Room.inMemoryDatabaseBuilder(
             androidContext(),
-            MovieDatabase::class.java,
-            "movie_db"
-        )
+            MovieDatabase::class.java)
             .allowMainThreadQueries().build()
-            .searchHistory()
     }
 }
