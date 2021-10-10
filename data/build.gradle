@@ -13,7 +13,7 @@ android {
     versionCode 1
     versionName "1.0"
 
-    testInstrumentationRunner "com.movie.android.data.CustomTestRunner"
+    testInstrumentationRunner "com.movie.android.data.utils.CustomTestRunner"
     buildConfigField 'String', 'API_URL', "\"$API_URL\""
     buildConfigField 'String', 'API_KEY', "\"$API_KEY\""
   }
@@ -58,7 +58,9 @@ dependencies {
   androidTestApi("androidx.test.ext:junit:1.1.3")
   androidTestApi("junit:junit:4.13.2")
   androidTestApi("com.google.truth:truth:1.1.3")
-//  androidTestApi("org.mockito:mockito-core:3.7.7")
+  androidTestApi("org.mockito:mockito-core:3.9.0")
+  androidTestApi("com.linkedin.dexmaker:dexmaker-mockito:2.28.1")
+  androidTestApi("org.mockito.kotlin:mockito-kotlin:3.2.0")
 //  androidTestApi("org.mockito:mockito-inline:3.7.7")
   androidTestApi("com.nhaarman.mockitokotlin2:mockito-kotlin:2.0.0")
 }

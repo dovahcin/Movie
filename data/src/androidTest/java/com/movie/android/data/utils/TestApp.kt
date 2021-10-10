@@ -1,4 +1,4 @@
-package com.movie.android.data
+package com.movie.android.data.utils
 
 import android.app.Application
 import org.koin.android.ext.koin.androidContext

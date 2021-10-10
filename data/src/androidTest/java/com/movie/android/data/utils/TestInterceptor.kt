@@ -1,5 +1,6 @@
-package com.movie.android.data
+package com.movie.android.data.utils
 
+import com.movie.android.data.utils.mock.SearchResultTest
 import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.Protocol
@@ -19,7 +20,7 @@ class TestInterceptor : Interceptor {
           .request(chain.request())
           .protocol(Protocol.HTTP_1_0)
           .body(
-            "{empty result}".toResponseBody(
+            SearchResultTest().mockResultTest().toResponseBody(
               "application/json"
                 .toMediaTypeOrNull()
             )
