@@ -2,12 +2,12 @@ package com.movie.android.di
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.room.Room
+import com.android.movie.actorlist.ActorListViewModel
 import com.movie.android.BuildConfig
 import com.movie.android.data.*
 import com.movie.android.data.db.MovieDatabase
 import com.movie.android.data.network.ApiInterceptor
 import com.movie.android.data.network.ApiServices
-import com.android.movie.actorlist.ActorListViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -69,5 +69,5 @@ val mainModule = module {
     viewModel { com.movie.android.search.SearchViewModel(get(), get()) }
     single { SearchRepository(get(), get()) }
     single { ActorListRepository(get()) }
-    viewModel { com.android.movie.actorlist.ActorListViewModel(get()) }
+    viewModel { ActorListViewModel(get()) }
 }

@@ -3,6 +3,7 @@ plugins {
   id 'kotlin-android'
 }
 apply plugin:'kotlin-kapt'
+apply plugin: 'com.google.gms.google-services'
 
 android {
   compileSdk 31
@@ -10,10 +11,8 @@ android {
   defaultConfig {
     minSdk 21
     targetSdk 31
-    versionCode 1
-    versionName "1.0"
 
-    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+      testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     buildConfigField 'String', 'API_URL', "\"$API_URL\""
     buildConfigField 'String', 'API_KEY', "\"$API_KEY\""
   }
@@ -35,7 +34,8 @@ android {
 
 dependencies {
 
-  def retrofit_version = "2.9.0"
+  implementation 'com.google.firebase:firebase-messaging:22.0.0'
+    def retrofit_version = "2.9.0"
   def koin_version = "3.1.2"
   def room_version = "2.3.0"
 
@@ -60,4 +60,8 @@ dependencies {
   //Room
   implementation "androidx.room:room-ktx:$room_version"
   kapt "androidx.room:room-compiler:$room_version"
+
+  //Firebase
+  implementation platform('com.google.firebase:firebase-bom:28.4.2')
+  implementation "com.google.firebase:firebase-messaging-ktx"
 }

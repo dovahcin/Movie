@@ -3,9 +3,10 @@ plugins {
     id 'kotlin-android'
     id("androidx.navigation.safeargs")
     id 'kotlin-parcelize'
+    id('com.google.gms.google-services')
 }
 
-apply plugin:'kotlin-kapt'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdk 30
@@ -43,6 +44,7 @@ android {
 dependencies {
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.firebase:firebase-messaging:22.0.0'
     def retrofit_version = "2.9.0"
     def lifecycle_version = "2.4.0-alpha03"
     def koin_version = "3.1.2"
@@ -103,5 +105,8 @@ dependencies {
     implementation "androidx.room:room-ktx:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
 
+    //Firebase
+    implementation platform('com.google.firebase:firebase-bom:28.4.2')
+    implementation "com.google.firebase:firebase-messaging-ktx"
 
 }
