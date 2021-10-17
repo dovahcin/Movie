@@ -1,20 +1,20 @@
-package com.movie.android.actordetails.adapter
+package com.movie.android.moviedetails.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.movie.android.actordetails.R
-import com.movie.android.actordetails.databinding.ItemActorShowMoreHorizontalBinding
+import com.movie.android.moviedetails.R
+import com.movie.android.moviedetails.databinding.ItemShowMoreHorizontalBinding
 
 class ShowMoreHolder(
-    binding: ItemActorShowMoreHorizontalBinding
+    binding: ItemShowMoreHorizontalBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
     companion object {
         fun create(parent: ViewGroup) =
 
             ShowMoreHolder(
-                ItemActorShowMoreHorizontalBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                ItemShowMoreHorizontalBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             )
     }
 

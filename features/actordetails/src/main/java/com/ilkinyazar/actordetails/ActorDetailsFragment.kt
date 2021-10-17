@@ -1,4 +1,4 @@
-package com.ilkinyazar.actordetails
+package com.movie.android.actordetails
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,8 +11,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
-import com.ilkinyazar.actordetails.adapter.HorizontalActorMovieAdapter
-import com.ilkinyazar.actordetails.databinding.FragmentActorDetailsBinding
+import com.movie.android.actordetails.adapter.HorizontalActorMovieAdapter
+import com.movie.android.actordetails.databinding.FragmentActorDetailsBinding
 import com.movie.android.domain.ActorDetails
 import com.movie.android.domain.Movie
 import kotlinx.coroutines.flow.collect

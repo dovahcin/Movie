@@ -1,4 +1,4 @@
-package com.movie.android.actordetails
+package com.movie.android.moviedetails
 
 import android.content.res.Resources
 import android.view.View

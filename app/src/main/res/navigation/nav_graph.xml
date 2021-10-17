@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="com.ilkinyazar.moviedetails.MovieDetailsFragment"
+        android:name="com.movie.android.moviedetails.MovieDetailsFragment"
         android:label="fragment_details" >
 
         <argument
@@ -67,7 +67,7 @@
     </fragment>
     <fragment
         android:id="@+id/exploreFragment"
-        android:name="com.ilkinyazar.explore.ExploreFragment"
+        android:name="com.movie.android.explore.ExploreFragment"
         android:label="ExploreFragment" >
         <action
             android:id="@+id/action_exploreFragment_to_movieListFragment"
@@ -110,7 +110,7 @@
     </fragment>
     <fragment
         android:id="@+id/actorDetailsFragment"
-        android:name="com.ilkinyazar.actordetails.ActorDetailsFragment"
+        android:name="com.movie.android.actordetails.ActorDetailsFragment"
         android:label="ActorDetailsFragment" >
         <argument
             android:name="personId"

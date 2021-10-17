@@ -22,6 +22,11 @@ class FireBaseService : FirebaseMessagingService() {
     init {
         Log.d("taggg", "Reached")
     }
+
+    override fun onNewToken(p0: String) {
+        super.onNewToken(p0)
+    }
+
     override fun onMessageReceived(message: RemoteMessage) {
         super.onMessageReceived(message)
 

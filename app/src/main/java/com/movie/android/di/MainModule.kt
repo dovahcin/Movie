@@ -60,11 +60,11 @@ val mainModule = module {
 
     viewModel { com.movie.android.movielist.MovieListViewModel(get()) }
     single { MovieListRepository(get()) }
-    viewModel { com.ilkinyazar.moviedetails.MovieDetailsViewModel(get()) }
+    viewModel { com.movie.android.moviedetails.MovieDetailsViewModel(get()) }
     single { MovieDetailsRepository(get()) }
-    viewModel { com.ilkinyazar.explore.ExploreViewModel(get(), get()) }
+    viewModel { com.movie.android.explore.ExploreViewModel(get(), get()) }
     single { ExploreRepository(get()) }
-    viewModel { com.ilkinyazar.actordetails.ActorDetailsViewModel(get(), get()) }
+    viewModel { com.movie.android.actordetails.ActorDetailsViewModel(get(), get()) }
     single { ActorDetailsRepository(get()) }
     viewModel { com.movie.android.search.SearchViewModel(get(), get()) }
     single { SearchRepository(get(), get()) }

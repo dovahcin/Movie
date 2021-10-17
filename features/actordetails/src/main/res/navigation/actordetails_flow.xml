@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/actorDetailsFragment"
-        android:name="com.ilkinyazar.actordetails.ActorDetailsFragment"
+        android:name="com.movie.android.actordetails.ActorDetailsFragment"
         android:label="ActorDetailsFragment" >
         <argument
             android:name="personId"

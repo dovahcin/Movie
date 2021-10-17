@@ -1,4 +1,4 @@
-package com.ilkinyazar.actordetails
+package com.movie.android.actordetails
 
 import android.os.Parcelable
 import com.movie.android.domain.ActorsDataModel

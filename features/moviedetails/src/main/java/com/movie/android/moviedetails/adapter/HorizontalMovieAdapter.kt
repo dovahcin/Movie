@@ -1,4 +1,4 @@
-package com.movie.android.actordetails.adapter
+package com.movie.android.moviedetails.adapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.movie.android.domain.Movie
 import com.movie.android.domain.Movie.MovieViewType.SHOW_MORE
 
-class HorizontalActorMovieAdapter(
+class HorizontalMovieAdapter(
     private val itemClick: (Int) -> Unit,
     private val showMoreClick: (Int) -> Unit,
     private var listId: Int = -1,
@@ -17,12 +17,12 @@ class HorizontalActorMovieAdapter(
     private val SHOW_MORE_TYPE = 2
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         if (viewType == SHOW_MORE_TYPE) ShowMoreHolder.create(parent)
-        else HorizontalActorMovieHolder.create(parent)
+        else HorizontalMovieHolder.create(parent)
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
-        if (holder is HorizontalActorMovieHolder) {
+        if (holder is HorizontalMovieHolder) {
             holder.bind(item)
             holder.itemView.setOnClickListener { itemClick.invoke(item.id) }
         } else {

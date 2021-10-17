@@ -1,4 +1,4 @@
-package com.ilkinyazar.actordetails
+package com.movie.android.actordetails
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel

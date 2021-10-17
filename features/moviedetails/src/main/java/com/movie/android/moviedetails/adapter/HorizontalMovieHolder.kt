@@ -1,21 +1,21 @@
-package com.movie.android.actordetails.adapter
+package com.movie.android.moviedetails.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.movie.android.actordetails.databinding.ItemActorMovieHorizontalBinding
-import com.movie.android.actordetails.loadImage
-import com.movie.android.actordetails.reduceWidthBy
+import com.movie.android.moviedetails.databinding.ItemMovieHorizontalBinding
+import com.movie.android.moviedetails.loadImage
+import com.movie.android.moviedetails.reduceWidthBy
 import com.movie.android.domain.Movie
 
-class HorizontalActorMovieHolder(
-    private val binding: ItemActorMovieHorizontalBinding
+class HorizontalMovieHolder(
+    private val binding: ItemMovieHorizontalBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
     companion object {
         fun create(parent: ViewGroup) =
-            HorizontalActorMovieHolder(
-                ItemActorMovieHorizontalBinding.inflate(
+            HorizontalMovieHolder(
+                ItemMovieHorizontalBinding.inflate(
                     LayoutInflater.from(parent.context), parent, false
                 )
             )
