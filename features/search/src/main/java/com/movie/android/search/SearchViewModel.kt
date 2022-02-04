@@ -6,9 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.movie.android.data.SearchRepository
 import com.movie.android.domain.SearchDataModel
 import com.movie.android.domain.SearchHistory
-import com.movie.android.search.SearchUiState.Failure
-import com.movie.android.search.SearchUiState.Loading
-import com.movie.android.search.SearchUiState.Success
+import com.movie.android.search.SearchUiState.*
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -52,8 +50,8 @@ class SearchViewModel(
     fun saveSearchHistory(history: SearchHistory) {
         viewModelScope.launch {
             searchRepository.addSearchHistory(history)
-                .collect {
-                    _uiState.value = Success(searchDataModel.reduce(it))
+                .collect { dataModel ->
+                    _uiState.value = Success(dataModel)
                 }
         }
     }
@@ -61,8 +59,8 @@ class SearchViewModel(
     fun deleteSearchHistory(historyId: Int) {
         viewModelScope.launch {
             searchRepository.removeSearchHistory(historyId)
-                .collect {
-                    _uiState.value = Success(searchDataModel.reduce(it))
+                .collect { dataModel ->
+                    _uiState.value = Success(dataModel)
                 }
         }
     }

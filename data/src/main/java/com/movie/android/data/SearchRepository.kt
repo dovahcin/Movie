@@ -28,12 +28,18 @@ class SearchRepository(private val api: ApiServices, private val movieDatabase: 
 
     fun addSearchHistory(history: SearchHistory) = flow {
         movieDatabase.insert(history)
-        emit(movieDatabase.getAll())
+        emit(SearchDataModel(
+            MovieList(),
+            histories = movieDatabase.getAll()
+        ))
     }.flowOn(Dispatchers.IO)
 
     fun removeSearchHistory(historyId: Int) = flow {
         movieDatabase.delete(historyId)
-        emit(movieDatabase.getAll())
+        emit(SearchDataModel(
+            MovieList(),
+            histories = movieDatabase.getAll()
+        ))
     }.flowOn(Dispatchers.IO)
 
 }
