@@ -12,10 +12,10 @@ A Sample Movies App with the best practices for working with android architectur
 - Animations
 
 ## Features 
-### - list of various categories
-### - Navigate to the full movie details
-### Search for the movie
-### - Actors list with navgable options
+- list of various categories
+- Navigate to the full movie details
+- Search for the movie
+- Actors list with navgable options
 
 
 
