@@ -9,5 +9,3 @@ A Sample Movies App with the best practices for working with android architectur
 - ROOM Db 
 - Picasso 
 - Koin
-
-Best features: Dynamic View
